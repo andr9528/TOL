@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Library;
 
 namespace GUI
 {
@@ -23,6 +24,29 @@ namespace GUI
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void NewCharacter_Click(object sender, RoutedEventArgs e)
+        {
+            NewCharacter character = new NewCharacter();
+            character.Show();
+        }
+
+        private void ShowDivines_Click(object sender, RoutedEventArgs e)
+        {
+            Gods divine = new Gods();
+            divine.Show();
+        }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void ShowErrorList_Click(object sender, RoutedEventArgs e)
+        {
+            ErrorList error = new ErrorList();
+            error.Show();
         }
     }
 }

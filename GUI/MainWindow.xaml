@@ -5,8 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
+        Title="MainWindow" Height="Auto" Width="Auto">
+    <Grid  HorizontalAlignment="Center" VerticalAlignment="Center" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="40"/>
+        </Grid.ColumnDefinitions>
+
+        <Button Grid.Column="0" Grid.Row="0" Name="NewCharacter" 
+                Click="NewCharacter_Click" Content="New Character"/>
+        <Button Grid.Column="1" Grid.Row="0" Name="ShowDivines" 
+                Click="ShowDivines_Click" Content="Show Divines"/>
+        <Button Grid.Column="2" Grid.Row="0" Name="ShowErrorList" 
+                Click="ShowErrorList_Click" Content="Show Error List"/>
+        <Button Grid.Column="4" Grid.Row="0" Name="Exit" 
+                Click="Exit_Click" Content="Exit"/>
+
+
     </Grid>
 </Window>
