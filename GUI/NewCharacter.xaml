@@ -8,12 +8,98 @@
         Title="NewCharacter" Height="Auto" Width="Auto">
     <Grid  HorizontalAlignment="Center" VerticalAlignment="Center" >
         <Grid.RowDefinitions>
-
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="40"/>
         </Grid.ColumnDefinitions>
 
+        <Button Grid.Column="6" Grid.Row="0" Name="CloseNewCharacter" 
+                Click="CloseNewCharacter_Click" Content="Close"/>
+        <Button Grid.Column="3" Grid.Row="9" Name="IncreaseChecked" 
+                Click="IncreaseChecked_Click" Content="Increase Checked"/>
+        <Button Grid.Column="3" Grid.Row="10" Name="DecreaseChecked" 
+                Click="DecreaseChecked_Click" Content="Decease Checked"/>
+
+        <TextBox Grid.Column="0" Grid.Row="1" Name="Archery" IsReadOnly="True" Text="Archery" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="0" Grid.Row="2" Name="OneHanded" IsReadOnly="True" Text="One Handed" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="0" Grid.Row="3" Name="TwoHanded" IsReadOnly="True" Text="Two Handed" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="0" Grid.Row="4" Name="LightArmor" IsReadOnly="True" Text="Light Armor" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="0" Grid.Row="5" Name="HeavyArmor" IsReadOnly="True" Text="Heavy Armor" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="0" Grid.Row="6" Name="Stealth" IsReadOnly="True" Text="Stealth" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="0" Grid.Row="7" Name="Agility" IsReadOnly="True" Text="Agility" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="0" Grid.Row="8" Name="Smighting" IsReadOnly="True" Text="Smighting" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="0" Grid.Row="9" Name="Alchemy" IsReadOnly="True" Text="Alchemy" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="0" Grid.Row="10" Name="Enchanting" IsReadOnly="True" Text="Enchanting" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="0" Grid.Row="11" Name="Blocking" IsReadOnly="True" Text="Blocking" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="0" Grid.Row="12" Name="WildMagic" IsReadOnly="True" Text="Wild Magic" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="0" Grid.Row="13" Name="InfernoMagic" IsReadOnly="True" Text="Inferno Magic" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="0" Grid.Row="14" Name="BlizzMagic" IsReadOnly="True" Text="Blizz Magic" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="0" Grid.Row="15" Name="SkyMagic" IsReadOnly="True" Text="Sky Magic" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="0" Grid.Row="16" Name="PureMagic" IsReadOnly="True" Text="Pure Magic" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+        <TextBox Grid.Column="1" Grid.Row="1" Name="ArcheryWeightingValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="2" Name="OneHandedWeightingValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="3" Name="TwoHandedWeightingValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="4" Name="LightArmorWeightingValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="5" Name="HeavyArmorWeightingValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="6" Name="StealthWeightingValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="7" Name="AgilityWeightingValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="8" Name="SmightingWeightingValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="9" Name="AlchemyWeightingValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="10" Name="EnchantingWeightingValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="11" Name="BlockingWeightingValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="12" Name="WildMagicWeightingValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="13" Name="InfernoMagicWeightingValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="14" Name="BlizzMagicWeightingValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="15" Name="SkyMagicWeightingValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="16" Name="PureMagicWeightingValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        
+        <CheckBox Grid.Column="2" Grid.Row="1" Name="ArcheryList" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="ArcheryList_Checked"/>
+        <CheckBox Grid.Column="2" Grid.Row="2" Name="OneHandedList" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="OneHandedList_Checked"/>
+        <CheckBox Grid.Column="2" Grid.Row="3" Name="TwoHandedList" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="TwoHandedList_Checked"/>
+        <CheckBox Grid.Column="2" Grid.Row="4" Name="LightArmorList" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="LightArmorList_Checked"/>
+        <CheckBox Grid.Column="2" Grid.Row="5" Name="HeavyArmorList" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="HeavyArmorList_Checked"/>
+        <CheckBox Grid.Column="2" Grid.Row="6" Name="StealthList" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="StealthList_Checked"/>
+        <CheckBox Grid.Column="2" Grid.Row="7" Name="AgilityList" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="AgilityList_Checked"/>
+        <CheckBox Grid.Column="2" Grid.Row="8" Name="SmightingList" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="SmightingList_Checked"/>
+        <CheckBox Grid.Column="2" Grid.Row="9" Name="AlchemyList" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="AlchemyList_Checked"/>
+        <CheckBox Grid.Column="2" Grid.Row="10" Name="EnchantingList" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="EnchantingList_Checked"/>
+        <CheckBox Grid.Column="2" Grid.Row="11" Name="BlockingList" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="BlockingList_Checked"/>
+        <CheckBox Grid.Column="2" Grid.Row="12" Name="WildMagicList" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="WildMagicList_Checked"/>
+        <CheckBox Grid.Column="2" Grid.Row="13" Name="InfernoMagicList" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="InfernoMagicList_Checked"/>
+        <CheckBox Grid.Column="2" Grid.Row="14" Name="BlizzMagicList" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="BlizzMagicList_Checked"/>
+        <CheckBox Grid.Column="2" Grid.Row="15" Name="SkyMagicList" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="SkyMagicList_Checked"/>
+        <CheckBox Grid.Column="2" Grid.Row="16" Name="PureMagicList" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="PureMagicList_Checked"/>
+
+        <TextBox Grid.Column="1" Grid.Row="0" Name="Weighting" IsReadOnly="True" Text="Weighting" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="0" Grid.Row="17" Name="PointsLeft" IsReadOnly="True" Text="Points Left" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="17" Name="PointsLeftValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="3" Grid.Row="17" Name="ErrorBox" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
     </Grid>
 </Window>

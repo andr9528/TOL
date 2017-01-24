@@ -29,41 +29,44 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100"/>
-            <ColumnDefinition Width="150"/>
-            <ColumnDefinition Width="40"/>
-            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="110"/>
+            <ColumnDefinition Width="110"/>
+            <ColumnDefinition Width="110"/>
             <ColumnDefinition Width="40"/>
         </Grid.ColumnDefinitions>
 
         <ComboBox Grid.Row="0" Grid.Column="0" Name="DropDownDivine" 
                   Loaded="DropDownDivine_Loaded" SelectionChanged="DropDownDivine_SelectionChanged"/>
 
+        <!--<ComboBox Grid.Row="1" Grid.Column="0" Name="DropDownXpCheck" 
+                  Loaded="DropDownXpCheck_Loaded" />-->
+
         <Button Grid.Column="4" Grid.Row="0" Name="CloseDivine" 
                 Click="CloseDivine_Click" Content="Close"/>
 
-        <TextBox Grid.Column="1" Grid.Row="1" Name="ArcheryWeight" IsReadOnly="True" Text="Archery Weight" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBox Grid.Column="1" Grid.Row="2" Name="OneHandedWeight" IsReadOnly="True" Text="One Handed Weight" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBox Grid.Column="1" Grid.Row="3" Name="TwoHandedWeight" IsReadOnly="True" Text="Two Handed Weight" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBox Grid.Column="1" Grid.Row="4" Name="LightArmorWeight" IsReadOnly="True" Text="Light Armor Weight" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBox Grid.Column="1" Grid.Row="5" Name="HeavyArmorWeight" IsReadOnly="True" Text="Heavy Armor Weight" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBox Grid.Column="1" Grid.Row="6" Name="StealtWeight" IsReadOnly="True" Text="Stealt Weight" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBox Grid.Column="1" Grid.Row="7" Name="AgilityWeight" IsReadOnly="True" Text="Agility Weight" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBox Grid.Column="1" Grid.Row="8" Name="SmightingWeight" IsReadOnly="True" Text="Smighting Weight" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBox Grid.Column="1" Grid.Row="9" Name="AlchemyWeight" IsReadOnly="True" Text="Alchemy Weight" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBox Grid.Column="1" Grid.Row="10" Name="EnchantingWeight" IsReadOnly="True" Text="Enchanting Weight" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBox Grid.Column="1" Grid.Row="11" Name="BlockingWeight" IsReadOnly="True" Text="Blocking Weight" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBox Grid.Column="1" Grid.Row="12" Name="WildMagicWeight" IsReadOnly="True" Text="Wild Magic Weight" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBox Grid.Column="1" Grid.Row="13" Name="InfernoMagicWeight" IsReadOnly="True" Text="Inferno Magic Weight" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBox Grid.Column="1" Grid.Row="14" Name="BlizzMagicWeight" IsReadOnly="True" Text="Blizz Magic Weight" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBox Grid.Column="1" Grid.Row="15" Name="SkyMagicWeight" IsReadOnly="True" Text="Sky Magic Weight" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBox Grid.Column="1" Grid.Row="16" Name="PureMagicWeight" IsReadOnly="True" Text="Pure Magic Weight" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="1" Name="Archery" IsReadOnly="True" Text="Archery" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="2" Name="OneHanded" IsReadOnly="True" Text="One Handed" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="3" Name="TwoHanded" IsReadOnly="True" Text="Two Handed" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="4" Name="LightArmor" IsReadOnly="True" Text="Light Armor" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="5" Name="HeavyArmor" IsReadOnly="True" Text="Heavy Armor" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="6" Name="Stealth" IsReadOnly="True" Text="Stealth" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="7" Name="Agility" IsReadOnly="True" Text="Agility" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="8" Name="Smighting" IsReadOnly="True" Text="Smighting" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="9" Name="Alchemy" IsReadOnly="True" Text="Alchemy" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="10" Name="Enchanting" IsReadOnly="True" Text="Enchanting" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="11" Name="Blocking" IsReadOnly="True" Text="Blocking" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="12" Name="WildMagic" IsReadOnly="True" Text="Wild Magic" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="13" Name="InfernoMagic" IsReadOnly="True" Text="Inferno Magic" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="14" Name="BlizzMagic" IsReadOnly="True" Text="Blizz Magic" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="15" Name="SkyMagic" IsReadOnly="True" Text="Sky Magic" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="16" Name="PureMagic" IsReadOnly="True" Text="Pure Magic" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
         <TextBox Grid.Column="2" Grid.Row="1" Name="ArcheryWeightValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBox Grid.Column="2" Grid.Row="2" Name="OneHandedWeightValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBox Grid.Column="2" Grid.Row="3" Name="TwoHandedWeightValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBox Grid.Column="2" Grid.Row="4" Name="LightArmorWeightValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBox Grid.Column="2" Grid.Row="5" Name="HeavyArmorWeightValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBox Grid.Column="2" Grid.Row="6" Name="StealtWeightValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="2" Grid.Row="6" Name="StealthWeightValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBox Grid.Column="2" Grid.Row="7" Name="AgilityWeightValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBox Grid.Column="2" Grid.Row="8" Name="SmightingWeightValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBox Grid.Column="2" Grid.Row="9" Name="AlchemyWeightValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
@@ -75,10 +78,29 @@
         <TextBox Grid.Column="2" Grid.Row="15" Name="SkyMagicWeightValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBox Grid.Column="2" Grid.Row="16" Name="PureMagicWeightValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
-        <TextBox Grid.Column="1" Grid.Row="17" Name="SumWeight" IsReadOnly="True" Text="Summerized Weight" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="3" Grid.Row="1" Name="ArcheryXpValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="3" Grid.Row="2" Name="OneHandedXpValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="3" Grid.Row="3" Name="TwoHandedXpValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="3" Grid.Row="4" Name="LightArmorXpValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="3" Grid.Row="5" Name="HeavyArmorXpValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="3" Grid.Row="6" Name="StealthXpValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="3" Grid.Row="7" Name="AgilityXpValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="3" Grid.Row="8" Name="SmightingXpValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="3" Grid.Row="9" Name="AlchemyXpValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="3" Grid.Row="10" Name="EnchantingXpValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="3" Grid.Row="11" Name="BlockingXpValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="3" Grid.Row="12" Name="WildMagicXpValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="3" Grid.Row="13" Name="InfernoMagicXpValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="3" Grid.Row="14" Name="BlizzMagicXpValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="3" Grid.Row="15" Name="SkyMagicXpValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="3" Grid.Row="16" Name="PureMagicXpValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+        <TextBox Grid.Column="1" Grid.Row="17" Name="Sum" IsReadOnly="True" Text="Summerized" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBox Grid.Column="2" Grid.Row="17" Name="SumWeightValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBox Grid.Column="3" Grid.Row="0" Name="XpModifierHeader" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Xp Modifiers"/>
+        <TextBox Grid.Column="3" Grid.Row="17" Name="SumXpValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="3" Grid.Row="0" Name="XpModifierHeader" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Xp Modifiers (%)"/>
         <TextBox Grid.Column="0" Grid.Row="17" Name="ErrorBox" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="2" Grid.Row="0" Name="WeightHeader" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Weight"/>
 
     </Grid>
 </Window>

@@ -57,18 +57,20 @@ namespace GUI
         private void DropDownDivine_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             int weightSum = 0;
+            int xpSum = 0;
 
-            if (DropDownDivine.SelectedIndex > 15)
+            if (DropDownDivine.SelectedIndex > 11)
             {
                 ErrorBox.Text = "Error 1";
                 SumWeightValue.Text = "";
+                SumXpValue.Text = "";
 
                 ArcheryWeightValue.Text = "";
                 OneHandedWeightValue.Text = "";
                 TwoHandedWeightValue.Text = "";
                 LightArmorWeightValue.Text = "";
                 HeavyArmorWeightValue.Text = "";
-                StealtWeightValue.Text = "";
+                StealthWeightValue.Text = "";
                 AgilityWeightValue.Text = "";
                 SmightingWeightValue.Text = "";
                 EnchantingWeightValue.Text = "";
@@ -79,6 +81,24 @@ namespace GUI
                 BlizzMagicWeightValue.Text = "";
                 SkyMagicWeightValue.Text = "";
                 PureMagicWeightValue.Text = "";
+
+                ArcheryXpValue.Text = "";
+                OneHandedXpValue.Text = "";
+                TwoHandedXpValue.Text = "";
+                LightArmorXpValue.Text = "";
+                HeavyArmorXpValue.Text = "";
+                StealthXpValue.Text = "";
+                AgilityXpValue.Text = "";
+                SmightingXpValue.Text = "";
+                EnchantingXpValue.Text = "";
+                AlchemyXpValue.Text = "";
+                BlockingXpValue.Text = "";
+                WildMagicXpValue.Text = "";
+                InfernoMagicXpValue.Text = "";
+                BlizzMagicXpValue.Text = "";
+                SkyMagicXpValue.Text = "";
+                PureMagicXpValue.Text = "";
+
             }
             else
             {
@@ -89,7 +109,7 @@ namespace GUI
                 TwoHandedWeightValue.Text = divines[DropDownDivine.SelectedIndex].Favoring.Split(',')[2];
                 LightArmorWeightValue.Text = divines[DropDownDivine.SelectedIndex].Favoring.Split(',')[3];
                 HeavyArmorWeightValue.Text = divines[DropDownDivine.SelectedIndex].Favoring.Split(',')[4];
-                StealtWeightValue.Text = divines[DropDownDivine.SelectedIndex].Favoring.Split(',')[5];
+                StealthWeightValue.Text = divines[DropDownDivine.SelectedIndex].Favoring.Split(',')[5];
                 AgilityWeightValue.Text = divines[DropDownDivine.SelectedIndex].Favoring.Split(',')[6];
                 SmightingWeightValue.Text = divines[DropDownDivine.SelectedIndex].Favoring.Split(',')[7];
                 EnchantingWeightValue.Text = divines[DropDownDivine.SelectedIndex].Favoring.Split(',')[8];
@@ -109,7 +129,43 @@ namespace GUI
 
                 SumWeightValue.Text = "" + weightSum;
 
+                ArcheryXpValue.Text = "" + divines[DropDownDivine.SelectedIndex].XpModifier[0]; 
+                OneHandedXpValue.Text = "" + divines[DropDownDivine.SelectedIndex].XpModifier[1];
+                TwoHandedXpValue.Text = "" + divines[DropDownDivine.SelectedIndex].XpModifier[2];
+                LightArmorXpValue.Text = "" + divines[DropDownDivine.SelectedIndex].XpModifier[3];
+                HeavyArmorXpValue.Text = "" + divines[DropDownDivine.SelectedIndex].XpModifier[4];
+                StealthXpValue.Text = "" + divines[DropDownDivine.SelectedIndex].XpModifier[5];
+                AgilityXpValue.Text = "" + divines[DropDownDivine.SelectedIndex].XpModifier[6];
+                SmightingXpValue.Text = "" + divines[DropDownDivine.SelectedIndex].XpModifier[7];
+                EnchantingXpValue.Text = "" + divines[DropDownDivine.SelectedIndex].XpModifier[8];
+                AlchemyXpValue.Text = "" + divines[DropDownDivine.SelectedIndex].XpModifier[9];
+                BlockingXpValue.Text = "" + divines[DropDownDivine.SelectedIndex].XpModifier[10];
+                WildMagicXpValue.Text = "" + divines[DropDownDivine.SelectedIndex].XpModifier[11];
+                InfernoMagicXpValue.Text = "" + divines[DropDownDivine.SelectedIndex].XpModifier[12];
+                BlizzMagicXpValue.Text = "" + divines[DropDownDivine.SelectedIndex].XpModifier[13];
+                SkyMagicXpValue.Text = "" + divines[DropDownDivine.SelectedIndex].XpModifier[14];
+                PureMagicXpValue.Text = "" + divines[DropDownDivine.SelectedIndex].XpModifier[15];
+
+                foreach (int xp in divines[DropDownDivine.SelectedIndex].XpModifier)
+                {
+                    xpSum += xp;
+                }
+
+                SumXpValue.Text = "" + xpSum;
+
+                //DropDownXpCheck.ItemsSource = divines[DropDownDivine.SelectedIndex].XpModifier;
+
+                //DropDownXpCheck.SelectedIndex = 0;
             }
         }
+
+        //private void DropDownXpCheck_Loaded(object sender, RoutedEventArgs e)
+        //{
+        //    var DropDownXpCheck = sender as ComboBox;
+
+        //    DropDownXpCheck.ItemsSource = divines[DropDownDivine.SelectedIndex].XpModifier;
+
+        //    DropDownXpCheck.SelectedIndex = 0;
+        //}
     }
 }

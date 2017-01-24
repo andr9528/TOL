@@ -9,6 +9,8 @@
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="60"/>
@@ -17,7 +19,13 @@
         </Grid.ColumnDefinitions>
 
         <TextBox Grid.Row="0" Grid.Column="0" Text="Error 1" Name="Error1Box" HorizontalAlignment="Center" VerticalAlignment="Center" IsReadOnly="True"/>
-        <TextBox Grid.Row="0" Grid.Column="1" Text="Selected God Does Not Exist" Name="Error1Text" HorizontalAlignment="Center" VerticalAlignment="Center" IsReadOnly="True"/>
+        <TextBox Grid.Row="0" Grid.Column="1" Text="Selected god does not exist" Name="Error1Text" HorizontalAlignment="Center" VerticalAlignment="Center" IsReadOnly="True"/>
+
+        <TextBox Grid.Row="1" Grid.Column="0" Text="Error 2" Name="Error2Box" HorizontalAlignment="Center" VerticalAlignment="Center" IsReadOnly="True"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="You have retrived all points already" Name="Error2Text" HorizontalAlignment="Center" VerticalAlignment="Center" IsReadOnly="True"/>
+
+        <TextBox Grid.Row="2" Grid.Column="0" Text="Error 3" Name="Error3Box" HorizontalAlignment="Center" VerticalAlignment="Center" IsReadOnly="True"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Text="You are out of points to use" Name="Error3Text" HorizontalAlignment="Center" VerticalAlignment="Center" IsReadOnly="True"/>
 
         <Button Grid.Column="2" Grid.Row="0" Name="CloseErrorList" 
                 Click="CloseErrorList_Click" Content="Close"/>
