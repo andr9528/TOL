@@ -9,52 +9,40 @@ namespace Library
     public class Skill
     {
         public int ID { get; internal set; }
-        public string type { get; internal set; }
-        public int startup { get; internal set; }
-        public int level { get; internal set; }
-        public int xpMultiplier { get; internal set; }
+        public string Type { get; internal set; }
+        public int Level { get; internal set; }
+        public int XpMultiplier { get; set; }
+        public int XpCurrent { get; set; }
+        public int XpRequired { get; internal set; }
+        public double XpScale { get; set; }
 
         public Skill()
         {
 
         }
-        public Skill(int _id, int _startup, int _level, int _xpMultiplier , string _type)
+        public Skill(int _id, string _type, double _xpScale = 1.25)
         {
-
-            if (_startup <= 10)
-            {
-                startup = _startup;
-            }
-            else
-            {
-                throw new Exception("Too High Favoring");
-            }
-            if (_level <= 100)
-            {
-                level = _level;
-            }
-            else
-            {
-                throw new Exception("Too High Level");
-            }
-            if (_xpMultiplier > 50)
-            {
-                xpMultiplier = _xpMultiplier;
-            }
-            else
-            {
-                throw new Exception("Can't go below 50% XP gain on a skill");
-            }
 
             if (Storage.SkillString.Contains(_type))
             {
-                type = _type;
+                Type = _type;
             }
             else
             {
                 throw new Exception("Unknown Skill");
             }
             ID = _id;
+
+            Level = 0;
+            XpMultiplier = 100;
+            XpScale = _xpScale;
+            LevelUp();
+        }
+        public void LevelUp()
+        {
+            Level++;
+            XpCurrent = 0;
+            XpRequired = (int)Math.Floor(32 * Level * XpScale);
         }
     }
 }

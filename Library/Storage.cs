@@ -81,22 +81,22 @@ namespace Library
 
 
         // Skills
-        Skill Archery = new Skill(0, 1, 10, 100, "Archery");
-        Skill OneHanded = new Skill(1, 1, 10, 100, "OneHanded");
-        Skill TwoHanded = new Skill(2, 1, 10, 100, "TwoHanded");
-        Skill LightArmor = new Skill(3, 1, 10, 100, "LightArmor");
-        Skill HeavyArmor = new Skill(4, 1, 10, 100, "HeavyArmor");
-        Skill Stealth = new Skill(5, 1, 10, 100, "Stealth");
-        Skill Agility = new Skill(6, 1, 10, 100, "Agility");
-        Skill Smighting = new Skill(7, 1, 10, 100, "Smighting");
-        Skill Enchanting = new Skill(8, 1, 10, 100, "Enchanting");
-        Skill Alchemy = new Skill(9, 1, 10, 100, "Alchemy");
-        Skill Blocking = new Skill(10, 1, 10, 100, "Blocking");
-        Skill WildMagic = new Skill(11, 1, 10, 100, "WildMagic");
-        Skill InfernoMagic = new Skill(12, 1, 10, 100, "InfernoMagic");
-        Skill BlizzMagic = new Skill(13, 1, 10, 100, "BlizzMagic");
-        Skill Skymagic = new Skill(14, 1, 10, 100, "Skymagic");
-        Skill PureMagic = new Skill(15, 1, 10, 100, "PureMagic");
+        Skill Archery = new Skill(0, "Archery");
+        Skill OneHanded = new Skill(1,  "OneHanded");
+        Skill TwoHanded = new Skill(2, "TwoHanded");
+        Skill LightArmor = new Skill(3, "LightArmor");
+        Skill HeavyArmor = new Skill(4, "HeavyArmor");
+        Skill Stealth = new Skill(5, "Stealth");
+        Skill Agility = new Skill(6, "Agility");
+        Skill Smighting = new Skill(7,  "Smighting");
+        Skill Enchanting = new Skill(8, "Enchanting");
+        Skill Alchemy = new Skill(9, "Alchemy");
+        Skill Blocking = new Skill(10, "Blocking");
+        Skill WildMagic = new Skill(11, "WildMagic");
+        Skill InfernoMagic = new Skill(12, "InfernoMagic");
+        Skill BlizzMagic = new Skill(13, "BlizzMagic");
+        Skill Skymagic = new Skill(14, "Skymagic");
+        Skill PureMagic = new Skill(15, "PureMagic");
 
         static List<Skill> skillList = new List<Skill>();
         static List<string> skillString = new List<string>()
