@@ -54,14 +54,12 @@ namespace Library
         public int Level { get; internal set; }
         public List<int> Weighting { get { return weighting; } internal set { weighting = value; } }
 
-
         public Character()
         {
 
         }
         public Character(string name, string gender, int desiredMythology, List<int> _weighting)
         {
-
             Name = name;
             Weighting = _weighting;
             DesiredMythology = desiredMythology;
@@ -75,7 +73,6 @@ namespace Library
                 + Enchanting.Level + Alchemy.Level + Blocking.Level + WildMagic.Level
                 + InfernoMagic.Level + BlizzMagic.Level + Skymagic.Level + PureMagic.Level) / 16;
         }
-
         public void parentDeterminator()
         {
             int highestCount = 0;
@@ -105,7 +102,6 @@ namespace Library
                 DivineParent = possibleParents[0].Divine;
             }
         }
-
         public bool checkIfClose(int index, Gods divine, int weight)
         {
             if (weight >= int.Parse(divine.Favoring.Split(',')[index])-1 
@@ -118,7 +114,6 @@ namespace Library
                 return false;
             }
         }
-
         public bool checkIfExact(int index, Gods divine, int weight)
         {
             if (weight == int.Parse(divine.Favoring.Split(',')[index]))
@@ -130,7 +125,6 @@ namespace Library
                 return false;
             }
         }
-
         public void countClosenessHits()
         {
                 closenessHits.Clear();
@@ -214,7 +208,6 @@ namespace Library
                     throw new Exception("How did you get to this point?");
                 }
         }
-
         public void countExactHits(List<Gods> gods)
         {
             exactHits.Clear();
@@ -313,13 +306,10 @@ namespace Library
             }
             return output;
         }
-
         public string ToStringParent()
         {
             return "Your parent is" + DivineParent ;
         }
-        
-        
 
     }
 }
