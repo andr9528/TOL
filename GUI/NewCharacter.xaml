@@ -38,7 +38,7 @@
             <ColumnDefinition Width="40"/>
         </Grid.ColumnDefinitions>
 
-        <Button Grid.Column="6" Grid.Row="0" Name="CloseNewCharacter" 
+        <Button Grid.Column="7" Grid.Row="0" Name="CloseNewCharacter" 
                 Click="CloseNewCharacter_Click" Content="Close"/>
         <Button Grid.Column="3" Grid.Row="9" Name="IncreaseChecked" 
                 Click="IncreaseChecked_Click" Content="Increase Checked"/>
