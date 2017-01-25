@@ -117,7 +117,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Tale of Legends VS\Library\Library.csproj">
+    <ProjectReference Include="..\Library\Library.csproj">
       <Project>{3854965c-b131-4af3-974f-c58447dba839}</Project>
       <Name>Library</Name>
     </ProjectReference>

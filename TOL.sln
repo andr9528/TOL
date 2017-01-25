@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUI", "GUI\GUI.csproj", "{5F4C15E6-3F19-40C7-922C-E6AB816C00F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library", "..\Tale of Legends VS\Library\Library.csproj", "{3854965C-B131-4AF3-974F-C58447DBA839}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library", "Library\Library.csproj", "{3854965C-B131-4AF3-974F-C58447DBA839}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
