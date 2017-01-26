@@ -49,7 +49,7 @@ namespace Library
 
         public string Name { get; internal set; }
         public string Gender { get; internal set; }
-        public string DivineParent { get; internal set; }
+        public Gods DivineParent { get; internal set; }
         public int DesiredMythology { get; internal set; }
         public int Level { get; internal set; }
         public List<int> Weighting { get { return weighting; } internal set { weighting = value; } }
@@ -93,13 +93,13 @@ namespace Library
                     else if (exactHits[i] > highestCount)
                     {
                         highestCount = exactHits[i];
-                        DivineParent = possibleParents[i].Divine;
+                        DivineParent = possibleParents[i];
                     }
                 }
             }
             else
             {
-                DivineParent = possibleParents[0].Divine;
+                DivineParent = possibleParents[0];
             }
         }
         public bool checkIfClose(int index, Gods divine, int weight)

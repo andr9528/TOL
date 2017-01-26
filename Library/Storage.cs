@@ -108,6 +108,12 @@ namespace Library
         };
         static public List<string> SkillString { get { return skillString; } }
         static public List<Skill> SkillList { get { return skillList; } }
+
+        // Character
+
+        static List<Character> characters = new List<Character>();
+
+        static public List<Character> Characters { get { return characters; } set { characters = value; } }
         
         // Functions
         public Storage()
@@ -153,9 +159,11 @@ namespace Library
             //NordicGods = nordicGodsSetup
             //AtlanticTitans = atlanticTitansSetup
             skillList = skillSkillSetup;
-
-
         }
 
+        public void removeCharacter(int index)
+        {
+            Characters.RemoveAt(index);
+        }
     }
 }

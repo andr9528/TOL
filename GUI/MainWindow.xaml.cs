@@ -24,18 +24,24 @@ namespace GUI
         public MainWindow()
         {
             InitializeComponent();
+
+            WindowState = WindowState.Maximized;
         }
 
         private void NewCharacter_Click(object sender, RoutedEventArgs e)
         {
             NewCharacter character = new NewCharacter();
+            character.WindowState = WindowState.Maximized;
             character.Show();
+            //this.Hide();
         }
 
         private void ShowDivines_Click(object sender, RoutedEventArgs e)
         {
             Gods divine = new Gods();
+            divine.WindowState = WindowState.Maximized;
             divine.Show();
+            //this.Hide();
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
@@ -46,7 +52,17 @@ namespace GUI
         private void ShowErrorList_Click(object sender, RoutedEventArgs e)
         {
             ErrorList error = new ErrorList();
+            error.WindowState = WindowState.Maximized;
             error.Show();
+            //this.Hide();
+        }
+
+        private void ShowCharacters_Click(object sender, RoutedEventArgs e)
+        {
+            Characters characters = new Characters();
+            characters.WindowState = WindowState.Maximized;
+            characters.Show();
+            //this.Hide();
         }
     }
 }

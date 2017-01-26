@@ -28,13 +28,13 @@
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100"/>
-            <ColumnDefinition Width="100"/>
-            <ColumnDefinition Width="100"/>
-            <ColumnDefinition Width="100"/>
-            <ColumnDefinition Width="100"/>
-            <ColumnDefinition Width="100"/>
-            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="110"/>
+            <ColumnDefinition Width="110"/>
+            <ColumnDefinition Width="110"/>
+            <ColumnDefinition Width="110"/>
+            <ColumnDefinition Width="110"/>
+            <ColumnDefinition Width="110"/>
+            <ColumnDefinition Width="110"/>
             <ColumnDefinition Width="40"/>
         </Grid.ColumnDefinitions>
 
@@ -43,7 +43,7 @@
         <Button Grid.Column="3" Grid.Row="9" Name="IncreaseChecked" 
                 Click="IncreaseChecked_Click" Content="Increase Checked"/>
         <Button Grid.Column="3" Grid.Row="10" Name="DecreaseChecked" 
-                Click="DecreaseChecked_Click" Content="Decease Checked"/>
+                Click="DecreaseChecked_Click" Content="Decrease Checked"/>
 
         <TextBox Grid.Column="0" Grid.Row="1" Name="Archery" IsReadOnly="True" Text="Archery" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBox Grid.Column="0" Grid.Row="2" Name="OneHanded" IsReadOnly="True" Text="One Handed" HorizontalAlignment="Center" VerticalAlignment="Center"/>
@@ -100,6 +100,15 @@
         <TextBox Grid.Column="0" Grid.Row="17" Name="PointsLeft" IsReadOnly="True" Text="Points Left" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBox Grid.Column="1" Grid.Row="17" Name="PointsLeftValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBox Grid.Column="3" Grid.Row="17" Name="ErrorBox" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+        <TextBox Grid.Column="5" Grid.Row="2" Name="NameText" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Name:"/>
+        <TextBox Grid.Column="6" Grid.Row="2" Name="NameInput" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <TextBox Grid.Column="5" Grid.Row="3" Name="DesiredMythologyText" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Desired Mythology:"/>
+        <ComboBox Grid.Column="6" Grid.Row="3" Name="DesiredMythologyOptions" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center" Loaded="DesiredMythologyOptions_Loaded"/>
+        <TextBox Grid.Column="5" Grid.Row="4" Name="GenderText" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Gender:"/>
+        <ComboBox Grid.Column="6" Grid.Row="4" Name="GenderOptions" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center" Loaded="GenderOptions_Loaded"/>
+        <Button Grid.Column="5" Grid.Row="5" Name="ParrentFinderButton" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Find Parent" Click="ParrentFinderButton_Click"/>
+        <TextBox Grid.Column="6" Grid.Row="5" Name="ParrentFinderText" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
     </Grid>
 </Window>

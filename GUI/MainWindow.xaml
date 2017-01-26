@@ -30,6 +30,8 @@
                 Click="ShowErrorList_Click" Content="Show Error List"/>
         <Button Grid.Column="4" Grid.Row="0" Name="Exit" 
                 Click="Exit_Click" Content="Exit"/>
+        <Button Grid.Column="0" Grid.Row="1" Name="ShowCharacters" 
+                Click="ShowCharacters_Click" Content="Characters"/>
 
 
     </Grid>
