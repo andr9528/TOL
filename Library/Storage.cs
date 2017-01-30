@@ -12,27 +12,27 @@ namespace Library
         // Greek Gods
         Gods Zeus = new Gods("1, 8, 3, 8, 1, 4, 7, 6, 8, 3, 8, 5, 1, 1, 10, 6",
                              "Zeus", 0);
-        Gods Hades = new Gods("7, 6, 4, 2, 8, 10, 5, 5, 5, 7, 3, 4, 10, 1, 1, 6",
+        Gods Hades = new Gods("8, 4, 3, 2, 8, 10, 4, 5, 5, 7, 2, 4, 10, 1, 1, 6",
                               "Hades", 1);
-        Gods Poseidon = new Gods("1, 4, 8, 6, 9, 2, 3, 2, 8, 7, 7, 6, 2, 10, 3, 7", // <- working on this one - calculate favoring
+        Gods Poseidon = new Gods("1, 4, 8, 4, 9, 2, 4, 1, 8, 7, 7, 6, 1, 10, 1, 7",
                                  "Poseidon", 2);
-        Gods Aphrodite = new Gods("1, 8, 3, 8, 1, 4, 7, 6, 8, 3, 8, 5, 1, 1, 10, 6",
+        Gods Aphrodite = new Gods("8, 4, 2, 8, 2, 5, 7, 2, 6, 3, 2, 8, 1, 6, 8, 8",
                                   "Aphrodite", 3);
-        Gods Hephaestus = new Gods("1, 8, 3, 8, 1, 4, 7, 6, 8, 3, 8, 5, 1, 1, 10, 6",
+        Gods Hephaestus = new Gods("2, 3, 9, 3, 9, 2, 2, 10, 3, 3, 8, 9, 9, 1, 1, 6",
                                    "Hephaestus", 4);
-        Gods Hera = new Gods("1, 8, 3, 8, 1, 4, 7, 6, 8, 3, 8, 5, 1, 1, 10, 6",
+        Gods Hera = new Gods("",
                              "Hera", 5);
-        Gods Athena = new Gods("1, 8, 3, 8, 1, 4, 7, 6, 8, 3, 8, 5, 1, 1, 10, 6",
+        Gods Athena = new Gods("",
                                "Athena", 6);
-        Gods Ares = new Gods("1, 8, 3, 8, 1, 4, 7, 6, 8, 3, 8, 5, 1, 1, 10, 6",
+        Gods Ares = new Gods("",
                              "Ares", 7);
-        Gods Hermes = new Gods("1, 8, 3, 8, 1, 4, 7, 6, 8, 3, 8, 5, 1, 1, 10, 6",
+        Gods Hermes = new Gods("",
                                "Hermes", 8);
-        Gods Artemis = new Gods("1, 8, 3, 8, 1, 4, 7, 6, 8, 3, 8, 5, 1, 1, 10, 6",
+        Gods Artemis = new Gods("",
                                 "Artemis", 9);
-        Gods Apollo = new Gods("1, 8, 3, 8, 1, 4, 7, 6, 8, 3, 8, 5, 1, 1, 10, 6",
+        Gods Apollo = new Gods("",
                                "Apollo", 10);
-        Gods Dionysus = new Gods("1, 8, 3, 8, 1, 4, 7, 6, 8, 3, 8, 5, 1, 1, 10, 6",
+        Gods Dionysus = new Gods("",
                                  "Dionysus", 11);
         // Egyptian Gods
 
@@ -88,7 +88,7 @@ namespace Library
         Skill HeavyArmor = new Skill(4, "HeavyArmor");
         Skill Stealth = new Skill(5, "Stealth");
         Skill Agility = new Skill(6, "Agility");
-        Skill Smighting = new Skill(7,  "Smighting");
+        Skill Smithing = new Skill(7,  "Smithing");
         Skill Enchanting = new Skill(8, "Enchanting");
         Skill Alchemy = new Skill(9, "Alchemy");
         Skill Blocking = new Skill(10, "Blocking");
@@ -102,7 +102,7 @@ namespace Library
         static List<string> skillString = new List<string>()
         {
             "Archery", "OneHanded", "TwoHanded", "LightArmor",
-            "HeavyArmor", "Stealth", "Agility", "Smighting",
+            "HeavyArmor", "Stealth", "Agility", "Smithing",
             "Enchanting", "Alchemy", "Blocking", "WildMagic",
             "InfernoMagic", "BlizzMagic", "Skymagic", "PureMagic"
         };
@@ -121,7 +121,7 @@ namespace Library
             List<Skill> skillSkillSetup = new List<Skill>()
            {
                 Archery, OneHanded, TwoHanded, LightArmor,
-                HeavyArmor, Stealth, Agility, Smighting,
+                HeavyArmor, Stealth, Agility, Smithing,
                 Enchanting, Alchemy, Blocking, WildMagic,
                 InfernoMagic, BlizzMagic, Skymagic, PureMagic
            };

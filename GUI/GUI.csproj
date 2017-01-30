@@ -59,6 +59,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Credit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ErrorList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -77,6 +81,9 @@
     </Compile>
     <Compile Include="Characters.xaml.cs">
       <DependentUpon>Characters.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Credit.xaml.cs">
+      <DependentUpon>Credit.xaml</DependentUpon>
     </Compile>
     <Compile Include="ErrorList.xaml.cs">
       <DependentUpon>ErrorList.xaml</DependentUpon>

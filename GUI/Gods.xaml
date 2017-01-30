@@ -51,7 +51,7 @@
         <TextBox Grid.Column="1" Grid.Row="5" Name="HeavyArmor" IsReadOnly="True" Text="Heavy Armor" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBox Grid.Column="1" Grid.Row="6" Name="Stealth" IsReadOnly="True" Text="Stealth" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBox Grid.Column="1" Grid.Row="7" Name="Agility" IsReadOnly="True" Text="Agility" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBox Grid.Column="1" Grid.Row="8" Name="Smighting" IsReadOnly="True" Text="Smighting" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="8" Name="Smithing" IsReadOnly="True" Text="Smithing" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBox Grid.Column="1" Grid.Row="9" Name="Alchemy" IsReadOnly="True" Text="Alchemy" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBox Grid.Column="1" Grid.Row="10" Name="Enchanting" IsReadOnly="True" Text="Enchanting" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBox Grid.Column="1" Grid.Row="11" Name="Blocking" IsReadOnly="True" Text="Blocking" HorizontalAlignment="Center" VerticalAlignment="Center"/>
@@ -68,7 +68,7 @@
         <TextBox Grid.Column="2" Grid.Row="5" Name="HeavyArmorWeightValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBox Grid.Column="2" Grid.Row="6" Name="StealthWeightValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBox Grid.Column="2" Grid.Row="7" Name="AgilityWeightValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBox Grid.Column="2" Grid.Row="8" Name="SmightingWeightValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="2" Grid.Row="8" Name="SmithingWeightValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBox Grid.Column="2" Grid.Row="9" Name="AlchemyWeightValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBox Grid.Column="2" Grid.Row="10" Name="EnchantingWeightValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBox Grid.Column="2" Grid.Row="11" Name="BlockingWeightValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
@@ -85,7 +85,7 @@
         <TextBox Grid.Column="3" Grid.Row="5" Name="HeavyArmorXpValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBox Grid.Column="3" Grid.Row="6" Name="StealthXpValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBox Grid.Column="3" Grid.Row="7" Name="AgilityXpValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBox Grid.Column="3" Grid.Row="8" Name="SmightingXpValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="3" Grid.Row="8" Name="SmithingXpValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBox Grid.Column="3" Grid.Row="9" Name="AlchemyXpValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBox Grid.Column="3" Grid.Row="10" Name="EnchantingXpValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBox Grid.Column="3" Grid.Row="11" Name="BlockingXpValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>

@@ -20,7 +20,7 @@ namespace Library
         Skill heavyArmor = new Skill(4, "HeavyArmor");
         Skill stealth = new Skill(5, "Stealth");
         Skill agility = new Skill(6, "Agility");
-        Skill smighting = new Skill(7, "Smighting");
+        Skill smithing = new Skill(7, "Smithing");
         Skill enchanting = new Skill(8, "Enchanting");
         Skill alchemy = new Skill(9, "Alchemy");
         Skill blocking = new Skill(10, "Blocking");
@@ -37,7 +37,7 @@ namespace Library
         public Skill HeavyArmor { get { return heavyArmor; } set { heavyArmor = value; } }
         public Skill Stealth { get { return stealth; } set { stealth = value; } }
         public Skill Agility { get { return agility; } set { agility = value; } }
-        public Skill Smighting { get { return smighting; } set { smighting = value; } }
+        public Skill Smithing { get { return smithing; } set { smithing = value; } }
         public Skill Enchanting { get { return enchanting; } set { enchanting = value; } }
         public Skill Alchemy { get { return alchemy; } set { alchemy = value; } }
         public Skill Blocking { get { return blocking; } set { blocking = value; } }
@@ -69,7 +69,7 @@ namespace Library
         public void updateLevel()
         {
             Level = (Archery.Level + OneHanded.Level + TwoHanded.Level + LightArmor.Level
-                + HeavyArmor.Level + Stealth.Level + Agility.Level + Smighting.Level
+                + HeavyArmor.Level + Stealth.Level + Agility.Level + Smithing.Level
                 + Enchanting.Level + Alchemy.Level + Blocking.Level + WildMagic.Level
                 + InfernoMagic.Level + BlizzMagic.Level + Skymagic.Level + PureMagic.Level) / 16;
         }

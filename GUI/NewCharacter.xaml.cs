@@ -37,7 +37,7 @@ namespace GUI
             HeavyArmorWeightingValue.Text = "1";
             StealthWeightingValue.Text = "1";
             AgilityWeightingValue.Text = "1";
-            SmightingWeightingValue.Text = "1";
+            SmithingWeightingValue.Text = "1";
             AlchemyWeightingValue.Text = "1";
             EnchantingWeightingValue.Text = "1";
             BlockingWeightingValue.Text = "1";
@@ -52,7 +52,7 @@ namespace GUI
             UpdatePointsLeft();
 
             List<CheckBox> dummycheckboxes = new List<CheckBox>() { ArcheryList, OneHandedList, TwoHandedList, LightArmorList,
-            HeavyArmorList, StealthList, AgilityList, SmightingList, AlchemyList, EnchantingList, BlockingList, WildMagicList,
+            HeavyArmorList, StealthList, AgilityList, SmithingList, AlchemyList, EnchantingList, BlockingList, WildMagicList,
             InfernoMagicList, BlizzMagicList, SkyMagicList, PureMagicList };
 
             checkboxes = dummycheckboxes;
@@ -108,10 +108,10 @@ namespace GUI
             AgilityList.IsChecked = true;
         }
 
-        private void SmightingList_Checked(object sender, RoutedEventArgs e)
+        private void SmithingList_Checked(object sender, RoutedEventArgs e)
         {
             allUnchecked(); ;
-            SmightingList.IsChecked = true;
+            SmithingList.IsChecked = true;
         }
 
         private void AlchemyList_Checked(object sender, RoutedEventArgs e)
@@ -208,10 +208,10 @@ namespace GUI
                     int.TryParse(AgilityWeightingValue.Text, out parseValue);
                     AgilityWeightingValue.Text = "" + (parseValue + 1);
                 }
-                else if (SmightingList.IsChecked == true && int.Parse(SmightingWeightingValue.Text) != 10)
+                else if (SmithingList.IsChecked == true && int.Parse(SmithingWeightingValue.Text) != 10)
                 {
-                    int.TryParse(SmightingWeightingValue.Text, out parseValue);
-                    SmightingWeightingValue.Text = "" + (parseValue + 1);
+                    int.TryParse(SmithingWeightingValue.Text, out parseValue);
+                    SmithingWeightingValue.Text = "" + (parseValue + 1);
                 }
                 else if (EnchantingList.IsChecked == true && int.Parse(EnchantingWeightingValue.Text) != 10)
                 {
@@ -303,10 +303,10 @@ namespace GUI
                     int.TryParse(AgilityWeightingValue.Text, out parseValue);
                     AgilityWeightingValue.Text = "" + (parseValue - 1);
                 }
-                else if (SmightingList.IsChecked == true && int.Parse(SmightingWeightingValue.Text) != 1)
+                else if (SmithingList.IsChecked == true && int.Parse(SmithingWeightingValue.Text) != 1)
                 {
-                    int.TryParse(SmightingWeightingValue.Text, out parseValue);
-                    SmightingWeightingValue.Text = "" + (parseValue - 1);
+                    int.TryParse(SmithingWeightingValue.Text, out parseValue);
+                    SmithingWeightingValue.Text = "" + (parseValue - 1);
                 }
                 else if (EnchantingList.IsChecked == true && int.Parse(EnchantingWeightingValue.Text) != 1)
                 {
@@ -358,7 +358,7 @@ namespace GUI
             endvalue = 80 - int.Parse(ArcheryWeightingValue.Text) - int.Parse(OneHandedWeightingValue.Text)
                 - int.Parse(TwoHandedWeightingValue.Text) - int.Parse(LightArmorWeightingValue.Text)
                 - int.Parse(HeavyArmorWeightingValue.Text) - int.Parse(StealthWeightingValue.Text)
-                - int.Parse(AgilityWeightingValue.Text) - int.Parse(SmightingWeightingValue.Text)
+                - int.Parse(AgilityWeightingValue.Text) - int.Parse(SmithingWeightingValue.Text)
                 - int.Parse(AlchemyWeightingValue.Text) - int.Parse(EnchantingWeightingValue.Text)
                 - int.Parse(BlockingWeightingValue.Text) - int.Parse(WildMagicWeightingValue.Text)
                 - int.Parse(InfernoMagicWeightingValue.Text) - int.Parse(BlizzMagicWeightingValue.Text)
@@ -391,7 +391,7 @@ namespace GUI
             {
                 List<int> inputWeighting = new List<int>() { int.Parse(ArcheryWeightingValue.Text), int.Parse(OneHandedWeightingValue.Text),
                  int.Parse(TwoHandedWeightingValue.Text), int.Parse(LightArmorWeightingValue.Text), int.Parse(HeavyArmorWeightingValue.Text),
-                 int.Parse(StealthWeightingValue.Text), int.Parse(AgilityWeightingValue.Text), int.Parse(SmightingWeightingValue.Text),
+                 int.Parse(StealthWeightingValue.Text), int.Parse(AgilityWeightingValue.Text), int.Parse(SmithingWeightingValue.Text),
                  int.Parse(AlchemyWeightingValue.Text), int.Parse(EnchantingWeightingValue.Text), int.Parse(BlockingWeightingValue.Text),
                  int.Parse(WildMagicWeightingValue.Text), int.Parse(InfernoMagicWeightingValue.Text), int.Parse(BlizzMagicWeightingValue.Text),
                  int.Parse(SkyMagicWeightingValue.Text), int.Parse(PureMagicWeightingValue.Text)};

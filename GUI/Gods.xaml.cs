@@ -72,7 +72,7 @@ namespace GUI
                 HeavyArmorWeightValue.Text = "";
                 StealthWeightValue.Text = "";
                 AgilityWeightValue.Text = "";
-                SmightingWeightValue.Text = "";
+                SmithingWeightValue.Text = "";
                 EnchantingWeightValue.Text = "";
                 AlchemyWeightValue.Text = "";
                 BlockingWeightValue.Text = "";
@@ -89,7 +89,7 @@ namespace GUI
                 HeavyArmorXpValue.Text = "";
                 StealthXpValue.Text = "";
                 AgilityXpValue.Text = "";
-                SmightingXpValue.Text = "";
+                SmithingXpValue.Text = "";
                 EnchantingXpValue.Text = "";
                 AlchemyXpValue.Text = "";
                 BlockingXpValue.Text = "";
@@ -111,7 +111,7 @@ namespace GUI
                 HeavyArmorWeightValue.Text = divines[DropDownDivine.SelectedIndex].Favoring.Split(',')[4];
                 StealthWeightValue.Text = divines[DropDownDivine.SelectedIndex].Favoring.Split(',')[5];
                 AgilityWeightValue.Text = divines[DropDownDivine.SelectedIndex].Favoring.Split(',')[6];
-                SmightingWeightValue.Text = divines[DropDownDivine.SelectedIndex].Favoring.Split(',')[7];
+                SmithingWeightValue.Text = divines[DropDownDivine.SelectedIndex].Favoring.Split(',')[7];
                 EnchantingWeightValue.Text = divines[DropDownDivine.SelectedIndex].Favoring.Split(',')[8];
                 AlchemyWeightValue.Text = divines[DropDownDivine.SelectedIndex].Favoring.Split(',')[9];
                 BlockingWeightValue.Text = divines[DropDownDivine.SelectedIndex].Favoring.Split(',')[10];
@@ -136,7 +136,7 @@ namespace GUI
                 HeavyArmorXpValue.Text = "" + divines[DropDownDivine.SelectedIndex].XpModifier[4];
                 StealthXpValue.Text = "" + divines[DropDownDivine.SelectedIndex].XpModifier[5];
                 AgilityXpValue.Text = "" + divines[DropDownDivine.SelectedIndex].XpModifier[6];
-                SmightingXpValue.Text = "" + divines[DropDownDivine.SelectedIndex].XpModifier[7];
+                SmithingXpValue.Text = "" + divines[DropDownDivine.SelectedIndex].XpModifier[7];
                 EnchantingXpValue.Text = "" + divines[DropDownDivine.SelectedIndex].XpModifier[8];
                 AlchemyXpValue.Text = "" + divines[DropDownDivine.SelectedIndex].XpModifier[9];
                 BlockingXpValue.Text = "" + divines[DropDownDivine.SelectedIndex].XpModifier[10];
