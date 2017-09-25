@@ -55,7 +55,6 @@ namespace GUI
 
             if (DropDownDivine.SelectedIndex > Repo.AllDivines.Count)
             {
-                ErrorBox.Text = "Error 1";
                 SumFavorValue.Text = "";
                 SumXpValue.Text = "";
 
@@ -96,8 +95,6 @@ namespace GUI
             }
             else
             {
-                ErrorBox.Text = "";
-
                 ArcheryWeightValue.Text = "" + Repo.AllDivines[DropDownDivine.SelectedIndex].Favoring[0];
                 OneHandedWeightValue.Text = "" + Repo.AllDivines[DropDownDivine.SelectedIndex].Favoring[1];
                 TwoHandedWeightValue.Text = "" + Repo.AllDivines[DropDownDivine.SelectedIndex].Favoring[2];
@@ -145,20 +142,7 @@ namespace GUI
                 }
 
                 SumXpValue.Text = "" + xpSum;
-
-                //DropDownXpCheck.ItemsSource = divines[DropDownDivine.SelectedIndex].XpModifier;
-
-                //DropDownXpCheck.SelectedIndex = 0;
             }
         }
-
-        //private void DropDownXpCheck_Loaded(object sender, RoutedEventArgs e)
-        //{
-        //    var DropDownXpCheck = sender as ComboBox;
-
-        //    DropDownXpCheck.ItemsSource = divines[DropDownDivine.SelectedIndex].XpModifier;
-
-        //    DropDownXpCheck.SelectedIndex = 0;
-        //}
     }
 }

@@ -38,9 +38,6 @@
         <ComboBox Grid.Row="0" Grid.Column="0" Name="DropDownDivine" 
                   Loaded="DropDownDivine_Loaded" SelectionChanged="DropDownDivine_SelectionChanged"/>
 
-        <!--<ComboBox Grid.Row="1" Grid.Column="0" Name="DropDownXpCheck" 
-                  Loaded="DropDownXpCheck_Loaded" />-->
-
         <Button Grid.Column="4" Grid.Row="0" Name="CloseDivine" 
                 Click="CloseDivine_Click" Content="Close"/>
 
@@ -99,7 +96,6 @@
         <TextBox Grid.Column="2" Grid.Row="17" Name="SumFavorValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBox Grid.Column="3" Grid.Row="17" Name="SumXpValue" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBox Grid.Column="3" Grid.Row="0" Name="XpModifierHeader" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Xp Modifiers (%)"/>
-        <TextBox Grid.Column="0" Grid.Row="17" Name="ErrorBox" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBox Grid.Column="2" Grid.Row="0" Name="FavorHeader" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Weight"/>
 
     </Grid>

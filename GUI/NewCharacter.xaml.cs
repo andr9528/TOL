@@ -57,7 +57,7 @@ namespace GUI
 
             checkboxes = dummycheckboxes;
 
-            AllUnchecked();
+            Check(-1);
             CreateButton.IsEnabled = false;
 
 
@@ -70,98 +70,82 @@ namespace GUI
 
         private void ArcheryList_Checked(object sender, RoutedEventArgs e)
         {
-            AllUnchecked();
-            ArcheryList.IsChecked = true;
+            Check(0);
         }
 
         private void OneHandedList_Checked(object sender, RoutedEventArgs e)
         {
-            AllUnchecked(); ;
-            OneHandedList.IsChecked = true;
+            Check(1); ;
         }
 
         private void TwoHandedList_Checked(object sender, RoutedEventArgs e)
         {
-            AllUnchecked(); ;
-            TwoHandedList.IsChecked = true;
+            Check(2); ;
         }
 
         private void LightArmorList_Checked(object sender, RoutedEventArgs e)
         {
-            AllUnchecked(); ;
-            LightArmorList.IsChecked = true;
+            Check(3); ;
         }
 
         private void HeavyArmorList_Checked(object sender, RoutedEventArgs e)
         {
-            AllUnchecked(); ;
-            HeavyArmorList.IsChecked = true;
+            Check(4); ;
         }
 
         private void StealthList_Checked(object sender, RoutedEventArgs e)
         {
-            AllUnchecked(); ;
-            StealthList.IsChecked = true;
+            Check(5); ;
         }
 
         private void AgilityList_Checked(object sender, RoutedEventArgs e)
         {
-            AllUnchecked(); ;
-            AgilityList.IsChecked = true;
+            Check(6); ;
         }
 
         private void SmithingList_Checked(object sender, RoutedEventArgs e)
         {
-            AllUnchecked(); ;
-            SmithingList.IsChecked = true;
+            Check(7); ;
         }
 
         private void AlchemyList_Checked(object sender, RoutedEventArgs e)
         {
-            AllUnchecked(); ;
-            AlchemyList.IsChecked = true;
+            Check(8); ;
         }
 
         private void EnchantingList_Checked(object sender, RoutedEventArgs e)
         {
-            AllUnchecked(); ;
-            EnchantingList.IsChecked = true;
+            Check(9); ;
         }
 
         private void BlockingList_Checked(object sender, RoutedEventArgs e)
         {
-            AllUnchecked(); ;
-            BlockingList.IsChecked = true;
+            Check(10); ;
         }
 
         private void WildMagicList_Checked(object sender, RoutedEventArgs e)
         {
-            AllUnchecked(); ;
-            WildMagicList.IsChecked = true;
+            Check(11); ;
         }
 
         private void InfernoMagicList_Checked(object sender, RoutedEventArgs e)
         {
-            AllUnchecked(); ;
-            InfernoMagicList.IsChecked = true;
+            Check(12); ;
         }
 
         private void BlizzMagicList_Checked(object sender, RoutedEventArgs e)
         {
-            AllUnchecked(); ;
-            BlizzMagicList.IsChecked = true;
+            Check(13); ;
         }
 
         private void SkyMagicList_Checked(object sender, RoutedEventArgs e)
         {
-            AllUnchecked(); ;
-            SkyMagicList.IsChecked = true;
+            Check(14); ;
         }
 
         private void PureMagicList_Checked(object sender, RoutedEventArgs e)
         {
-            AllUnchecked(); ;
-            PureMagicList.IsChecked = true;
+            Check(15); ;
         }
 
         private void IncreaseChecked_Click(object sender, RoutedEventArgs e)
@@ -388,7 +372,11 @@ namespace GUI
 
         private void ParrentFinderButton_Click(object sender, RoutedEventArgs e)
         {
-            if (PointsLeft.Text == "0" && NameInput.Text != "" && DesiredMythologyOptions.SelectedIndex != 0 && GenderOptions.SelectedIndex != 0)
+            int pointsLeftParse = -1;
+
+            int.TryParse(PointsLeftValue.Text, out pointsLeftParse);
+
+            if (pointsLeftParse == 0 && NameInput.Text != "" && DesiredMythologyOptions.SelectedIndex != 0 && GenderOptions.SelectedIndex != 0)
             {
                 List<int> inputWeighting = new List<int>() { int.Parse(ArcheryWeightingValue.Text), int.Parse(OneHandedWeightingValue.Text),
                  int.Parse(TwoHandedWeightingValue.Text), int.Parse(LightArmorWeightingValue.Text), int.Parse(HeavyArmorWeightingValue.Text),
@@ -411,7 +399,7 @@ namespace GUI
             {
                 string warning = "You are Missing Something! \n";
 
-                if (PointsLeft.Text != "0")
+                if (pointsLeftParse != 0)
                 {
                     warning += " - You have Points left to be used \n";
                 }
@@ -430,12 +418,56 @@ namespace GUI
                 MessageBox.Show(warning, "Warning!", MessageBoxButton.OK);
             }
         }
-        private void AllUnchecked()
+        private void Check(int clicked)
         {
+            int index = 0;
+
+            ArcheryList.Checked -= ArcheryList_Checked;
+            OneHandedList.Checked -= OneHandedList_Checked;
+            TwoHandedList.Checked -= TwoHandedList_Checked;
+            LightArmorList.Checked -= LightArmorList_Checked;
+            HeavyArmorList.Checked -= HeavyArmorList_Checked;
+            StealthList.Checked -= StealthList_Checked;
+            AgilityList.Checked -= AgilityList_Checked;
+            SmithingList.Checked -= SmithingList_Checked;
+            EnchantingList.Checked -= EnchantingList_Checked;
+            AlchemyList.Checked -= AlchemyList_Checked;
+            BlockingList.Checked -= BlockingList_Checked;
+            WildMagicList.Checked -= WildMagicList_Checked;
+            InfernoMagicList.Checked -= InfernoMagicList_Checked;
+            BlizzMagicList.Checked -= BlizzMagicList_Checked;
+            SkyMagicList.Checked -= SkyMagicList_Checked;
+            PureMagicList.Checked -= PureMagicList_Checked;
+
             foreach (CheckBox box in checkboxes)
             {
-                box.IsChecked = false;
+                if (clicked == -1 || clicked != index)
+                {
+                    box.IsChecked = false;
+                }
+                else if (clicked == index)
+                {
+                    box.IsChecked = true;
+                }
+                index++;
             }
+
+            ArcheryList.Checked += ArcheryList_Checked;
+            OneHandedList.Checked += OneHandedList_Checked;
+            TwoHandedList.Checked += TwoHandedList_Checked;
+            LightArmorList.Checked += LightArmorList_Checked;
+            HeavyArmorList.Checked += HeavyArmorList_Checked;
+            StealthList.Checked += StealthList_Checked;
+            AgilityList.Checked += AgilityList_Checked;
+            SmithingList.Checked += SmithingList_Checked;
+            EnchantingList.Checked += EnchantingList_Checked;
+            AlchemyList.Checked += AlchemyList_Checked;
+            BlockingList.Checked += BlockingList_Checked;
+            WildMagicList.Checked += WildMagicList_Checked;
+            InfernoMagicList.Checked += InfernoMagicList_Checked;
+            BlizzMagicList.Checked += BlizzMagicList_Checked;
+            SkyMagicList.Checked += SkyMagicList_Checked;
+            PureMagicList.Checked += PureMagicList_Checked;
         }
 
         private void CreateButton_Click(object sender, RoutedEventArgs e)
