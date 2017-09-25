@@ -8,7 +8,6 @@ namespace Library
 {
     public class Character
     {
-        public Storage store = new Storage();
         List<int> closenessHits = new List<int>();
         List<int> exactHits = new List<int>();
         List<int> weighting = new List<int>();
@@ -54,10 +53,6 @@ namespace Library
         public int Level { get; internal set; }
         public List<int> Weighting { get { return weighting; } internal set { weighting = value; } }
 
-        public Character()
-        {
-
-        }
         public Character(string name, string gender, int desiredMythology, List<int> _weighting)
         {
             Name = name;
@@ -104,8 +99,8 @@ namespace Library
         }
         public bool checkIfClose(int index, Gods divine, int weight)
         {
-            if (weight >= int.Parse(divine.Favoring.Split(',')[index])-1 
-                && weight <= int.Parse(divine.Favoring.Split(',')[index]) + 1)
+            if (weight >= divine.Favoring[index]-1 
+                && weight <= divine.Favoring[index] + 1)
             {
                 return true;
             }
@@ -116,7 +111,7 @@ namespace Library
         }
         public bool checkIfExact(int index, Gods divine, int weight)
         {
-            if (weight == int.Parse(divine.Favoring.Split(',')[index]))
+            if (weight == divine.Favoring[index])
             {
                 return true;
             }
@@ -133,7 +128,7 @@ namespace Library
 
                 if (DesiredMythology == 1)
                 {
-                    foreach (Gods divine in Storage.GreekGods)
+                    foreach (Gods divine in Repo.GreekGods)
                     {
                         index = 0;
                         count = 0;
@@ -151,7 +146,7 @@ namespace Library
                 }
                 else if (DesiredMythology == 2)
                 {
-                    foreach (Gods divine in Storage.EgyptianGods)
+                    foreach (Gods divine in Repo.EgyptianGods)
                     {
                         index = 0;
                         count = 0;
@@ -169,7 +164,7 @@ namespace Library
                 }
                 else if (DesiredMythology == 3)
                 {
-                    foreach (Gods divine in Storage.NordicGods)
+                    foreach (Gods divine in Repo.NordicGods)
                     {
                         index = 0;
                         count = 0;
@@ -187,7 +182,7 @@ namespace Library
                 }
                 else if (DesiredMythology == 4)
                 {
-                    foreach (Gods divine in Storage.AtlanticTitans)
+                    foreach (Gods divine in Repo.AtlanticTitans)
                     {
                         index = 0;
                         count = 0;
@@ -242,12 +237,12 @@ namespace Library
                 {
                     if (hit == highestCount)
                     {
-                        output.Add(Storage.GreekGods[index]);
+                        output.Add(Repo.GreekGods[index]);
                     }
                     else if (hit > highestCount)
                     {
                         output.Clear();
-                        output.Add(Storage.GreekGods[index]);
+                        output.Add(Repo.GreekGods[index]);
                         highestCount = hit;
                     }
                     index++;
@@ -259,12 +254,12 @@ namespace Library
                 {
                     if (hit == highestCount)
                     {
-                        output.Add(Storage.EgyptianGods[index]);
+                        output.Add(Repo.EgyptianGods[index]);
                     }
                     else if (hit > highestCount)
                     {
                         output.Clear();
-                        output.Add(Storage.EgyptianGods[index]);
+                        output.Add(Repo.EgyptianGods[index]);
                         highestCount = hit;
                     }
                     index++;
@@ -276,12 +271,12 @@ namespace Library
                 {
                     if (hit == highestCount)
                     {
-                        output.Add(Storage.NordicGods[index]);
+                        output.Add(Repo.NordicGods[index]);
                     }
                     else if (hit > highestCount)
                     {
                         output.Clear();
-                        output.Add(Storage.NordicGods[index]);
+                        output.Add(Repo.NordicGods[index]);
                         highestCount = hit;
                     }
                     index++;
@@ -293,12 +288,12 @@ namespace Library
                 {
                     if (hit == highestCount)
                     {
-                        output.Add(Storage.AtlanticTitans[index]);
+                        output.Add(Repo.AtlanticTitans[index]);
                     }
                     else if (hit > highestCount)
                     {
                         output.Clear();
-                        output.Add(Storage.AtlanticTitans[index]);
+                        output.Add(Repo.AtlanticTitans[index]);
                         highestCount = hit;
                     }
                     index++;

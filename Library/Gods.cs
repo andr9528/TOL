@@ -9,47 +9,33 @@ namespace Library
     public class Gods
     {
         List<int> xpModifier = new List<int>();
-        private string favoring;
-        private string divine;
+        List<int> favoring = new List<int>();
+        private string name;
         private int godID;
+        private string gender;
 
-        public string Favoring { get { return favoring; } internal set { favoring = value; } }
-        public string Divine { get { return divine; } internal set { divine = value; } }
+        public List<int> Favoring { get { return favoring; } internal set { favoring = value; } }
+        public string Name { get { return name; } internal set { name = value; } }
         public int GodID { get { return godID; } internal set { godID = value; } }
         public List<int> XpModifier { get { return xpModifier; } }
+        public string Gender { get { return gender; } internal set { gender = value; } }
 
-        public Gods()
-        {
-
-        }
-        public Gods(string _favoring, string _divine, int _godID)
+        public Gods(List<int> _favoring, string _divine, int _godID, string _gender)
         {
             Favoring = _favoring;
-            if (Storage.GodGreekString.Contains(_divine)
-                || Storage.GodEgyptianString.Contains(_divine)
-                || Storage.GodNordicString.Contains(_divine)
-                || Storage.GodAtlanticString.Contains(_divine))
-            {
-                Divine = _divine;
-            }
+            Name = _divine;
             GodID = _godID;
+            Gender = _gender;
 
-            for (int i = 0; i < Favoring.Split(',').Count(); i++)
+            foreach (int favor in favoring)
             {
-                int parseValue;
-                bool parseCheck = int.TryParse(Favoring.Split(',')[i].TrimStart(' '), out parseValue);
-
-                if (parseValue > 5 && parseCheck == true)
+                if (favor >= 5)
                 {
-                    xpModifier.Add((parseValue - 5) * 5);
+                    xpModifier.Add((favor - 5) * 5);
                 }
-                else if (parseValue <= 5 && parseCheck == true)
+                else
                 {
-                    xpModifier.Add((parseValue - 5) * 5);
-                }
-                else if (parseCheck == false)
-                {
-                    throw new Exception("Failed to parse favoring value");
+                    xpModifier.Add(0);
                 }
             }
         }

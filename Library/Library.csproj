@@ -44,7 +44,7 @@
     <Compile Include="Gods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Skills.cs" />
-    <Compile Include="Storage.cs" />
+    <Compile Include="Repo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

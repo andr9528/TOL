@@ -67,7 +67,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Gods.xaml">
+    <Page Include="GodsViewer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -88,8 +88,8 @@
     <Compile Include="ErrorList.xaml.cs">
       <DependentUpon>ErrorList.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Gods.xaml.cs">
-      <DependentUpon>Gods.xaml</DependentUpon>
+    <Compile Include="GodsViewer.xaml.cs">
+      <DependentUpon>GodsViewer.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

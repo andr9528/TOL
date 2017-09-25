@@ -57,8 +57,8 @@ namespace GUI
 
             checkboxes = dummycheckboxes;
 
-            ArcheryList.IsChecked = true;
-
+            AllUnchecked();
+           
         }
 
         private void CloseNewCharacter_Click(object sender, RoutedEventArgs e)
@@ -68,97 +68,97 @@ namespace GUI
 
         private void ArcheryList_Checked(object sender, RoutedEventArgs e)
         {
-            allUnchecked();
+            AllUnchecked();
             ArcheryList.IsChecked = true;
         }
 
         private void OneHandedList_Checked(object sender, RoutedEventArgs e)
         {
-            allUnchecked(); ;
+            AllUnchecked(); ;
             OneHandedList.IsChecked = true;
         }
 
         private void TwoHandedList_Checked(object sender, RoutedEventArgs e)
         {
-            allUnchecked(); ;
+            AllUnchecked(); ;
             TwoHandedList.IsChecked = true;
         }
 
         private void LightArmorList_Checked(object sender, RoutedEventArgs e)
         {
-            allUnchecked(); ;
+            AllUnchecked(); ;
             LightArmorList.IsChecked = true;
         }
 
         private void HeavyArmorList_Checked(object sender, RoutedEventArgs e)
         {
-            allUnchecked(); ;
+            AllUnchecked(); ;
             HeavyArmorList.IsChecked = true;
         }
 
         private void StealthList_Checked(object sender, RoutedEventArgs e)
         {
-            allUnchecked(); ;
+            AllUnchecked(); ;
             StealthList.IsChecked = true;
         }
 
         private void AgilityList_Checked(object sender, RoutedEventArgs e)
         {
-            allUnchecked(); ;
+            AllUnchecked(); ;
             AgilityList.IsChecked = true;
         }
 
         private void SmithingList_Checked(object sender, RoutedEventArgs e)
         {
-            allUnchecked(); ;
+            AllUnchecked(); ;
             SmithingList.IsChecked = true;
         }
 
         private void AlchemyList_Checked(object sender, RoutedEventArgs e)
         {
-            allUnchecked(); ;
+            AllUnchecked(); ;
             AlchemyList.IsChecked = true;
         }
 
         private void EnchantingList_Checked(object sender, RoutedEventArgs e)
         {
-            allUnchecked(); ;
+            AllUnchecked(); ;
             EnchantingList.IsChecked = true;
         }
 
         private void BlockingList_Checked(object sender, RoutedEventArgs e)
         {
-            allUnchecked(); ;
+            AllUnchecked(); ;
             BlockingList.IsChecked = true;
         }
 
         private void WildMagicList_Checked(object sender, RoutedEventArgs e)
         {
-            allUnchecked(); ;
+            AllUnchecked(); ;
             WildMagicList.IsChecked = true;
         }
 
         private void InfernoMagicList_Checked(object sender, RoutedEventArgs e)
         {
-            allUnchecked(); ;
+            AllUnchecked(); ;
             InfernoMagicList.IsChecked = true;
         }
 
         private void BlizzMagicList_Checked(object sender, RoutedEventArgs e)
         {
-            allUnchecked(); ;
+            AllUnchecked(); ;
             BlizzMagicList.IsChecked = true;
         }
 
         private void SkyMagicList_Checked(object sender, RoutedEventArgs e)
         {
-            allUnchecked(); ;
+            AllUnchecked(); ;
             SkyMagicList.IsChecked = true;
         }
 
         private void PureMagicList_Checked(object sender, RoutedEventArgs e)
         {
-            allUnchecked(); ;
+            AllUnchecked(); ;
             PureMagicList.IsChecked = true;
         }
 
@@ -401,10 +401,10 @@ namespace GUI
 
                 player.parentDeterminator();
 
-                ParrentFinderText.Text = player.DivineParent.Divine;
+                ParrentFinderText.Text = player.DivineParent.Name;
             }
         }
-        private void allUnchecked()
+        private void AllUnchecked()
         {
             foreach (CheckBox box in checkboxes)
             {

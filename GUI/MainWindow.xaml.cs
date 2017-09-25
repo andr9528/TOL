@@ -38,7 +38,7 @@ namespace GUI
 
         private void ShowDivines_Click(object sender, RoutedEventArgs e)
         {
-            Gods divine = new Gods();
+            GodsViewer divine = new GodsViewer();
             divine.WindowState = WindowState.Maximized;
             divine.Show();
             //this.Hide();
