@@ -8,7 +8,28 @@ namespace Library
 {
     public static class Repo
     {
-        // Gods
+        /*
+            TODO ->
+                Make new Favoring numbers for Egyptians, Norse & Atlantic Divines
+                Make charackter window, where stats can be seen
+                Make Health, Mana, Health & Mana Regeneration & Melee/Ranged Damage on character.
+                    -> Health Scales with level of Light Armor, Heavy Armor, Agility & Blocking
+                    -> Mana Scales with levels of Wild, Inferno Blizz, Sky & Pure Magic, with Pure being 4 times as effective
+                    -> Mana regeneration scales with Pure magic
+                    -> Health Regeneration scales with max health (& possibly other things)
+                    -> Melee / Rnaged damage depends on the weapon quality and proficiancy with that type of weapon
+                Create Monster Class
+                    -> Instantiate many different monsters in the Repo to be used later while fighting
+                Make Fight window, where battles between the player and random mosnters occure.
+                Create Spell Class
+                    -> Instantiate many different standard spells
+                Create Weapon Class
+                    -> Instantiate many different weapons
+                Create Armor Class
+                    -> Instantiate many different armors
+        */
+        #region Gods
+
         // Greek Gods
         static Gods Zeus = new Gods(new List<int>() {1, 8, 3, 8, 1, 4, 7, 6, 8, 3, 8, 5, 1, 1, 10, 6},
                              "Zeus", 0, "Male");
@@ -155,7 +176,8 @@ namespace Library
         static public List<Gods> AtlanticTitans { get { return atlanticTitans; } }
         static public List<Gods> AllDivines { get { return allDivines; } }
 
-        // Character
+        #endregion
+        #region Character
 
         static List<Character> characters = new List<Character>();
 
@@ -171,5 +193,7 @@ namespace Library
         {
             return characters;
         }
+
+        #endregion
     }
 }
