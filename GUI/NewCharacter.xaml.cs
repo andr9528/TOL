@@ -23,8 +23,8 @@ namespace GUI
 
         List<string> desiredMythologyOptions = new List<string>() { "", "Greek", "Egyptian", "Norse", "Atlantic" };
         List<string> genders = new List<string>() { "", "Female", "Male" };
-        List<CheckBox> checkboxes = new List<CheckBox>();
-
+        List<CheckBox> checkboxes = new List<CheckBox>() ;
+        Character player;
 
         public NewCharacter()
         {
@@ -58,7 +58,9 @@ namespace GUI
             checkboxes = dummycheckboxes;
 
             AllUnchecked();
-           
+            CreateButton.IsEnabled = false;
+
+
         }
 
         private void CloseNewCharacter_Click(object sender, RoutedEventArgs e)
@@ -165,11 +167,11 @@ namespace GUI
         private void IncreaseChecked_Click(object sender, RoutedEventArgs e)
         {
             int parseValue;
-            ErrorBox.Text = "";
+            
 
             if (int.Parse(PointsLeftValue.Text) == 0)
             {
-                ErrorBox.Text = "Error 3";
+                MessageBox.Show("You are out of points to use!", "Warning", MessageBoxButton.OK);
             }
             else
             {
@@ -260,11 +262,10 @@ namespace GUI
         private void DecreaseChecked_Click(object sender, RoutedEventArgs e)
         {
             int parseValue;
-            ErrorBox.Text = "";
 
             if (int.Parse(PointsLeftValue.Text) == 64)
             {
-                ErrorBox.Text = "Error 2";
+                MessageBox.Show("You have retrieved all points already!", "Warning", MessageBoxButton.OK);
             }
             else
             {
@@ -396,12 +397,37 @@ namespace GUI
                  int.Parse(WildMagicWeightingValue.Text), int.Parse(InfernoMagicWeightingValue.Text), int.Parse(BlizzMagicWeightingValue.Text),
                  int.Parse(SkyMagicWeightingValue.Text), int.Parse(PureMagicWeightingValue.Text)};
 
-                Character player = new Character(NameInput.Text, genders[GenderOptions.SelectedIndex],
+
+                player = new Character(NameInput.Text, genders[GenderOptions.SelectedIndex],
                     DesiredMythologyOptions.SelectedIndex, inputWeighting);
 
                 player.parentDeterminator();
 
                 ParrentFinderText.Text = player.DivineParent.Name;
+
+                CreateButton.IsEnabled = true;
+            }
+            else
+            {
+                string warning = "You are Missing Something! \n";
+
+                if (PointsLeft.Text != "0")
+                {
+                    warning += " - You have Points left to be used \n";
+                }
+                if (NameInput.Text == "")
+                {
+                    warning += " - You need to name Your Character \n";
+                }
+                if (DesiredMythologyOptions.SelectedIndex == 0)
+                {
+                    warning += " - You need to select a mythology too belong to \n";
+                }
+                if (GenderOptions.SelectedIndex == 0)
+                {
+                    warning += " - You need to select a gender \n";
+                }
+                MessageBox.Show(warning, "Warning!", MessageBoxButton.OK);
             }
         }
         private void AllUnchecked()
@@ -410,6 +436,22 @@ namespace GUI
             {
                 box.IsChecked = false;
             }
+        }
+
+        private void CreateButton_Click(object sender, RoutedEventArgs e)
+        {
+            string message = "Are You Sure you wish to create this Character? \n"
+                + "Clicking Yes will save the Character and close the character creation window \n"
+                + "Clicking No will close this window and allow you to make changes";
+            MessageBoxResult result = MessageBox.Show(message, "Heads Up", MessageBoxButton.YesNo);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                Repo.AddCharacter(player);
+                this.Close();
+            }
+
+            
         }
     }
 }

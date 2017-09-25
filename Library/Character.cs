@@ -9,7 +9,6 @@ namespace Library
     public class Character
     {
         List<int> closenessHits = new List<int>();
-        List<int> exactHits = new List<int>();
         List<int> weighting = new List<int>();
 
         Skill archery = new Skill(0, "Archery");
@@ -70,26 +69,41 @@ namespace Library
         }
         public void parentDeterminator()
         {
-            int highestCount = 0;
+            List<int> highestCount = new List<int>() { 0 };
 
-            countClosenessHits();
-            List<Gods> possibleParents = findHighestHits();
+            CountClosenessHits();
+            List<Gods> possibleParents = FindHighestHits();
 
             if (possibleParents.Count() > 1)
             {
-                countExactHits(possibleParents);
+                possibleParents = FindExcactHits(possibleParents);
 
-                for (int i = 0; i < possibleParents.Count; i++)
+                if (possibleParents.Count() > 1)
                 {
-                    if (exactHits[i] == highestCount)
+                    List<Gods> workableList = possibleParents;
+
+                    foreach (Gods divine in possibleParents)
                     {
-                        throw new Exception("Multiple divine parents"); // needs a better solution
+                        if (divine.Gender != Gender)
+                        {
+                            workableList.Remove(divine);
+                        }
                     }
-                    else if (exactHits[i] > highestCount)
+
+                    possibleParents = workableList;
+
+                    if (possibleParents.Count() > 1)
                     {
-                        highestCount = exactHits[i];
-                        DivineParent = possibleParents[i];
+                        throw new Exception("Can't find your 1 Divine parent, you match too many");
                     }
+                    else
+                    {
+                        DivineParent = possibleParents[0];
+                    }
+                }
+                else
+                {
+                    DivineParent = possibleParents[0];
                 }
             }
             else
@@ -120,7 +134,7 @@ namespace Library
                 return false;
             }
         }
-        public void countClosenessHits()
+        public void CountClosenessHits()
         {
                 closenessHits.Clear();
                 int count;
@@ -203,9 +217,10 @@ namespace Library
                     throw new Exception("How did you get to this point?");
                 }
         }
-        public void countExactHits(List<Gods> gods)
+        public List<Gods> FindExcactHits(List<Gods> gods)
         {
-            exactHits.Clear();
+            List<Gods> output = new List<Gods>();
+            List<int> exactHits = new List<int>();
             int count;
             int index;
 
@@ -222,10 +237,28 @@ namespace Library
                     }
                     index++;
                 }
-                exactHits.Add(count);
+                exactHits.Add(count);   
             }
+
+            output.Clear();
+            int highestKnown = 0;
+
+            for (int i = 0; i < exactHits.Count; i++)
+            {
+                if (exactHits[i] > highestKnown)
+                {
+                    output.Clear();
+                    output.Add(gods[i]);
+                    highestKnown = exactHits[i];
+                }
+                else if (exactHits[i] == highestKnown)
+                {
+                    output.Add(gods[i]);
+                }
+            }
+            return output;
         }
-        public List<Gods> findHighestHits()
+        public List<Gods> FindHighestHits()
         {
             List<Gods> output = new List<Gods>();
             int index = 0;
@@ -303,7 +336,7 @@ namespace Library
         }
         public string ToStringParent()
         {
-            return "Your parent is" + DivineParent ;
+            return "Your parent is " + DivineParent.Name ;
         }
 
     }

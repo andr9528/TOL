@@ -23,16 +23,13 @@
         </Grid.ColumnDefinitions>
 
         <Button Grid.Column="0" Grid.Row="0" Name="NewCharacter" 
-                Click="NewCharacter_Click" Content="New Character"/>
+                Click="NewCharacter_Click" Content="New Character" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <Button Grid.Column="1" Grid.Row="0" Name="ShowDivines" 
-                Click="ShowDivines_Click" Content="Show Divines"/>
-        <Button Grid.Column="2" Grid.Row="0" Name="ShowErrorList" 
-                Click="ShowErrorList_Click" Content="Show Error List"/>
+                Click="ShowDivines_Click" Content="Show Divines" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <Button Grid.Column="4" Grid.Row="0" Name="Exit" 
-                Click="Exit_Click" Content="Exit"/>
+                Click="Exit_Click" Content="Exit" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <Button Grid.Column="0" Grid.Row="1" Name="ShowCharacters" 
-                Click="ShowCharacters_Click" Content="Characters"/>
-
+                Click="ShowCharacters_Click" Content="Characters" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
     </Grid>
 </Window>

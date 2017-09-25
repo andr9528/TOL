@@ -49,14 +49,6 @@ namespace GUI
             this.Close();
         }
 
-        private void ShowErrorList_Click(object sender, RoutedEventArgs e)
-        {
-            ErrorList error = new ErrorList();
-            error.WindowState = WindowState.Maximized;
-            error.Show();
-            //this.Hide();
-        }
-
         private void ShowCharacters_Click(object sender, RoutedEventArgs e)
         {
             Characters characters = new Characters();

@@ -63,10 +63,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ErrorList.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="GodsViewer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -84,9 +80,6 @@
     </Compile>
     <Compile Include="Credit.xaml.cs">
       <DependentUpon>Credit.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ErrorList.xaml.cs">
-      <DependentUpon>ErrorList.xaml</DependentUpon>
     </Compile>
     <Compile Include="GodsViewer.xaml.cs">
       <DependentUpon>GodsViewer.xaml</DependentUpon>
