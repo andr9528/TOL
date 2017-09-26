@@ -40,7 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Armor.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Enchantment.cs" />
     <Compile Include="Entity.cs" />
@@ -51,7 +50,6 @@
     <Compile Include="Skills.cs" />
     <Compile Include="Repo.cs" />
     <Compile Include="Spell.cs" />
-    <Compile Include="Weapon.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
