@@ -12,21 +12,13 @@ namespace Library
             TODO ->
                 Make new Favoring numbers for Egyptians, Norse & Atlantic Divines
                 Make charackter window, where stats can be seen
-                Make Health, Mana, Health & Mana Regeneration & Melee/Ranged Damage on character.
-                    -> Health Scales with level of Light Armor, Heavy Armor, Agility & Blocking
-                    -> Mana Scales with levels of Wild, Inferno Blizz, Sky & Pure Magic, with Pure being 4 times as effective
-                    -> Mana regeneration scales with Pure magic
-                    -> Health Regeneration scales with max health (& possibly other things)
-                    -> Melee / Rnaged damage depends on the weapon quality and proficiancy with that type of weapon
                 Create Monster Class
                     -> Instantiate many different monsters in the Repo to be used later while fighting
                 Make Fight window, where battles between the player and random mosnters occure.
                 Create Spell Class
                     -> Instantiate many different standard spells
-                Create Weapon Class
-                    -> Instantiate many different weapons
-                Create Armor Class
-                    -> Instantiate many different armors
+                Create Enchantment Class
+                    -> Instantiate many different standard enchantments
         */
         #region Gods
 

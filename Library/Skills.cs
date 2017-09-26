@@ -10,11 +10,11 @@ namespace Library
     {
         public int ID { get; internal set; }
         public string Name { get; internal set; }
-        public int Level { get; internal set; }
-        public int XpMultiplier { get; set; }
+        public int Level { get; internal set; } // What Level the entity is at this skill
+        public int XpMultiplier { get; set; } // How fast the entity levels up this skills, 150 -> 1.5 times as fast as normal
         public int XpCurrent { get; set; }
         public int XpRequired { get; internal set; }
-        public double XpScale { get; set; }
+        public double XpScale { get; set; } // How much extra Xp per level is needed to get to the next one
 
         public Skill(int _id, string _name, double _xpScale = 1.25)
         {
@@ -22,9 +22,9 @@ namespace Library
 
             ID = _id;
 
-            Level = 0; // What Level the entity is at this skill
-            XpMultiplier = 100; // How fast the entity levels up this skills, 150 -> 1.5 times as fast as normal
-            XpScale = _xpScale; // How much extra Xp per level is needed to get to the next one
+            Level = 0; 
+            XpMultiplier = 100; 
+            XpScale = _xpScale; 
             LevelUp();
         }
         public void LevelUp() // Levels up the skill and determines how much is needed for the next level

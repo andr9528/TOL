@@ -9,6 +9,8 @@ namespace Library
 {
     public class Entity
     {
+        List<Spell> Spells = new List<Spell>();
+
         int level;
         public string Name { get; internal set; }
         public int Level

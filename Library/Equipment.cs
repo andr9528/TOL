@@ -36,7 +36,7 @@ namespace Library
         public string EquipementSlot { get; internal set; }
         public string Name { get; internal set; }
         public string SkillName { get; internal set; } // Valid values: Archery, OneHanded, TwoHanded, LightArmor, HeavyArmor, None
-
+        public string Quality { get; internal set; }
         public List<string> GetStatModifiers()
         {
             return StatModifiers;
