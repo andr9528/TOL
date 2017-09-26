@@ -24,7 +24,7 @@ namespace GUI
         List<string> desiredMythologyOptions = new List<string>() { "", "Greek", "Egyptian", "Norse", "Atlantic" };
         List<string> genders = new List<string>() { "", "Female", "Male" };
         List<CheckBox> checkboxes = new List<CheckBox>() ;
-        Character player;
+        Player player;
 
         public NewCharacter()
         {
@@ -386,10 +386,10 @@ namespace GUI
                  int.Parse(SkyMagicWeightingValue.Text), int.Parse(PureMagicWeightingValue.Text)};
 
 
-                player = new Character(NameInput.Text, genders[GenderOptions.SelectedIndex],
+                player = new Player(NameInput.Text, genders[GenderOptions.SelectedIndex],
                     DesiredMythologyOptions.SelectedIndex, inputWeighting);
 
-                player.parentDeterminator();
+                player.ParentDeterminator();
 
                 ParrentFinderText.Text = player.DivineParent.Name;
 

@@ -179,17 +179,17 @@ namespace Library
         #endregion
         #region Character
 
-        static List<Character> characters = new List<Character>();
+        static List<Player> characters = new List<Player>();
 
-        static public void RemoveCharacter(Character entity)
+        static public void RemoveCharacter(Player entity)
         {
             characters.Remove(entity);
         }
-        static public void AddCharacter(Character entity)
+        static public void AddCharacter(Player entity)
         {
             characters.Add(entity);
         }
-        static public List<Character> GetCharacters()
+        static public List<Player> GetCharacters()
         {
             return characters;
         }
