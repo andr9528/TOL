@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Library
 {
-    public class Spell
+    public class Spell : StatModifier
     {
     }
 }

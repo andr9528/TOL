@@ -9,8 +9,7 @@ namespace Library
 {
     public class Entity
     {
-        List<Spell> Spells = new List<Spell>();
-
+        Random random = new Random();
         int level;
         public string Name { get; internal set; }
         public int Level
@@ -25,9 +24,17 @@ namespace Library
                 {
                     level = value;
                     UpdateStats();
+                    SetCurrent();
                 }
             }
         }
+        #region Spells
+        List<Spell> Spells = new List<Spell>();
+        List<Spell> Buffs = new List<Spell>();
+        List<Spell> Debuffs = new List<Spell>();
+
+        #endregion
+
         #region Equipment
 
         Equipment head;
@@ -133,8 +140,6 @@ namespace Library
 
             MaxHealth = 90 + (10 * Level);
             MaxMana = 90 + (10 * Level) + (WildMagic.Level * 5) + (InfernoMagic.Level * 5) + (BlizzMagic.Level * 5) + (Skymagic.Level * 5) + (PureMagic.Level * 20);
-            CurrentHealth = MaxHealth;
-            CurrentMana = MaxMana;
 
             DodgeChance = 5 + (Agility.Level / 5);
             BlockChance = 0 + (Blocking.Level / 5);
@@ -146,6 +151,8 @@ namespace Library
             AttackSpeed = 1;
 
             AddStatsFromEquipment();
+            //AddStatsFromBuffs();
+            //RemoveStatsFromDebuffs();
             //AddStatsFromEnchantments();
 
             MinimumDamage = (int)Math.Floor(MinimumDamage * (1 + (Archery.Level / 40))
@@ -169,6 +176,16 @@ namespace Library
 
         }
 
+        private void RemoveStatsFromDebuffs()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void AddStatsFromBuffs()
+        {
+            throw new NotImplementedException();
+        }
+
         private void AddStatsFromEnchantments()
         {
             throw new NotImplementedException();
@@ -183,68 +200,182 @@ namespace Library
                     foreach (string modifier in equiped.GetStatModifiers())
                     {
                         string[] split = modifier.Split('¤');
-                        int parseInt = 0;
-                        double parseDouble = 0.00;
-                        bool parseResult = false;
 
-                        switch (split[0])
-                        {
-                            case "Hp":
-                                parseResult = int.TryParse(split[1], out parseInt);
-                                MaxHealth += parseInt;
-                                break;
-                            case "Mp":
-                                parseResult = int.TryParse(split[1], out parseInt);
-                                MaxMana += parseInt;
-                                break;
-                            case "Prot":
-                                parseResult = int.TryParse(split[1], out parseInt);
-                                Protection += parseInt;
-                                break;
-                            case "MinDam":
-                                parseResult = int.TryParse(split[1], out parseInt);
-                                MinimumDamage += parseInt;
-                                break;
-                            case "MaxDam":
-                                parseResult = int.TryParse(split[1], out parseInt);
-                                MaximumDamage += parseInt;
-                                break;
-                            case "Hps":
-                                parseResult = double.TryParse(split[1], out parseDouble);
-                                HealthRegeneration += parseDouble;
-                                break;
-                            case "Mps":
-                                parseResult = double.TryParse(split[1], out parseDouble);
-                                ManaRegeneration += parseDouble;
-                                break;
-                            case "Dc":
-                                parseResult = double.TryParse(split[1], out parseDouble);
-                                DodgeChance += parseDouble;
-                                break;
-                            case "Bc":
-                                parseResult = double.TryParse(split[1], out parseDouble);
-                                BlockChance += parseDouble;
-                                break;
-                            case "Cc":
-                                parseResult = double.TryParse(split[1], out parseDouble);
-                                CriticalChance += parseDouble;
-                                break;
-                            case "Cdm":
-                                parseResult = double.TryParse(split[1], out parseDouble);
-                                CriticalDamageMultiplier += parseDouble;
-                                break;
-                            case "As":
-                                parseResult = double.TryParse(split[1], out parseDouble);
-                                AttackSpeed += parseDouble;
-                                break;
-                            default:
-                                break;
-                        }
+                        SwitchAdd(split);
                     }
                 }
             }
         }
 
+        private void SwitchAdd(string[] split)
+        {
+            int parseInt = 0;
+            double parseDouble = 0.00;
+            bool parseResult = false;
+
+            switch (split[0])
+            {
+                case "Hp":
+                    parseResult = int.TryParse(split[1], out parseInt);
+                    MaxHealth += parseInt;
+                    break;
+                case "Mp":
+                    parseResult = int.TryParse(split[1], out parseInt);
+                    MaxMana += parseInt;
+                    break;
+                case "Prot":
+                    parseResult = int.TryParse(split[1], out parseInt);
+                    Protection += parseInt;
+                    break;
+                case "MinDam":
+                    parseResult = int.TryParse(split[1], out parseInt);
+                    MinimumDamage += parseInt;
+                    break;
+                case "MaxDam":
+                    parseResult = int.TryParse(split[1], out parseInt);
+                    MaximumDamage += parseInt;
+                    break;
+                case "Hps":
+                    parseResult = double.TryParse(split[1], out parseDouble);
+                    HealthRegeneration += parseDouble;
+                    break;
+                case "Mps":
+                    parseResult = double.TryParse(split[1], out parseDouble);
+                    ManaRegeneration += parseDouble;
+                    break;
+                case "Dc":
+                    parseResult = double.TryParse(split[1], out parseDouble);
+                    DodgeChance += parseDouble;
+                    break;
+                case "Bc":
+                    parseResult = double.TryParse(split[1], out parseDouble);
+                    BlockChance += parseDouble;
+                    break;
+                case "Cc":
+                    parseResult = double.TryParse(split[1], out parseDouble);
+                    CriticalChance += parseDouble;
+                    break;
+                case "Cdm":
+                    parseResult = double.TryParse(split[1], out parseDouble);
+                    CriticalDamageMultiplier += parseDouble;
+                    break;
+                case "As":
+                    parseResult = double.TryParse(split[1], out parseDouble);
+                    AttackSpeed += parseDouble;
+                    break;
+                default:
+                    break;
+            }
+        }
+        private void SwitchRemove(string[] split)
+        {
+            int parseInt = 0;
+            double parseDouble = 0.00;
+            bool parseResult = false;
+
+            switch (split[0])
+            {
+                case "Hp":
+                    parseResult = int.TryParse(split[1], out parseInt);
+                    MaxHealth -= parseInt;
+                    if (MaxHealth < 1)
+                    {
+                        MaxHealth = 1;
+                    }
+                    break;
+                case "Mp":
+                    parseResult = int.TryParse(split[1], out parseInt);
+                    MaxMana -= parseInt;
+                    if (MaxMana < 0)
+                    {
+                        MaxMana = 0;
+                    }
+                    break;
+                case "Prot":
+                    parseResult = int.TryParse(split[1], out parseInt);
+                    Protection -= parseInt;
+                    break;
+                case "MinDam":
+                    parseResult = int.TryParse(split[1], out parseInt);
+                    MinimumDamage -= parseInt;
+                    if (MinimumDamage < 0)
+                    {
+                        MinimumDamage = 0;
+                    }
+                    break;
+                case "MaxDam":
+                    parseResult = int.TryParse(split[1], out parseInt);
+                    MaximumDamage -= parseInt;
+                    if (MaximumDamage < 1)
+                    {
+                        MaximumDamage = 1;
+                    }
+                    break;
+                case "Hps":
+                    parseResult = double.TryParse(split[1], out parseDouble);
+                    HealthRegeneration -= parseDouble;
+                    if (HealthRegeneration < 0)
+                    {
+                        HealthRegeneration = 0;
+                    }
+                    break;
+                case "Mps":
+                    parseResult = double.TryParse(split[1], out parseDouble);
+                    ManaRegeneration -= parseDouble;
+                    if (ManaRegeneration < 0)
+                    {
+                        ManaRegeneration = 0;
+                    }
+                    break;
+                case "Dc":
+                    parseResult = double.TryParse(split[1], out parseDouble);
+                    DodgeChance -= parseDouble;
+                    if (DodgeChance < 0)
+                    {
+                        DodgeChance = 0;
+                    }
+                    break;
+                case "Bc":
+                    parseResult = double.TryParse(split[1], out parseDouble);
+                    BlockChance -= parseDouble;
+                    if (BlockChance < 0)
+                    {
+                        BlockChance = 0;
+                    }
+                    break;
+                case "Cc":
+                    parseResult = double.TryParse(split[1], out parseDouble);
+                    CriticalChance -= parseDouble;
+                    if (CriticalChance < 0)
+                    {
+                        CriticalChance = 0;
+                    }
+                    break;
+                case "Cdm":
+                    parseResult = double.TryParse(split[1], out parseDouble);
+                    CriticalDamageMultiplier -= parseDouble;
+                    if (CriticalDamageMultiplier < 1)
+                    {
+                        CriticalDamageMultiplier = 1;
+                    }
+                    break;
+                case "As":
+                    parseResult = double.TryParse(split[1], out parseDouble);
+                    AttackSpeed -= parseDouble;
+                    if (AttackSpeed < 0.5)
+                    {
+                        AttackSpeed = 0.5;
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+        public void SetCurrent()
+        {
+            CurrentHealth = MaxHealth;
+            CurrentMana = MaxMana;
+        }
         public void RegenMana()
         {
             if (CurrentMana < MaxMana)
@@ -274,6 +405,68 @@ namespace Library
             }
         }
         #endregion
+
+        public int Attack()
+        {
+            int critCheck = random.Next(1, 100);
+            int output = 0;
+
+            if (critCheck <= CriticalChance)
+            {
+                output = (int)Math.Floor(random.Next(MinimumDamage, MaximumDamage) * CriticalDamageMultiplier);
+            }
+            else
+            {
+                output = random.Next(MinimumDamage, MaximumDamage);
+            }
+
+            RegenHealth();
+            RegenMana();
+
+            return output;
+        }
+        public string Defend(int damage)
+        {
+            int dodgeCheck = random.Next(1, 100);
+            int blockCheck = random.Next(1, 100);
+
+            if (damage - Protection > 0)
+            {
+                damage -= Protection;
+                if (dodgeCheck > DodgeChance)
+                {
+                    if (blockCheck > BlockChance)
+                    {
+                        CurrentHealth -= damage;
+                        if (CurrentHealth < 0)
+                        {
+                            CurrentHealth = 0;
+                            return "Succecfull Hit! " + Name + " is Dead "; 
+                        }
+                        else
+                        {
+                            return "Succecfull Hit! " + Name + " Lost " + damage + " Health";
+                        }
+                    }
+                    else
+                    {
+                        return "Blocked";
+                    }
+                }
+                else
+                {
+                    return "Dodged";
+                }
+            }
+            else
+            {
+                return "Protected";
+            }
+        }
+        public void SpellCast(int index)
+        {
+            throw new NotImplementedException();
+        }
         public void UpdateLevel()
         {
             Level = (Archery.Level + OneHanded.Level + TwoHanded.Level + LightArmor.Level
