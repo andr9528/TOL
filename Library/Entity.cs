@@ -52,20 +52,20 @@ namespace Library
         Equipment leftRing;
         Equipment rightRing;
 
-        public Equipment Head { get { return head; } set { head = value; } }
-        public Equipment Shoulder { get { return shoulder; } set { shoulder = value; } }
-        public Equipment Gloves { get { return gloves; } set { gloves = value; } }
-        public Equipment Braces { get { return braces; } set { braces = value; } }
-        public Equipment Chestplate { get { return chestplate; } set { chestplate = value; } }
-        public Equipment Leggings { get { return leggings; } set { leggings = value; } }
-        public Equipment Belt { get { return belt; } set { belt = value; } }
-        public Equipment Boots { get { return boots; } set { boots = value; } }
-        public Equipment MainHand { get { return mainHand; } set { mainHand = value; } }
-        public Equipment OffHand { get { return offHand; } set { offHand = value; } }
-        public Equipment Ranged { get { return ranged; } set { ranged = value; } }
-        public Equipment Amulet { get { return amulet; } set { amulet = value; } }
-        public Equipment LeftRing { get { return leftRing; } set { leftRing = value; } }
-        public Equipment RightRing { get { return rightRing; } set { rightRing = value; } }
+        public Equipment Head { get { return head; } set { head = value; } } // Can be LightArmor, HeavyArmor or None
+        public Equipment Shoulder { get { return shoulder; } set { shoulder = value; } } // Can be LightArmor, HeavyArmor or None
+        public Equipment Gloves { get { return gloves; } set { gloves = value; } } // Can be LightArmor, HeavyArmor or None
+        public Equipment Braces { get { return braces; } set { braces = value; } } // Can be LightArmor, HeavyArmor or None
+        public Equipment Chestplate { get { return chestplate; } set { chestplate = value; } } // Can be LightArmor, HeavyArmor or None
+        public Equipment Leggings { get { return leggings; } set { leggings = value; } } // Can be LightArmor, HeavyArmor or None
+        public Equipment Belt { get { return belt; } set { belt = value; } } // Can be LightArmor, HeavyArmor or None
+        public Equipment Boots { get { return boots; } set { boots = value; } } // Can be LightArmor, HeavyArmor or None
+        public Equipment MainHand { get { return mainHand; } set { mainHand = value; } } // Can be OneHanded, Twohanded or None
+        public Equipment OffHand { get { return offHand; } set { offHand = value; } } // Can be OneHanded, Twohanded, Blocking or None
+        public Equipment Ranged { get { return ranged; } set { ranged = value; } } // Can be Archery or None
+        public Equipment Amulet { get { return amulet; } set { amulet = value; } } // Can be None
+        public Equipment LeftRing { get { return leftRing; } set { leftRing = value; } } // Can be None
+        public Equipment RightRing { get { return rightRing; } set { rightRing = value; } } // Can be None
 
         List<Equipment> Equiped;
 
@@ -115,6 +115,19 @@ namespace Library
         public Skill BlizzMagic { get { return blizzMagic; } set { blizzMagic = value; } }
         public Skill Skymagic { get { return skymagic; } set { skymagic = value; } }
         public Skill PureMagic { get { return pureMagic; } set { pureMagic = value; } }
+
+        List<Skill> Skills;
+
+        internal void CollectSkills()
+        {
+            Skills = new List<Skill>()
+            {
+                Archery, OneHanded, TwoHanded, LightArmor,
+                HeavyArmor, Stealth, Agility, Smithing,
+                Enchanting, Alchemy, Blocking, WildMagic,
+                InfernoMagic, BlizzMagic, Skymagic, PureMagic
+            };
+        }
         #endregion
 
         #region Stats
@@ -137,6 +150,7 @@ namespace Library
         public void UpdateStats()
         {
             CollectEquipment();
+            CollectSkills();
 
             MaxHealth = 90 + (10 * Level);
             MaxMana = 90 + (10 * Level) + (WildMagic.Level * 5) + (InfernoMagic.Level * 5) + (BlizzMagic.Level * 5) + (Skymagic.Level * 5) + (PureMagic.Level * 20);
@@ -173,7 +187,6 @@ namespace Library
             {
                 MinimumDamage = MaximumDamage;
             }
-
         }
 
         private void RemoveStatsFromDebuffs()
@@ -414,10 +427,12 @@ namespace Library
             if (critCheck <= CriticalChance)
             {
                 output = (int)Math.Floor(random.Next(MinimumDamage, MaximumDamage) * CriticalDamageMultiplier);
+                DetermineXp(output, "Attack");
             }
             else
             {
                 output = random.Next(MinimumDamage, MaximumDamage);
+                DetermineXp(output, "Attack");
             }
 
             RegenHealth();
@@ -432,11 +447,11 @@ namespace Library
 
             if (damage - Protection > 0)
             {
-                damage -= Protection;
                 if (dodgeCheck > DodgeChance)
                 {
                     if (blockCheck > BlockChance)
                     {
+                        damage -= Protection;
                         CurrentHealth -= damage;
                         if (CurrentHealth < 0)
                         {
@@ -450,22 +465,140 @@ namespace Library
                     }
                     else
                     {
+                        DetermineXp(damage, "Block");
                         return "Blocked";
                     }
                 }
                 else
                 {
+                    DetermineXp(damage, "Dodge");
                     return "Dodged";
                 }
             }
             else
             {
+                DetermineXp(damage, "Protect");
                 return "Protected";
             }
         }
         public void SpellCast(int index)
         {
             throw new NotImplementedException();
+        }
+        internal void DetermineXp(int damage, string check) // For mundane battles
+        {
+            switch (check)
+            {
+                case "Protect":
+                    int light = CountLightArmorPieces();
+                    int heavy = CountHeavyArmorPieces();
+                    LightArmor.XpCurrent += (int)Math.Floor(damage / 8 * light * LightArmor.XpMultiplier);
+                    HeavyArmor.XpCurrent += (int)Math.Floor(damage / 8 * heavy * HeavyArmor.XpMultiplier);
+                    break;
+                case "Dodge":
+                    Agility.XpCurrent += (int)Math.Floor(damage * Agility.XpMultiplier);
+                    break;
+                case "Block":
+                    Blocking.XpCurrent += (int)Math.Floor(damage * Blocking.XpMultiplier);
+                    break;
+                case "Attack":
+                    double main = 0;
+                    double off = 0;
+                    double ran = 0;
+
+                    if (MainHand != null && MainHand.SkillName == "Onehanded" || MainHand != null && MainHand.SkillName == "TwoHanded")
+                    {
+                        main = DetermineXpDivideForWeapons(MainHand);
+                        if (MainHand.SkillName == "OneHanded")
+                        {
+                            OneHanded.XpCurrent += (int)Math.Floor(damage * OneHanded.XpMultiplier * main);
+                        }
+                        else
+                        {
+                            TwoHanded.XpCurrent += (int)Math.Floor(damage * TwoHanded.XpMultiplier * main);
+                        }
+
+                    }
+                    if (OffHand != null && OffHand.SkillName == "OneHanded" && MainHand.SkillName != "TwoHanded")
+                    {
+                        off = DetermineXpDivideForWeapons(OffHand);
+                        OneHanded.XpCurrent += (int)Math.Floor(damage * OneHanded.XpMultiplier * off);
+                    }
+                    if (Ranged != null)
+                    {
+                        ran = DetermineXpDivideForWeapons(Ranged);
+                        Archery.XpCurrent += (int)Math.Floor(damage * Archery.XpMultiplier * ran);
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+        internal void DetermineXp(Spell spell) // For magical battles
+        {
+            throw new NotImplementedException();
+        }
+        internal double DetermineXpDivideForWeapons(Equipment weapon)
+        {
+            double output = 0;
+            int mindam = 0;
+            int maxdam = 0;
+
+            foreach (string modifier in weapon.GetStatModifiers())
+            {
+                string[] split = modifier.Split('¤');
+
+                switch (split[0])
+                {
+                    case "MinDam":
+                        int.TryParse(split[1], out mindam);
+                        break;
+                    case "MaxDam":
+                        int.TryParse(split[1], out maxdam);
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            output = (((mindam + maxdam) / 2) / ((MinimumDamage + MaximumDamage) / 2));
+
+            return output;
+        }
+        internal int CountLightArmorPieces()
+        {
+            int output = 0;
+            CollectEquipment();
+
+            foreach (Equipment equiped in Equiped)
+            {
+                if (equiped != null)
+                {
+                    if (equiped.SkillName == "LightArmor")
+                    {
+                        output++;
+                    }
+                }
+            }
+            return output;
+
+        }
+        internal int CountHeavyArmorPieces()
+        {
+            int output = 0;
+            CollectEquipment();
+
+            foreach (Equipment equiped in Equiped)
+            {
+                if (equiped != null)
+                {
+                    if (equiped.SkillName == "HeavyArmor")
+                    {
+                        output++;
+                    }
+                }
+            }
+            return output;
         }
         public void UpdateLevel()
         {
