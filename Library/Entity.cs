@@ -32,7 +32,7 @@ namespace Library
         List<Spell> Spells = new List<Spell>();
         List<Spell> Buffs = new List<Spell>();
         List<Spell> Debuffs = new List<Spell>();
-        List<Spell> DoT = new List<Spell>();
+        List<Spell> DoTs = new List<Spell>();
 
         public void LearnSpell(Spell spell)
         {
@@ -57,6 +57,35 @@ namespace Library
                 Debuffs.Add(debuff);
                 UpdateStats();
             }
+        }
+        public void ApplyDoT(Spell dot)
+        {
+            if (dot.Type == "DoT")
+            {
+                DoTs.Add(dot);
+                TickDoTs();
+            }
+        }
+
+        private void TickDoTs()
+        {
+            foreach (Spell dot in DoTs)
+            {
+                CurrentHealth -= dot.Effect;
+                dot.Duration--;
+            }
+
+            List<Spell> tempDoTs = DoTs;
+
+            foreach (Spell dot in DoTs)
+            {
+                if (dot.Duration == 0)
+                {
+                    tempDoTs.Remove(dot);
+                }
+            }
+
+            DoTs = tempDoTs;
         }
 
 
@@ -210,9 +239,70 @@ namespace Library
             HealthRegeneration = 5 + (MaxHealth / 100);
             ManaRegeneration = 5 + (MaxMana / 100) * (PureMagic.Level * 2.5);
 
+            EnsureValidStats();
+
+        }
+        internal void EnsureValidStats()
+        {
             if (MinimumDamage > MaximumDamage)
             {
                 MinimumDamage = MaximumDamage;
+            }
+            else if (MinimumDamage <= 0)
+            {
+                MinimumDamage = 1;
+            }
+            if (MaxHealth < 1)
+            {
+                MaxHealth = 1;
+            }
+            if (MaxMana < 0)
+            {
+                MaxMana = 0;
+            }
+            if (MaximumDamage <= 1)
+            {
+                MaximumDamage = 2;
+            }
+            if (HealthRegeneration < 0)
+            {
+                HealthRegeneration = 0;
+            }
+            if (ManaRegeneration < 0)
+            {
+                ManaRegeneration = 0;
+            }
+            if (DodgeChance < 0)
+            {
+                DodgeChance = 0;
+            }
+            else if (DodgeChance > 45)
+            {
+                DodgeChance = 45;
+            }
+            if (BlockChance < 0)
+            {
+                BlockChance = 0;
+            }
+            else if (BlockChance > 45)
+            {
+                BlockChance = 45;
+            }
+            if (CriticalChance < 0)
+            {
+                CriticalChance = 0;
+            }
+            else if (CriticalChance > 100)
+            {
+                CriticalChance = 100;
+            }
+            if (CriticalDamageMultiplier < 1)
+            {
+                CriticalDamageMultiplier = 1;
+            }
+            if (AttackSpeed < 0.5)
+            {
+                AttackSpeed = 0.5;
             }
         }
 
@@ -318,18 +408,10 @@ namespace Library
                 case "Hp":
                     parseResult = int.TryParse(split[1], out parseInt);
                     MaxHealth -= parseInt;
-                    if (MaxHealth < 1)
-                    {
-                        MaxHealth = 1;
-                    }
                     break;
                 case "Mp":
                     parseResult = int.TryParse(split[1], out parseInt);
                     MaxMana -= parseInt;
-                    if (MaxMana < 0)
-                    {
-                        MaxMana = 0;
-                    }
                     break;
                 case "Prot":
                     parseResult = int.TryParse(split[1], out parseInt);
@@ -338,74 +420,38 @@ namespace Library
                 case "MinDam":
                     parseResult = int.TryParse(split[1], out parseInt);
                     MinimumDamage -= parseInt;
-                    if (MinimumDamage < 0)
-                    {
-                        MinimumDamage = 0;
-                    }
                     break;
                 case "MaxDam":
                     parseResult = int.TryParse(split[1], out parseInt);
                     MaximumDamage -= parseInt;
-                    if (MaximumDamage < 1)
-                    {
-                        MaximumDamage = 1;
-                    }
                     break;
                 case "Hps":
                     parseResult = double.TryParse(split[1], out parseDouble);
                     HealthRegeneration -= parseDouble;
-                    if (HealthRegeneration < 0)
-                    {
-                        HealthRegeneration = 0;
-                    }
                     break;
                 case "Mps":
                     parseResult = double.TryParse(split[1], out parseDouble);
                     ManaRegeneration -= parseDouble;
-                    if (ManaRegeneration < 0)
-                    {
-                        ManaRegeneration = 0;
-                    }
                     break;
                 case "Dc":
                     parseResult = double.TryParse(split[1], out parseDouble);
                     DodgeChance -= parseDouble;
-                    if (DodgeChance < 0)
-                    {
-                        DodgeChance = 0;
-                    }
                     break;
                 case "Bc":
                     parseResult = double.TryParse(split[1], out parseDouble);
                     BlockChance -= parseDouble;
-                    if (BlockChance < 0)
-                    {
-                        BlockChance = 0;
-                    }
                     break;
                 case "Cc":
                     parseResult = double.TryParse(split[1], out parseDouble);
                     CriticalChance -= parseDouble;
-                    if (CriticalChance < 0)
-                    {
-                        CriticalChance = 0;
-                    }
                     break;
                 case "Cdm":
                     parseResult = double.TryParse(split[1], out parseDouble);
                     CriticalDamageMultiplier -= parseDouble;
-                    if (CriticalDamageMultiplier < 1)
-                    {
-                        CriticalDamageMultiplier = 1;
-                    }
                     break;
                 case "As":
                     parseResult = double.TryParse(split[1], out parseDouble);
                     AttackSpeed -= parseDouble;
-                    if (AttackSpeed < 0.5)
-                    {
-                        AttackSpeed = 0.5;
-                    }
                     break;
                 default:
                     break;
