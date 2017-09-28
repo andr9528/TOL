@@ -20,6 +20,8 @@ namespace Library
                 Create Enchantment Class
                     -> Instantiate many different standard enchantments
         */
+        public static Random Random = new Random();
+
         #region Gods
 
         // Greek Gods

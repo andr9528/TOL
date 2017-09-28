@@ -9,7 +9,7 @@ namespace Library
 {
     public class Entity
     {
-        Random random = new Random();
+        
         int level;
         public string Name { get; internal set; }
         public int Level
@@ -32,6 +32,33 @@ namespace Library
         List<Spell> Spells = new List<Spell>();
         List<Spell> Buffs = new List<Spell>();
         List<Spell> Debuffs = new List<Spell>();
+        List<Spell> DoT = new List<Spell>();
+
+        public void LearnSpell(Spell spell)
+        {
+            Spells.Add(spell);
+        }
+        public void ForgetSpell(int index)
+        {
+            Spells.RemoveAt(index);
+        }
+        public void BuffEntity(Spell buff)
+        {
+            if (buff.Type == "Buff")
+            {
+                Buffs.Add(buff);
+                UpdateStats();
+            }
+        }
+        public void DebuffEntity(Spell debuff)
+        {
+            if (debuff.Type == "Debuff")
+            {
+                Debuffs.Add(debuff);
+                UpdateStats();
+            }
+        }
+
 
         #endregion
 
@@ -421,17 +448,17 @@ namespace Library
 
         public int Attack()
         {
-            int critCheck = random.Next(1, 100);
+            int critCheck = Repo.Random.Next(1, 100);
             int output = 0;
 
             if (critCheck <= CriticalChance)
             {
-                output = (int)Math.Floor(random.Next(MinimumDamage, MaximumDamage) * CriticalDamageMultiplier);
+                output = (int)Math.Floor(Repo.Random.Next(MinimumDamage, MaximumDamage) * CriticalDamageMultiplier);
                 DetermineXp(output, "Attack");
             }
             else
             {
-                output = random.Next(MinimumDamage, MaximumDamage);
+                output = Repo.Random.Next(MinimumDamage, MaximumDamage);
                 DetermineXp(output, "Attack");
             }
 
@@ -442,8 +469,8 @@ namespace Library
         }
         public string Defend(int damage)
         {
-            int dodgeCheck = random.Next(1, 100);
-            int blockCheck = random.Next(1, 100);
+            int dodgeCheck = Repo.Random.Next(1, 100);
+            int blockCheck = Repo.Random.Next(1, 100);
 
             if (damage - Protection > 0)
             {
