@@ -9,7 +9,6 @@ namespace Library
 {
     public class Entity
     {
-        
         int level;
         public string Name { get; internal set; }
         public int Level
@@ -38,47 +37,31 @@ namespace Library
         {
             Spells.Add(spell);
         }
-        public void ForgetSpell(int index)
+        public void ForgetSpell(Spell spell)
         {
-            Spells.RemoveAt(index);
+            Spells.Remove(spell);
         }
-        public void BuffEntity(Spell buff)
+        private void BuffEntity(Spell buff)
         {
-            if (buff.Type == "Buff")
-            {
-                Buffs.Add(buff);
-                UpdateStats();
-            }
+             Buffs.Add(buff);
         }
-        public void DebuffEntity(Spell debuff)
+        private void DebuffEntity(Spell debuff)
         {
-            if (debuff.Type == "Debuff")
-            {
-                Debuffs.Add(debuff);
-                UpdateStats();
-            }
+             Debuffs.Add(debuff);
         }
-        public void ApplyDoT(Spell dot)
+        private void ApplyDoT(Spell dot)
         {
-            if (dot.Type == "DoT")
-            {
-                DoTs.Add(dot);
-                TickDoTs();
-            }
+             DoTs.Add(dot);
         }
 
         private void TickDoTs()
         {
+            List<Spell> tempDoTs = DoTs;
             foreach (Spell dot in DoTs)
             {
                 CurrentHealth -= dot.Effect;
                 dot.Duration--;
-            }
 
-            List<Spell> tempDoTs = DoTs;
-
-            foreach (Spell dot in DoTs)
-            {
                 if (dot.Duration == 0)
                 {
                     tempDoTs.Remove(dot);
@@ -87,7 +70,85 @@ namespace Library
 
             DoTs = tempDoTs;
         }
+        public Tuple<Spell, string> SpellCast(int index)
+        {
+            string output2 = "Succes";
+            Spell output1 = null;
+            if (CurrentMana > Spells[index].ManaCost)
+            {
+                CurrentMana -= Spells[index].ManaCost;
+                output1 = Spells[index];
+                DetermineXp(output1);
+            }
+            else
+            {
+                output2 = "Fail";
+            }
 
+            return Tuple.Create(output1, output2);
+        }
+        public string SpellHandler(Tuple<Spell, string> spell)
+        {
+            if (spell.Item1 != null && spell.Item2 == "Succes")
+            {
+                switch (spell.Item1.Target)
+                {
+                    case "Enemy":
+                        switch (spell.Item1.Type)
+                        {
+                            case "Damage":
+                                CurrentHealth -= spell.Item1.Effect;
+                                break;
+                            case "DoT":
+                                ApplyDoT(spell.Item1);
+                                break;
+                            case "Debuff":
+                                DebuffEntity(spell.Item1);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    case "Self":
+                        switch (spell.Item1.Type)
+                        {
+                            case "Heal":
+                                CurrentHealth += spell.Item1.Effect;
+                                break;
+                            case "Buff":
+                                BuffEntity(spell.Item1);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+            return spell.Item2;
+        }
+        private void DetermineXp(Spell spell) // For magical battles
+        {
+            switch (spell.SkillName)
+            {
+                case "WildMagic":
+                    WildMagic.XpCurrent += (int)Math.Floor(spell.XpPerCast * WildMagic.XpMultiplier * 0.9);
+                    break;
+                case "InfernoMagic":
+                    InfernoMagic.XpCurrent += (int)Math.Floor(spell.XpPerCast * InfernoMagic.XpMultiplier * 0.9);
+                    break;
+                case "BlizzMagic":
+                    BlizzMagic.XpCurrent += (int)Math.Floor(spell.XpPerCast * BlizzMagic.XpMultiplier * 0.9);
+                    break;
+                case "SkyMagic":
+                    SkyMagic.XpCurrent += (int)Math.Floor(spell.XpPerCast * SkyMagic.XpMultiplier * 0.9);
+                    break;
+                default:
+                    break;
+            }
+            PureMagic.XpCurrent += (int)Math.Floor(spell.XpPerCast * PureMagic.XpMultiplier * 0.1);
+        }
 
         #endregion
 
@@ -169,7 +230,7 @@ namespace Library
         public Skill WildMagic { get { return wildMagic; } set { wildMagic = value; } }
         public Skill InfernoMagic { get { return infernoMagic; } set { infernoMagic = value; } }
         public Skill BlizzMagic { get { return blizzMagic; } set { blizzMagic = value; } }
-        public Skill Skymagic { get { return skymagic; } set { skymagic = value; } }
+        public Skill SkyMagic { get { return skymagic; } set { skymagic = value; } }
         public Skill PureMagic { get { return pureMagic; } set { pureMagic = value; } }
 
         List<Skill> Skills;
@@ -181,7 +242,7 @@ namespace Library
                 Archery, OneHanded, TwoHanded, LightArmor,
                 HeavyArmor, Stealth, Agility, Smithing,
                 Enchanting, Alchemy, Blocking, WildMagic,
-                InfernoMagic, BlizzMagic, Skymagic, PureMagic
+                InfernoMagic, BlizzMagic, SkyMagic, PureMagic
             };
         }
         #endregion
@@ -209,7 +270,7 @@ namespace Library
             CollectSkills();
 
             MaxHealth = 90 + (10 * Level);
-            MaxMana = 90 + (10 * Level) + (WildMagic.Level * 5) + (InfernoMagic.Level * 5) + (BlizzMagic.Level * 5) + (Skymagic.Level * 5) + (PureMagic.Level * 20);
+            MaxMana = 90 + (10 * Level) + (WildMagic.Level * 5) + (InfernoMagic.Level * 5) + (BlizzMagic.Level * 5) + (SkyMagic.Level * 5) + (PureMagic.Level * 20);
 
             DodgeChance = 5 + (Agility.Level / 5);
             BlockChance = 0 + (Blocking.Level / 5);
@@ -221,9 +282,9 @@ namespace Library
             AttackSpeed = 1;
 
             AddStatsFromEquipment();
-            //AddStatsFromBuffs();
-            //RemoveStatsFromDebuffs();
-            //AddStatsFromEnchantments();
+            AddStatsFromBuffs();
+            RemoveStatsFromDebuffs();
+            AddStatsFromEnchantments();
 
             MinimumDamage = (int)Math.Floor(MinimumDamage * (1 + (Archery.Level / 40))
                 * (1 + (OneHanded.Level / 40)) * (1 + (TwoHanded.Level / 40))
@@ -239,10 +300,12 @@ namespace Library
             HealthRegeneration = 5 + (MaxHealth / 100);
             ManaRegeneration = 5 + (MaxMana / 100) * (PureMagic.Level * 2.5);
 
+            TickDoTs();
             EnsureValidStats();
+            
 
         }
-        internal void EnsureValidStats()
+        private void EnsureValidStats()
         {
             if (MinimumDamage > MaximumDamage)
             {
@@ -304,24 +367,79 @@ namespace Library
             {
                 AttackSpeed = 0.5;
             }
+            if (CurrentHealth < 0)
+            {
+                CurrentHealth = 0;
+            }
+            if (CurrentHealth > MaxHealth)
+            {
+                CurrentHealth = MaxHealth;
+            }
         }
-
         private void RemoveStatsFromDebuffs()
         {
-            throw new NotImplementedException();
-        }
+            List<Spell> tempDebuffs = Debuffs;
+            foreach (Spell debuff in Debuffs)
+            {
+                foreach (string modifier in debuff.GetStatModifiers())
+                {
+                    string[] split = modifier.Split('¤');
 
+                    SwitchRemove(split);
+                }
+                debuff.Duration--;
+                if (debuff.Duration == 0)
+                {
+                    tempDebuffs.Remove(debuff);
+                }
+            }
+            Debuffs = tempDebuffs;
+        }
         private void AddStatsFromBuffs()
         {
-            throw new NotImplementedException();
-        }
+            List<Spell> tempBuffs = Buffs;
+            foreach (Spell buff in Buffs)
+            {
+                foreach (string modifier in buff.GetStatModifiers())
+                {
+                    string[] split = modifier.Split('¤');
 
+                    SwitchAdd(split);
+                }
+                buff.Duration--;
+                if (buff.Duration == 0)
+                {
+                    tempBuffs.Remove(buff);
+                }
+            }
+            Buffs = tempBuffs;
+        }
         private void AddStatsFromEnchantments()
         {
-            throw new NotImplementedException();
-        }
+            foreach (Equipment equiped in Equiped)
+            {
+                if (equiped != null)
+                {
+                    foreach (Enchantment enchantment in equiped.GetEnchantments())
+                    {
+                        enchantment.State = false;
+                        if (ManaRegeneration - enchantment.ManaRegenCost > 0)
+                        {
+                            enchantment.State = true;
+                            ManaRegeneration -= enchantment.ManaRegenCost;
 
-        internal void AddStatsFromEquipment()
+                            foreach (string modifier in enchantment.GetStatModifiers())
+                            {
+                                string[] split = modifier.Split('¤');
+
+                                SwitchAdd(split);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        private void AddStatsFromEquipment()
         {
             foreach (Equipment equiped in Equiped)
             {
@@ -554,11 +672,8 @@ namespace Library
                 return "Protected";
             }
         }
-        public void SpellCast(int index)
-        {
-            throw new NotImplementedException();
-        }
-        internal void DetermineXp(int damage, string check) // For mundane battles
+        
+        private void DetermineXp(int damage, string check) // For mundane battles
         {
             switch (check)
             {
@@ -607,11 +722,7 @@ namespace Library
                     break;
             }
         }
-        internal void DetermineXp(Spell spell) // For magical battles
-        {
-            throw new NotImplementedException();
-        }
-        internal double DetermineXpDivideForWeapons(Equipment weapon)
+        private double DetermineXpDivideForWeapons(Equipment weapon)
         {
             double output = 0;
             int mindam = 0;
@@ -638,7 +749,7 @@ namespace Library
 
             return output;
         }
-        internal int CountLightArmorPieces()
+        private int CountLightArmorPieces()
         {
             int output = 0;
             CollectEquipment();
@@ -656,7 +767,7 @@ namespace Library
             return output;
 
         }
-        internal int CountHeavyArmorPieces()
+        private int CountHeavyArmorPieces()
         {
             int output = 0;
             CollectEquipment();
@@ -673,12 +784,12 @@ namespace Library
             }
             return output;
         }
-        public void UpdateLevel()
+        private void UpdateLevel()
         {
             Level = (Archery.Level + OneHanded.Level + TwoHanded.Level + LightArmor.Level
                 + HeavyArmor.Level + Stealth.Level + Agility.Level + Smithing.Level
                 + Enchanting.Level + Alchemy.Level + Blocking.Level + WildMagic.Level
-                + InfernoMagic.Level + BlizzMagic.Level + Skymagic.Level + PureMagic.Level) / 16;
+                + InfernoMagic.Level + BlizzMagic.Level + SkyMagic.Level + PureMagic.Level) / 16;
         }
         
     }

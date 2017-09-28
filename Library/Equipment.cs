@@ -8,7 +8,6 @@ namespace Library
 {
     public class Equipment : StatModifier
     {
-        
         List<Enchantment> Enchantments = new List<Enchantment>();
         public string EquipementSlot { get; internal set; }
         public string Name { get; internal set; }
@@ -19,11 +18,11 @@ namespace Library
         {
             return Enchantments;
         }
-        public void AddEnchantment(Enchantment enchant)
+        public void Enchant(Enchantment enchant)
         {
             Enchantments.Add(enchant);
         }
-        public void RemoveEnchantment(Enchantment enchant)
+        public void Disenchant(Enchantment enchant)
         {
             Enchantments.Remove(enchant);
         }
