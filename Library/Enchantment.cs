@@ -19,14 +19,23 @@ namespace Library
         public double ManaRegenCost { get; internal set; }
         public string Name { get; internal set; }
 
-        public Enchantment(string name, double manaRegenCost, List<Tuple<ValidShorts, double>> modifiers)
+        public Enchantment(string name, double manaRegenCost, 
+            List<Tuple<ValidShorts, double>> modifiers, Rarities rarity = Rarities.Empty)
         {
+            SetRarity();
+
             Name = name;
             ManaRegenCost = manaRegenCost;
 
             foreach (Tuple<ValidShorts, double> mod in modifiers)
             {
-                AddStatModifier(mod);
+                double temp = mod.Item2 * RarityModifiers[(int)Rarity];
+                AddStatModifier(Tuple.Create(mod.Item1, temp));
+            }
+
+            if (rarity != Rarities.Empty)
+            {
+                Rarity = rarity;
             }
         }
     }

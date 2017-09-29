@@ -632,7 +632,6 @@ namespace Library
                 return "Protected";
             }
         }
-        
         private void DetermineXp(int damage, string check) // For mundane battles
         {
             switch (check)

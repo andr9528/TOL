@@ -12,7 +12,7 @@ namespace Library
         public string EquipementSlot { get; internal set; }
         public string Name { get; internal set; }
         public string SkillName { get; internal set; } // Valid values: Archery, OneHanded, TwoHanded, LightArmor, HeavyArmor, None
-        public string Rarity { get; internal set; } // 60% Common, 20% Uncommon, 10% Rare, 6% Epic, 3% Legendary, 1% Godlike
+        
 
         public List<Enchantment> GetEnchantments()
         {
@@ -25,6 +25,10 @@ namespace Library
         public void Disenchant(Enchantment enchant)
         {
             Enchantments.Remove(enchant);
+        }
+        public Equipment()
+        {
+
         }
     }
 }

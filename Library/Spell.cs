@@ -79,22 +79,30 @@ namespace Library
         }
 
         public Spell(ValidTargets target, ValidTypes type, ValidSkillNames skillName,
-            int manacost, string name, int effect = 0, int duration = 0, List<Tuple<ValidShorts, double>> modifiers = null)
+            int manacost, string name, int effect = 0, int duration = 0, 
+            List<Tuple<ValidShorts, double>> modifiers = null, Rarities rarity = Rarities.Empty)
         {
+            SetRarity();
+
             Target = target.ToString();
             Type = type.ToString();
             SkillName = skillName.ToString();
             ManaCost = manacost;
             Name = name;
-            Effect = effect;
-            Duration = duration;
+            Effect = (int)Math.Floor(effect * RarityModifiers[(int)Rarity]);
+            Duration = (int)Math.Floor(duration * RarityModifiers[(int)Rarity]);
 
             if (modifiers != null)
             {
                 foreach (Tuple<ValidShorts, double> mod in modifiers)
                 {
-                    AddStatModifier(mod);
+                    double temp = mod.Item2 * RarityModifiers[(int)Rarity];
+                    AddStatModifier(Tuple.Create(mod.Item1, temp));
                 }
+            }
+            if (rarity != Rarities.Empty)
+            {
+                Rarity = rarity;
             }
 
             DetermineXpPerCast();
