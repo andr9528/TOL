@@ -11,7 +11,7 @@ namespace Library
         /*
          * Future changes:
          * Allow a spell to have multiple types,
-         * I.E it deals a chunk of dmaage and applies a DoT
+         * I.E it deals a chunk of dmaage and then applies a DoT
          * Or other combos like that
          */
 
@@ -68,13 +68,9 @@ namespace Library
             int counter = 0;
             double combinedStats = 0.00;
 
-            foreach (string modifier in GetStatModifiers())
+            foreach (Tuple<ValidShorts, double> modifier in GetStatModifiers())
             {
-                string[] split = modifier.Split('¤');
-
-                double.TryParse(split[1], out double temp);
-
-                combinedStats += temp;
+                combinedStats += modifier.Item2;
                 counter++;
             }
 
@@ -83,7 +79,7 @@ namespace Library
         }
 
         public Spell(ValidTargets target, ValidTypes type, ValidSkillNames skillName,
-            int manacost, string name, int effect = 0, int duration = 0, List<Tuple<ValidShorts, string>> modifiers = null)
+            int manacost, string name, int effect = 0, int duration = 0, List<Tuple<ValidShorts, double>> modifiers = null)
         {
             Target = target.ToString();
             Type = type.ToString();
@@ -95,10 +91,9 @@ namespace Library
 
             if (modifiers != null)
             {
-                foreach (Tuple<ValidShorts, string> mod in modifiers)
+                foreach (Tuple<ValidShorts, double> mod in modifiers)
                 {
-                    string compound = mod.Item1.ToString() + "¤" + mod.Item2;
-                    AddStatModifier(compound);
+                    AddStatModifier(mod);
                 }
             }
 

@@ -9,19 +9,19 @@ namespace Library
     public class StatModifier
     {
         public enum ValidShorts { Hp, Mp, Hps, Mps, Dc, Bc, Prot, Cc, Cdm, MinDam, MaxDam, As}
-        List<string> StatModifiers = new List<string>();
+        List<Tuple<ValidShorts, double>> StatModifiers = new List<Tuple<ValidShorts, double>>();
 
-        public List<string> GetStatModifiers()
+        public List<Tuple<ValidShorts, double>> GetStatModifiers()
         {
             return StatModifiers;
         }
-        public void AddStatModifier(string modifier)
+        public void AddStatModifier(Tuple<ValidShorts, double> modifier)
         {
             StatModifiers.Add(modifier);
         }
-        public void RemoveStatModifier(string modifier)
+        public void RemoveStatModifier(int index)
         {
-            StatModifiers.Remove(modifier);
+            StatModifiers.RemoveAt(index);
         }
     }
 }

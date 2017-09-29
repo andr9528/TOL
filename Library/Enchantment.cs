@@ -19,15 +19,14 @@ namespace Library
         public double ManaRegenCost { get; internal set; }
         public string Name { get; internal set; }
 
-        public Enchantment(string name, double manaRegenCost, List<Tuple<ValidShorts, string>> modifiers)
+        public Enchantment(string name, double manaRegenCost, List<Tuple<ValidShorts, double>> modifiers)
         {
             Name = name;
             ManaRegenCost = manaRegenCost;
 
-            foreach (Tuple<ValidShorts, string> mod in modifiers)
+            foreach (Tuple<ValidShorts, double> mod in modifiers)
             {
-                string compound = mod.Item1.ToString() + "¤" + mod.Item2;
-                AddStatModifier(compound);
+                AddStatModifier(mod);
             }
         }
     }

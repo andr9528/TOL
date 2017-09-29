@@ -37,9 +37,9 @@ namespace Library
         {
             Spells.Add(spell);
         }
-        public void ForgetSpell(Spell spell)
+        public void ForgetSpell(int index)
         {
-            Spells.Remove(spell);
+            Spells.RemoveAt(index);
         }
         private void BuffEntity(Spell buff)
         {
@@ -381,11 +381,9 @@ namespace Library
             List<Spell> tempDebuffs = Debuffs;
             foreach (Spell debuff in Debuffs)
             {
-                foreach (string modifier in debuff.GetStatModifiers())
+                foreach (Tuple<StatModifier.ValidShorts, double> modifier in debuff.GetStatModifiers())
                 {
-                    string[] split = modifier.Split('¤');
-
-                    SwitchRemove(split);
+                    SwitchRemove(modifier);
                 }
                 debuff.Duration--;
                 if (debuff.Duration == 0)
@@ -400,11 +398,9 @@ namespace Library
             List<Spell> tempBuffs = Buffs;
             foreach (Spell buff in Buffs)
             {
-                foreach (string modifier in buff.GetStatModifiers())
+                foreach (Tuple<StatModifier.ValidShorts, double> modifier in buff.GetStatModifiers())
                 {
-                    string[] split = modifier.Split('¤');
-
-                    SwitchAdd(split);
+                    SwitchAdd(modifier);
                 }
                 buff.Duration--;
                 if (buff.Duration == 0)
@@ -428,11 +424,9 @@ namespace Library
                             enchantment.State = true;
                             ManaRegeneration -= enchantment.ManaRegenCost;
 
-                            foreach (string modifier in enchantment.GetStatModifiers())
+                            foreach (Tuple < StatModifier.ValidShorts, double> modifier in enchantment.GetStatModifiers())
                             {
-                                string[] split = modifier.Split('¤');
-
-                                SwitchAdd(split);
+                                SwitchAdd(modifier);
                             }
                         }
                     }
@@ -445,131 +439,97 @@ namespace Library
             {
                 if (equiped != null)
                 {
-                    foreach (string modifier in equiped.GetStatModifiers())
+                    foreach (Tuple<StatModifier.ValidShorts, double> modifier in equiped.GetStatModifiers())
                     {
-                        string[] split = modifier.Split('¤');
-
-                        SwitchAdd(split);
+                        SwitchAdd(modifier);
                     }
                 }
             }
         }
 
-        private void SwitchAdd(string[] split)
+        private void SwitchAdd(Tuple<StatModifier.ValidShorts, double> modifier)
         {
-            int parseInt = 0;
-            double parseDouble = 0.00;
-            bool parseResult = false;
-
-            switch (split[0])
+            switch (modifier.Item1.ToString())
             {
                 case "Hp":
-                    parseResult = int.TryParse(split[1], out parseInt);
-                    MaxHealth += parseInt;
+                    MaxHealth += (int)Math.Floor(modifier.Item2);
                     break;
                 case "Mp":
-                    parseResult = int.TryParse(split[1], out parseInt);
-                    MaxMana += parseInt;
+                    MaxMana += (int)Math.Floor(modifier.Item2);
                     break;
                 case "Prot":
-                    parseResult = int.TryParse(split[1], out parseInt);
-                    Protection += parseInt;
+                    Protection += (int)Math.Floor(modifier.Item2);
                     break;
                 case "MinDam":
-                    parseResult = int.TryParse(split[1], out parseInt);
-                    MinimumDamage += parseInt;
+                    MinimumDamage += (int)Math.Floor(modifier.Item2);
                     break;
                 case "MaxDam":
-                    parseResult = int.TryParse(split[1], out parseInt);
-                    MaximumDamage += parseInt;
+                    MaximumDamage += (int)Math.Floor(modifier.Item2);
                     break;
                 case "Hps":
-                    parseResult = double.TryParse(split[1], out parseDouble);
-                    HealthRegeneration += parseDouble;
+                    HealthRegeneration += modifier.Item2;
                     break;
                 case "Mps":
-                    parseResult = double.TryParse(split[1], out parseDouble);
-                    ManaRegeneration += parseDouble;
+                    ManaRegeneration += modifier.Item2;
                     break;
                 case "Dc":
-                    parseResult = double.TryParse(split[1], out parseDouble);
-                    DodgeChance += parseDouble;
+                    DodgeChance += modifier.Item2;
                     break;
                 case "Bc":
-                    parseResult = double.TryParse(split[1], out parseDouble);
-                    BlockChance += parseDouble;
+                    BlockChance += modifier.Item2;
                     break;
                 case "Cc":
-                    parseResult = double.TryParse(split[1], out parseDouble);
-                    CriticalChance += parseDouble;
+                    CriticalChance += modifier.Item2;
                     break;
                 case "Cdm":
-                    parseResult = double.TryParse(split[1], out parseDouble);
-                    CriticalDamageMultiplier += parseDouble;
+                    CriticalDamageMultiplier += modifier.Item2;
                     break;
                 case "As":
-                    parseResult = double.TryParse(split[1], out parseDouble);
-                    AttackSpeed += parseDouble;
+                    AttackSpeed += modifier.Item2;
                     break;
                 default:
                     break;
             }
         }
-        private void SwitchRemove(string[] split)
+        private void SwitchRemove(Tuple<StatModifier.ValidShorts, double> modifier)
         {
-            int parseInt = 0;
-            double parseDouble = 0.00;
-            bool parseResult = false;
-
-            switch (split[0])
+            switch (modifier.Item1.ToString())
             {
                 case "Hp":
-                    parseResult = int.TryParse(split[1], out parseInt);
-                    MaxHealth -= parseInt;
+                    MaxHealth -= (int)Math.Floor(modifier.Item2);
                     break;
                 case "Mp":
-                    parseResult = int.TryParse(split[1], out parseInt);
-                    MaxMana -= parseInt;
+                    MaxMana -= (int)Math.Floor(modifier.Item2);
                     break;
                 case "Prot":
-                    parseResult = int.TryParse(split[1], out parseInt);
-                    Protection -= parseInt;
+                    Protection -= (int)Math.Floor(modifier.Item2);
                     break;
                 case "MinDam":
-                    parseResult = int.TryParse(split[1], out parseInt);
-                    MinimumDamage -= parseInt;
+                    MinimumDamage -= (int)Math.Floor(modifier.Item2);
                     break;
                 case "MaxDam":
-                    parseResult = int.TryParse(split[1], out parseInt);
-                    MaximumDamage -= parseInt;
+                    MaximumDamage -= (int)Math.Floor(modifier.Item2);
                     break;
                 case "Hps":
-                    parseResult = double.TryParse(split[1], out parseDouble);
-                    HealthRegeneration -= parseDouble;
+                    HealthRegeneration -= modifier.Item2;
                     break;
                 case "Mps":
-                    parseResult = double.TryParse(split[1], out parseDouble);
-                    ManaRegeneration -= parseDouble;
+                    ManaRegeneration -= modifier.Item2;
                     break;
                 case "Dc":
-                    parseResult = double.TryParse(split[1], out parseDouble);
-                    DodgeChance -= parseDouble;
+                    DodgeChance -= modifier.Item2;
                     break;
                 case "Bc":
-                    parseResult = double.TryParse(split[1], out parseDouble);
-                    BlockChance -= parseDouble;
+                    BlockChance -= modifier.Item2;
                     break;
                 case "Cc":
-                    parseResult = double.TryParse(split[1], out parseDouble);
-                    CriticalChance -= parseDouble;
+                    CriticalChance -= modifier.Item2;
                     break;
                 case "Cdm":
-                    parseResult = double.TryParse(split[1], out parseDouble);
-                    CriticalDamageMultiplier -= parseDouble;
+                    CriticalDamageMultiplier -= modifier.Item2;
                     break;
                 case "As":
-                    parseResult = double.TryParse(split[1], out parseDouble);
-                    AttackSpeed -= parseDouble;
+                    AttackSpeed -= modifier.Item2;
                     break;
                 default:
                     break;
@@ -725,20 +685,18 @@ namespace Library
         private double DetermineXpDivideForWeapons(Equipment weapon)
         {
             double output = 0;
-            int mindam = 0;
-            int maxdam = 0;
+            double mindam = 0;
+            double maxdam = 0;
 
-            foreach (string modifier in weapon.GetStatModifiers())
+            foreach (Tuple<StatModifier.ValidShorts, double> modifier in weapon.GetStatModifiers())
             {
-                string[] split = modifier.Split('¤');
-
-                switch (split[0])
+                switch (modifier.Item1.ToString())
                 {
                     case "MinDam":
-                        int.TryParse(split[1], out mindam);
+                        mindam = Math.Floor(modifier.Item2);
                         break;
                     case "MaxDam":
-                        int.TryParse(split[1], out maxdam);
+                        maxdam = Math.Floor(modifier.Item2);
                         break;
                     default:
                         break;
