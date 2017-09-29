@@ -169,6 +169,8 @@ namespace Library
         Equipment leftRing;
         Equipment rightRing;
 
+        
+
         public Equipment Head { get { return head; } set { head = value; } } // Can be LightArmor, HeavyArmor or None
         public Equipment Shoulder { get { return shoulder; } set { shoulder = value; } } // Can be LightArmor, HeavyArmor or None
         public Equipment Gloves { get { return gloves; } set { gloves = value; } } // Can be LightArmor, HeavyArmor or None
