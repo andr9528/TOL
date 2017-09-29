@@ -30,7 +30,7 @@ namespace Library
         {
             int rarityRole = Repo.Random.Next(1, 100);
 
-            if (rarityRole < 60)
+            if (rarityRole <= 60)
             {
                 Rarity = Rarities.Common;
             }

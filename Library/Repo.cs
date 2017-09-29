@@ -201,7 +201,26 @@ namespace Library
         static Equipment item9 = new Equipment();
         static Equipment item10 = new Equipment();
         static Equipment item11 = new Equipment();
+        static Equipment item12 = new Equipment();
+        static Equipment item13 = new Equipment();
+        static Equipment item14 = new Equipment();
+        static Equipment item15 = new Equipment();
+        static Equipment item16 = new Equipment();
+        static Equipment item17 = new Equipment();
+        static Equipment item18 = new Equipment();
+        static Equipment item19 = new Equipment();
+        static Equipment item20 = new Equipment();
+        static Equipment item21 = new Equipment();
+        static Equipment item22 = new Equipment();
+        static Equipment item23 = new Equipment();
+        static Equipment item24 = new Equipment();
 
-        static public List<Equipment> Items = new List<Equipment>() { item1, item2, item3, item4, item5, item6, item7, item8, item9, item10, item11 };
+        static public List<Equipment> Items = new List<Equipment>()
+        {
+            item1, item2, item3, item4, item5, item6,
+            item7, item8, item9, item10, item11, item12,
+            item13, item14, item15, item16, item17, item18,
+            item19, item20, item21, item22, item23, item24
+        };
     }
 }
