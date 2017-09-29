@@ -22,7 +22,15 @@ namespace Library
         public Enchantment(string name, double manaRegenCost, 
             List<Tuple<ValidShorts, double>> modifiers, Rarities rarity = Rarities.Empty)
         {
-            SetRarity();
+            if (rarity != Rarities.Empty)
+            {
+                Rarity = rarity;
+            }
+            else
+            {
+                SetRarity();
+            }
+            
 
             Name = name;
             ManaRegenCost = manaRegenCost;
@@ -33,10 +41,7 @@ namespace Library
                 AddStatModifier(Tuple.Create(mod.Item1, temp));
             }
 
-            if (rarity != Rarities.Empty)
-            {
-                Rarity = rarity;
-            }
+            
         }
     }
 }

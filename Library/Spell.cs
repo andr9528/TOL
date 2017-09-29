@@ -82,7 +82,14 @@ namespace Library
             int manacost, string name, int effect = 0, int duration = 0, 
             List<Tuple<ValidShorts, double>> modifiers = null, Rarities rarity = Rarities.Empty)
         {
-            SetRarity();
+            if (rarity != Rarities.Empty)
+            {
+                Rarity = rarity;
+            }
+            else
+            {
+                SetRarity();
+            }
 
             Target = target.ToString();
             Type = type.ToString();
@@ -100,10 +107,7 @@ namespace Library
                     AddStatModifier(Tuple.Create(mod.Item1, temp));
                 }
             }
-            if (rarity != Rarities.Empty)
-            {
-                Rarity = rarity;
-            }
+            
 
             DetermineXpPerCast();
         }
