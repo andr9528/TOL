@@ -655,10 +655,10 @@ namespace Library
                     double off = 0;
                     double ran = 0;
 
-                    if (MainHand != null && MainHand.SkillName == "Onehanded" || MainHand != null && MainHand.SkillName == "TwoHanded")
+                    if (MainHand != null && MainHand.SkillName.ToString() == "Onehanded" || MainHand != null && MainHand.SkillName.ToString() == "TwoHanded")
                     {
                         main = DetermineXpDivideForWeapons(MainHand);
-                        if (MainHand.SkillName == "OneHanded")
+                        if (MainHand.SkillName.ToString() == "OneHanded")
                         {
                             OneHanded.XpCurrent += (int)Math.Floor(damage * OneHanded.XpMultiplier * main);
                         }
@@ -668,7 +668,7 @@ namespace Library
                         }
 
                     }
-                    if (OffHand != null && OffHand.SkillName == "OneHanded" && MainHand.SkillName != "TwoHanded")
+                    if (OffHand != null && OffHand.SkillName.ToString() == "OneHanded" && MainHand.SkillName.ToString() != "TwoHanded")
                     {
                         off = DetermineXpDivideForWeapons(OffHand);
                         OneHanded.XpCurrent += (int)Math.Floor(damage * OneHanded.XpMultiplier * off);
@@ -717,7 +717,7 @@ namespace Library
             {
                 if (equiped != null)
                 {
-                    if (equiped.SkillName == "LightArmor")
+                    if (equiped.SkillName.ToString() == "LightArmor")
                     {
                         output++;
                     }
@@ -735,7 +735,7 @@ namespace Library
             {
                 if (equiped != null)
                 {
-                    if (equiped.SkillName == "HeavyArmor")
+                    if (equiped.SkillName.ToString() == "HeavyArmor")
                     {
                         output++;
                     }
@@ -743,7 +743,7 @@ namespace Library
             }
             return output;
         }
-        private void UpdateLevel()
+        public void UpdateLevel()
         {
             Level = (Archery.Level + OneHanded.Level + TwoHanded.Level + LightArmor.Level
                 + HeavyArmor.Level + Stealth.Level + Agility.Level + Smithing.Level

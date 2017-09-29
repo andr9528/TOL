@@ -30,16 +30,20 @@ namespace GUI
 
         private void NewCharacter_Click(object sender, RoutedEventArgs e)
         {
-            NewCharacter character = new NewCharacter();
-            character.WindowState = WindowState.Maximized;
+            NewCharacter character = new NewCharacter
+            {
+                WindowState = WindowState.Maximized
+            };
             character.Show();
             //this.Hide();
         }
 
         private void ShowDivines_Click(object sender, RoutedEventArgs e)
         {
-            GodsViewer divine = new GodsViewer();
-            divine.WindowState = WindowState.Maximized;
+            GodsViewer divine = new GodsViewer
+            {
+                WindowState = WindowState.Maximized
+            };
             divine.Show();
             //this.Hide();
         }
@@ -51,9 +55,21 @@ namespace GUI
 
         private void ShowCharacters_Click(object sender, RoutedEventArgs e)
         {
-            Characters characters = new Characters();
-            characters.WindowState = WindowState.Maximized;
+            Characters characters = new Characters
+            {
+                WindowState = WindowState.Maximized
+            };
             characters.Show();
+            //this.Hide();
+        }
+
+        private void DummyButton_Click(object sender, RoutedEventArgs e)
+        {
+            Dummy dummy = new Dummy
+            {
+                WindowState = WindowState.Maximized
+            };
+            dummy.Show();
             //this.Hide();
         }
     }

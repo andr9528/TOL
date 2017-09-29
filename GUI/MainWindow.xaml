@@ -30,6 +30,7 @@
                 Click="Exit_Click" Content="Exit" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <Button Grid.Column="0" Grid.Row="1" Name="ShowCharacters" 
                 Click="ShowCharacters_Click" Content="Characters" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Button x:Name="DummyButton" Content="Dummy" Grid.Column="3" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center" Click="DummyButton_Click"/>
 
     </Grid>
 </Window>

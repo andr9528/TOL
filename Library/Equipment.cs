@@ -113,66 +113,306 @@ namespace Library
         {
             List<Tuple<ValidShorts, double>> modifiers = new List<Tuple<ValidShorts, double>>();
             int modifierCounter = Repo.Random.Next(MinimumCountOfStats, MaximumCountOfStats);
+            int aboveOne = 0;
+            int belowOne = 0;
+            double statRoll = aboveOne + (belowOne / 100);
 
             switch (EquipmentTracker)
             {
                 case "Shortbow":
-
+                    aboveOne = Repo.Random.Next(25, 50);
+                    statRoll = aboveOne + (belowOne / 100);
+                    modifiers.Add(Tuple.Create(ValidShorts.MinDam, statRoll));
+                    aboveOne = Repo.Random.Next(51, 75);
+                    statRoll = aboveOne + (belowOne / 100);
+                    modifiers.Add(Tuple.Create(ValidShorts.MaxDam, statRoll));
+                    modifiers.Add(Tuple.Create(ValidShorts.As, 0.30));
+                    modifierCounter -= 3;
+                    modifiers.AddRange(RandomModifiers(modifierCounter, new List<int>() { 9, 10, 11 }));
                     break;
                 case "Crossbow":
-
+                    aboveOne = Repo.Random.Next(45, 90);
+                    statRoll = aboveOne + (belowOne / 100);
+                    modifiers.Add(Tuple.Create(ValidShorts.MinDam, statRoll));
+                    aboveOne = Repo.Random.Next(91, 135);
+                    statRoll = aboveOne + (belowOne / 100);
+                    modifiers.Add(Tuple.Create(ValidShorts.MaxDam, statRoll));
+                    modifierCounter -= 2;
+                    modifiers.AddRange(RandomModifiers(modifierCounter, new List<int>() { 9, 10, 11 }));
                     break;
                 case "Longbow":
-
+                    aboveOne = Repo.Random.Next(35, 70);
+                    statRoll = aboveOne + (belowOne / 100);
+                    modifiers.Add(Tuple.Create(ValidShorts.MinDam, statRoll));
+                    aboveOne = Repo.Random.Next(71, 105);
+                    statRoll = aboveOne + (belowOne / 100);
+                    modifiers.Add(Tuple.Create(ValidShorts.MaxDam, statRoll));
+                    modifiers.Add(Tuple.Create(ValidShorts.As, 0.15));
+                    modifierCounter -= 3;
+                    modifiers.AddRange(RandomModifiers(modifierCounter, new List<int>() { 9, 10, 11 }));
                     break;
                 case "Dagger":
-
+                    aboveOne = Repo.Random.Next(15, 30);
+                    statRoll = aboveOne + (belowOne / 100);
+                    modifiers.Add(Tuple.Create(ValidShorts.MinDam, statRoll));
+                    aboveOne = Repo.Random.Next(31, 45);
+                    statRoll = aboveOne + (belowOne / 100);
+                    modifiers.Add(Tuple.Create(ValidShorts.MaxDam, statRoll));
+                    modifiers.Add(Tuple.Create(ValidShorts.As, 0.30));
+                    modifierCounter -= 3;
+                    modifiers.AddRange(RandomModifiers(modifierCounter, new List<int>() { 9, 10, 11 }));
                     break;
                 case "Sword":
 
+                    switch (SkillName)
+                    {
+                        case ValidSkillNames.OneHanded:
+                            aboveOne = Repo.Random.Next(25, 50);
+                            statRoll = aboveOne + (belowOne / 100);
+                            modifiers.Add(Tuple.Create(ValidShorts.MinDam, statRoll));
+                            aboveOne = Repo.Random.Next(51, 75);
+                            statRoll = aboveOne + (belowOne / 100);
+                            modifiers.Add(Tuple.Create(ValidShorts.MaxDam, statRoll));
+                            modifiers.Add(Tuple.Create(ValidShorts.As, 0.30));
+                            break;
+                        case ValidSkillNames.TwoHanded:
+                            aboveOne = Repo.Random.Next(45, 90);
+                            statRoll = aboveOne + (belowOne / 100);
+                            modifiers.Add(Tuple.Create(ValidShorts.MinDam, statRoll));
+                            aboveOne = Repo.Random.Next(91, 135);
+                            statRoll = aboveOne + (belowOne / 100);
+                            modifiers.Add(Tuple.Create(ValidShorts.MaxDam, statRoll));
+                            modifiers.Add(Tuple.Create(ValidShorts.As, 0.20));
+                            break;
+                        default:
+                            break;
+                    }
+                    modifierCounter -= 3;
+                    modifiers.AddRange(RandomModifiers(modifierCounter, new List<int>() { 9, 10, 11 }));
                     break;
                 case "Axe":
 
+                    switch (SkillName)
+                    {
+                        case ValidSkillNames.OneHanded:
+                            aboveOne = Repo.Random.Next(30, 60);
+                            statRoll = aboveOne + (belowOne / 100);
+                            modifiers.Add(Tuple.Create(ValidShorts.MinDam, statRoll));
+                            aboveOne = Repo.Random.Next(61, 90);
+                            statRoll = aboveOne + (belowOne / 100);
+                            modifiers.Add(Tuple.Create(ValidShorts.MaxDam, statRoll));
+                            modifiers.Add(Tuple.Create(ValidShorts.As, 0.20));
+                            break;
+                        case ValidSkillNames.TwoHanded:
+                            aboveOne = Repo.Random.Next(50, 100);
+                            statRoll = aboveOne + (belowOne / 100);
+                            modifiers.Add(Tuple.Create(ValidShorts.MinDam, statRoll));
+                            aboveOne = Repo.Random.Next(101, 150);
+                            statRoll = aboveOne + (belowOne / 100);
+                            modifiers.Add(Tuple.Create(ValidShorts.MaxDam, statRoll));
+                            modifiers.Add(Tuple.Create(ValidShorts.As, 0.10));
+                            break;
+                        default:
+                            break;
+                    }
+                    modifierCounter -= 3;
+                    modifiers.AddRange(RandomModifiers(modifierCounter, new List<int>() { 9, 10, 11 }));
                     break;
                 case "Mace":
-
+                    switch (SkillName)
+                    {
+                        case ValidSkillNames.OneHanded:
+                            aboveOne = Repo.Random.Next(35, 70);
+                            statRoll = aboveOne + (belowOne / 100);
+                            modifiers.Add(Tuple.Create(ValidShorts.MinDam, statRoll));
+                            aboveOne = Repo.Random.Next(71, 105);
+                            statRoll = aboveOne + (belowOne / 100);
+                            modifiers.Add(Tuple.Create(ValidShorts.MaxDam, statRoll));
+                            modifiers.Add(Tuple.Create(ValidShorts.As, 0.10));
+                            modifierCounter--;
+                            break;
+                        case ValidSkillNames.TwoHanded:
+                            aboveOne = Repo.Random.Next(55, 110);
+                            statRoll = aboveOne + (belowOne / 100);
+                            modifiers.Add(Tuple.Create(ValidShorts.MinDam, statRoll));
+                            aboveOne = Repo.Random.Next(111, 165);
+                            statRoll = aboveOne + (belowOne / 100);
+                            modifiers.Add(Tuple.Create(ValidShorts.MaxDam, statRoll));
+                            break;
+                        default:
+                            break;
+                    }
+                    modifierCounter -= 2;
+                    modifiers.AddRange(RandomModifiers(modifierCounter, new List<int>() { 9, 10, 11 }));
                     break;
                 case "Shield":
-
+                    belowOne = Repo.Random.Next(0, 99);
+                    aboveOne = Repo.Random.Next(1, 10);
+                    statRoll = aboveOne + (belowOne / 100);
+                    modifiers.Add(Tuple.Create(ValidShorts.Bc, statRoll));
+                    modifierCounter--;
+                    modifiers.AddRange(RandomModifiers(modifierCounter, new List<int>() { 5 }));
                     break;
                 case "Helmet":
-
+                    aboveOne = Repo.Random.Next(1, 25);
+                    statRoll = aboveOne + (belowOne / 100);
+                    modifiers.Add(Tuple.Create(ValidShorts.Prot, statRoll));
+                    modifierCounter--;
+                    modifiers.AddRange(RandomModifiers(modifierCounter, new List<int>() { 6 }));
                     break;
                 case "Shoulderpads":
-
+                    aboveOne = Repo.Random.Next(1, 15);
+                    statRoll = aboveOne + (belowOne / 100);
+                    modifiers.Add(Tuple.Create(ValidShorts.Prot, statRoll));
+                    modifierCounter--;
+                    modifiers.AddRange(RandomModifiers(modifierCounter, new List<int>() { 6 }));
                     break;
                 case "Gloves":
-
+                    aboveOne = Repo.Random.Next(1, 10);
+                    statRoll = aboveOne + (belowOne / 100);
+                    modifiers.Add(Tuple.Create(ValidShorts.Prot, statRoll));
+                    modifierCounter--;
+                    modifiers.AddRange(RandomModifiers(modifierCounter, new List<int>() { 6 }));
                     break;
                 case "Braces":
-
+                    aboveOne = Repo.Random.Next(1, 15);
+                    statRoll = aboveOne + (belowOne / 100);
+                    modifiers.Add(Tuple.Create(ValidShorts.Prot, statRoll));
+                    modifierCounter--;
+                    modifiers.AddRange(RandomModifiers(modifierCounter, new List<int>() { 6 }));
                     break;
                 case "Chestplate":
-
+                    aboveOne = Repo.Random.Next(1, 60);
+                    statRoll = aboveOne + (belowOne / 100);
+                    modifiers.Add(Tuple.Create(ValidShorts.Prot, statRoll));
+                    modifierCounter--;
+                    modifiers.AddRange(RandomModifiers(modifierCounter, new List<int>() { 6 }));
                     break;
                 case "Leggings":
-
+                    aboveOne = Repo.Random.Next(1, 50);
+                    statRoll = aboveOne + (belowOne / 100);
+                    modifiers.Add(Tuple.Create(ValidShorts.Prot, statRoll));
+                    modifierCounter--;
+                    modifiers.AddRange(RandomModifiers(modifierCounter, new List<int>() { 6 }));
                     break;
                 case "Belt":
-
+                    aboveOne = Repo.Random.Next(1, 10);
+                    statRoll = aboveOne + (belowOne / 100);
+                    modifiers.Add(Tuple.Create(ValidShorts.Prot, statRoll));
+                    modifierCounter--;
+                    modifiers.AddRange(RandomModifiers(modifierCounter, new List<int>() { 6 }));
                     break;
                 case "Boots":
-
+                    aboveOne = Repo.Random.Next(1, 20);
+                    statRoll = aboveOne + (belowOne / 100);
+                    modifiers.Add(Tuple.Create(ValidShorts.Prot, statRoll));
+                    modifierCounter--;
+                    modifiers.AddRange(RandomModifiers(modifierCounter, new List<int>() { 6 }));
                     break;
                 case "Amulet":
-
+                    modifiers.AddRange(RandomModifiers(modifierCounter));
                     break;
                 case "Ring":
-
+                    modifiers.AddRange(RandomModifiers(modifierCounter));
                     break;
                 default:
                     break;
             }
+            AddModifiers(modifiers);
+        }
+
+        private List<Tuple<ValidShorts, double>> RandomModifiers(int modifierCounter, List<int> disregard = null)
+        {
+            if (disregard == null)
+            {
+                disregard = new List<int>();
+            }
+            int statPicker;
+            List<Tuple<ValidShorts, double>> output = new List<Tuple<ValidShorts, double>>();
+            while (modifierCounter > 0)
+            {
+                statPicker = Repo.Random.Next(0, Enum.GetNames(typeof(ValidShorts)).Length);
+                int aboveOne = 0;
+                int belowOne = 0;
+                double statRoll = aboveOne + (belowOne / 100);
+
+                if (!disregard.Contains(statPicker))
+                {
+                    switch ((ValidShorts)statPicker)
+                    {
+                        case ValidShorts.Hp:
+                            aboveOne = Repo.Random.Next(1, 150);
+                            statRoll = aboveOne + (belowOne / 100);
+                            output.Add(Tuple.Create(ValidShorts.Hp, statRoll));
+                            break;
+                        case ValidShorts.Mp:
+                            aboveOne = Repo.Random.Next(1, 100);
+                            statRoll = aboveOne + (belowOne / 100);
+                            output.Add(Tuple.Create(ValidShorts.Mp, statRoll));
+                            break;
+                        case ValidShorts.Hps:
+                            belowOne = Repo.Random.Next(0, 99);
+                            aboveOne = Repo.Random.Next(1, 15);
+                            statRoll = aboveOne + (belowOne / 100);
+                            output.Add(Tuple.Create(ValidShorts.Hps, statRoll));
+                            break;
+                        case ValidShorts.Mps:
+                            belowOne = Repo.Random.Next(0, 99);
+                            aboveOne = Repo.Random.Next(1, 10);
+                            statRoll = aboveOne + (belowOne / 100);
+                            output.Add(Tuple.Create(ValidShorts.Mps, statRoll));
+                            break;
+                        case ValidShorts.Dc:
+                            belowOne = Repo.Random.Next(0, 99);
+                            aboveOne = Repo.Random.Next(1, 3);
+                            statRoll = aboveOne + (belowOne / 100);
+                            output.Add(Tuple.Create(ValidShorts.Dc, statRoll));
+                            break;
+                        case ValidShorts.Bc:
+                            belowOne = Repo.Random.Next(0, 99);
+                            aboveOne = Repo.Random.Next(1, 3);
+                            statRoll = aboveOne + (belowOne / 100);
+                            output.Add(Tuple.Create(ValidShorts.Bc, statRoll));
+                            break;
+                        case ValidShorts.Prot:
+                            aboveOne = Repo.Random.Next(1, 25);
+                            statRoll = aboveOne + (belowOne / 100);
+                            output.Add(Tuple.Create(ValidShorts.Prot, statRoll));
+                            break;
+                        case ValidShorts.Cc:
+                            belowOne = Repo.Random.Next(0, 99);
+                            aboveOne = Repo.Random.Next(1, 5);
+                            statRoll = aboveOne + (belowOne / 100);
+                            output.Add(Tuple.Create(ValidShorts.Cc, statRoll));
+                            break;
+                        case ValidShorts.Cdm:
+                            belowOne = Repo.Random.Next(1, 50);
+                            statRoll = aboveOne + (belowOne / 100);
+                            output.Add(Tuple.Create(ValidShorts.Cdm, statRoll));
+                            break;
+                        case ValidShorts.MinDam:
+                            aboveOne = Repo.Random.Next(1, 20);
+                            statRoll = aboveOne + (belowOne / 100);
+                            output.Add(Tuple.Create(ValidShorts.MinDam, statRoll));
+                            break;
+                        case ValidShorts.MaxDam:
+                            aboveOne = Repo.Random.Next(1, 30);
+                            statRoll = aboveOne + (belowOne / 100);
+                            output.Add(Tuple.Create(ValidShorts.MaxDam, statRoll));
+                            break;
+                        case ValidShorts.As:
+                            belowOne = Repo.Random.Next(1, 10);
+                            statRoll = aboveOne + (belowOne / 100);
+                            output.Add(Tuple.Create(ValidShorts.As, statRoll));
+                            break;
+                        default:
+                            break;
+                    }
+                    disregard.Add(statPicker);
+                    modifierCounter--;
+                }
+            }
+            return output;
         }
 
         private void DetermineArmorSkill()

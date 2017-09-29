@@ -189,5 +189,19 @@ namespace Library
         }
 
         #endregion
+
+        static Equipment item1 = new Equipment();
+        static Equipment item2 = new Equipment();
+        static Equipment item3 = new Equipment();
+        static Equipment item4 = new Equipment();
+        static Equipment item5 = new Equipment();
+        static Equipment item6 = new Equipment();
+        static Equipment item7 = new Equipment();
+        static Equipment item8 = new Equipment();
+        static Equipment item9 = new Equipment();
+        static Equipment item10 = new Equipment();
+        static Equipment item11 = new Equipment();
+
+        static public List<Equipment> Items = new List<Equipment>() { item1, item2, item3, item4, item5, item6, item7, item8, item9, item10, item11 };
     }
 }
