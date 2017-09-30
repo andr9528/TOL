@@ -15,6 +15,7 @@ namespace Library
         List<string> ArmorSkillNames = new List<string>() { "LightArmor", "HeavyArmor" };
         List<string> SlotsForWeapons = new List<string>() { "MainHand", "OffHand", "Ranged" };
         List<string> SlotForArmors = new List<string>() { "Head", "Shoulder", "Gloves", "Braces", "Chestplate", "Leggings", "Belt", "Boots" };
+        List<string> SlotForTrinkets = new List<string>() { "Amulet", "LeftRing", "RightRing" };
 
         List<Enchantment> Enchantments = new List<Enchantment>();
         public ValidEquipmentSlot EquipmentSlot { get; internal set; }
@@ -81,6 +82,10 @@ namespace Library
                 else if (SlotForArmors.Contains(EquipmentSlot.ToString()))
                 {
                     DetermineArmorSkill();
+                }
+                else if (SlotForTrinkets.Contains(EquipmentSlot.ToString()))
+                {
+                    SkillName = ValidSkillNames.Empty;
                 }
             }
             if (name != "")
@@ -503,6 +508,9 @@ namespace Library
                 case ValidSkillNames.Blocking:
                     EquipmentTracker = "Shield";
                     Name += "Shield";
+                    break;
+                case ValidSkillNames.Empty:
+                    AddToNameFromSlot();
                     break;
                 default:
                     break;
