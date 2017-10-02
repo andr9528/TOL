@@ -5,8 +5,139 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GUI"
         mc:Ignorable="d"
-        Title="Characters" Height="300" Width="300">
-    <Grid>
-        
+        Title="Characters" Height="Auto" Width="Auto">
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="110"/>
+            <ColumnDefinition Width="110"/>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="110"/>
+            <ColumnDefinition Width="110"/>
+            <ColumnDefinition Width="110"/>
+            <ColumnDefinition Width="50"/>
+        </Grid.ColumnDefinitions>
+
+        <Button Grid.Column="6" Grid.Row="0" Name="Exit" 
+                Click="Exit_Click" Content="Close" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <DataGrid Grid.Column="3" Grid.Row="5" Grid.RowSpan="8" Grid.ColumnSpan="4" Name="SkillGrid"/>
+        <ComboBox  HorizontalAlignment="Center"  VerticalAlignment="Center" Width="100" SelectionChanged="CharacterSelector_SelectionChanged" Name="CharacterSelector"/>
+
+        <Button Grid.Column="3" Grid.Row="0" HorizontalAlignment="Center" 
+                VerticalAlignment="Center" Width="100" Height="20" Name="EquipRanged" Click="EquipRanged_Click"/>
+        <Button Grid.Column="4" Grid.Row="0" HorizontalAlignment="Center" 
+                VerticalAlignment="Center" Width="100" Height="20" Name="EquipHead" Click="EquipHead_Click"/>
+        <Button Grid.Column="5" Grid.Row="0" HorizontalAlignment="Center" 
+                VerticalAlignment="Center" Width="100" Height="20" Name="EquipAmulet" Click="EquipAmulet_Click"/>
+        <Button Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center" 
+                VerticalAlignment="Center" Width="100" Height="20" Name="EquipShoulders" Click="EquipShoulders_Click"/>
+        <Button Grid.Column="4" Grid.Row="1" HorizontalAlignment="Center" 
+                VerticalAlignment="Center" Width="100" Height="20" Name="EquipChestplate" Click="EquipChestplate_Click"/>
+        <Button Grid.Column="3" Grid.Row="2" HorizontalAlignment="Center" 
+                VerticalAlignment="Center" Width="100" Height="20" Name="EquipGloves" Click="EquipGloves_Click"/>
+        <Button Grid.Column="4" Grid.Row="2" HorizontalAlignment="Center" 
+                VerticalAlignment="Center" Width="100" Height="20" Name="EquipLeggings" Click="EquipLeggings_Click"/>
+        <Button Grid.Column="4" Grid.Row="3" HorizontalAlignment="Center" 
+                VerticalAlignment="Center" Width="100" Height="20" Name="EquipBelt" Click="EquipBelt_Click"/>
+        <Button Grid.Column="4" Grid.Row="4" HorizontalAlignment="Center" 
+                VerticalAlignment="Center" Width="100" Height="20" Name="EquipBoots" Click="EquipBoots_Click"/>
+        <Button Grid.Column="3" Grid.Row="3" HorizontalAlignment="Center" 
+                VerticalAlignment="Center" Width="100" Height="20" Name="EquipLeftRing" Click="EquipLeftRing_Click"/>
+        <Button Grid.Column="5" Grid.Row="3" HorizontalAlignment="Center" 
+                VerticalAlignment="Center" Width="100" Height="20" Name="EquipRightRing" Click="EquipRightRing_Click"/>
+        <Button Grid.Column="3" Grid.Row="4" HorizontalAlignment="Center" 
+                VerticalAlignment="Center" Width="100" Height="20" Name="EquipMainHand" Click="EquipMainHand_Click"/>
+        <Button Grid.Column="5" Grid.Row="4" HorizontalAlignment="Center" 
+                VerticalAlignment="Center" Width="100" Height="20" Name="EquipOffHand" Click="EquipOffHand_Click"/>
+        <Button Grid.Column="5" Grid.Row="2" HorizontalAlignment="Center" 
+                VerticalAlignment="Center" Width="100" Height="20" Name="EquipBraces" Click="EquipBraces_Click"/>
+
+        <TextBox Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" 
+                VerticalAlignment="Center" IsReadOnly="True" Width="100"
+                 Height="20" Text="Health" TextAlignment="Center"/>
+        <TextBox Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center" 
+                VerticalAlignment="Center" IsReadOnly="True" Width="100"
+                 Height="20" Text="Health Regen" TextAlignment="Center"/>
+        <TextBox Grid.Column="0" Grid.Row="3" HorizontalAlignment="Center" 
+                VerticalAlignment="Center" IsReadOnly="True" Width="100"
+                 Height="20" Text="Mana" TextAlignment="Center"/>
+        <TextBox Grid.Column="0" Grid.Row="4" HorizontalAlignment="Center" 
+                VerticalAlignment="Center" IsReadOnly="True" Width="100"
+                 Height="20" Text="Mana Regen" TextAlignment="Center"/>
+        <TextBox Grid.Column="0" Grid.Row="5" HorizontalAlignment="Center" 
+                VerticalAlignment="Center" IsReadOnly="True" Width="100"
+                 Height="20" Text="Dodge Chance" TextAlignment="Center"/>
+        <TextBox Grid.Column="0" Grid.Row="6" HorizontalAlignment="Center" 
+                VerticalAlignment="Center" IsReadOnly="True" Width="100"
+                 Height="20" Text="Block Chance" TextAlignment="Center"/>
+        <TextBox Grid.Column="0" Grid.Row="7" HorizontalAlignment="Center" 
+                VerticalAlignment="Center" IsReadOnly="True" Width="100"
+                 Height="20" Text="Protection" TextAlignment="Center"/>
+        <TextBox Grid.Column="0" Grid.Row="8" HorizontalAlignment="Center" 
+                VerticalAlignment="Center" IsReadOnly="True" Width="100"
+                 Height="20" Text="Critical Chance" TextAlignment="Center"/>
+        <TextBox Grid.Column="0" Grid.Row="9" HorizontalAlignment="Center" 
+                VerticalAlignment="Center" IsReadOnly="True" Width="100"
+                 Height="20" Text="Critical Multiplier" TextAlignment="Center"/>
+        <TextBox Grid.Column="0" Grid.Row="10" HorizontalAlignment="Center" 
+                VerticalAlignment="Center" IsReadOnly="True" Width="100"
+                 Height="20" Text="Min. Damage" TextAlignment="Center"/>
+        <TextBox Grid.Column="0" Grid.Row="11" HorizontalAlignment="Center" 
+                VerticalAlignment="Center" IsReadOnly="True" Width="100"
+                 Height="20" Text="Max. Damage" TextAlignment="Center"/>
+        <TextBox Grid.Column="0" Grid.Row="12" HorizontalAlignment="Center" 
+                VerticalAlignment="Center" IsReadOnly="True" Width="100"
+                 Height="20" Text="Attack Speed" TextAlignment="Center"/>
+
+        <TextBox Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" 
+                VerticalAlignment="Center" IsReadOnly="True" Width="100"
+                 Height="20" Name="Health" TextAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" 
+                VerticalAlignment="Center" IsReadOnly="True" Width="100"
+                 Height="20" Name="HealthRegen" TextAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center" 
+                VerticalAlignment="Center" IsReadOnly="True" Width="100"
+                 Height="20" Name="Mana" TextAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="4" HorizontalAlignment="Center" 
+                VerticalAlignment="Center" IsReadOnly="True" Width="100"
+                 Height="20" Name="ManaRegen" TextAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="5" HorizontalAlignment="Center" 
+                VerticalAlignment="Center" IsReadOnly="True" Width="100"
+                 Height="20" Name="DodgeChance" TextAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="6" HorizontalAlignment="Center" 
+                VerticalAlignment="Center" IsReadOnly="True" Width="100"
+                 Height="20" Name="BlockChance" TextAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="7" HorizontalAlignment="Center" 
+                VerticalAlignment="Center" IsReadOnly="True" Width="100"
+                 Height="20" Name="Protection" TextAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="8" HorizontalAlignment="Center" 
+                VerticalAlignment="Center" IsReadOnly="True" Width="100"
+                 Height="20" Name="CriticalChance" TextAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="9" HorizontalAlignment="Center" 
+                VerticalAlignment="Center" IsReadOnly="True" Width="100"
+                 Height="20" Name="CriticalMultiplier" TextAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="10" HorizontalAlignment="Center" 
+                VerticalAlignment="Center" IsReadOnly="True" Width="100"
+                 Height="20" Name="MinDamage" TextAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="11" HorizontalAlignment="Center" 
+                VerticalAlignment="Center" IsReadOnly="True" Width="100"
+                 Height="20" Name="MaXDamage" TextAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="12" HorizontalAlignment="Center" 
+                VerticalAlignment="Center" IsReadOnly="True" Width="100"
+                 Height="20" Name="AttackSpeed" TextAlignment="Center"/>
     </Grid>
 </Window>

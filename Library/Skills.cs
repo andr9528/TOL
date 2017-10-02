@@ -10,7 +10,7 @@ namespace Library
     {
         int xpCurrent = 0;
 
-        public int ID { get; internal set; }
+        private int ID { get; set; }
         public string Name { get; internal set; }
         public int Level { get; internal set; } // What Level the entity is at this skill
         public double XpMultiplier { get; set; } 
@@ -30,7 +30,7 @@ namespace Library
             }
         }
         public int XpRequired { get; internal set; }
-        public double XpScale { get; set; } // How much extra Xp per level is needed to get to the next one
+        private double XpScale { get; set; } // How much extra Xp per level is needed to get to the next one
 
         public Skill(int _id, string _name, double _xpScale = 1.25)
         {

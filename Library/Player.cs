@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library
 {
@@ -22,6 +20,10 @@ namespace Library
             Weighting = _weighting;
             DesiredMythology = desiredMythology;
             Gender = gender;
+
+            CollectEquipment();
+            CollectSkills();
+
             UpdateLevel();
         }
         #region Parent Determinator
@@ -296,6 +298,10 @@ namespace Library
         public string ToStringParent()
         {
             return "Your parent is " + DivineParent.Name ;
+        }
+        public string ToStringPlayer()
+        {
+            return Name + ", Level " + Level;
         }
 
     }

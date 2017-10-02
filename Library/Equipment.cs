@@ -88,14 +88,7 @@ namespace Library
                     SkillName = ValidSkillNames.Empty;
                 }
             }
-            if (name != "")
-            {
-                Name = name;
-            }
-            else
-            {
-                GenerateName();
-            }
+            GenerateName();
             if (modifiers != null)
             {
                 AddModifiers(modifiers);
@@ -103,6 +96,10 @@ namespace Library
             else
             {
                 GenerateModifiers();
+            }
+            if (name != "")
+            {
+                Name = name;
             }
         }
         private void AddModifiers(List<Tuple<ValidShorts, double>> modifiers)
@@ -580,6 +577,19 @@ namespace Library
             int randomSlot = Repo.Random.Next(0, Enum.GetNames(typeof(ValidEquipmentSlot)).Length-1);
 
             EquipmentSlot = (ValidEquipmentSlot)randomSlot;
+        }
+        public string ToStringES()
+        {
+            string output = "";
+
+            output += Name + "\n";
+            output += ToStringS();
+
+            return output;
+        }
+        public string ToStringEN()
+        {
+            return Name;
         }
     }
 }

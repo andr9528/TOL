@@ -59,5 +59,16 @@ namespace Library
                 throw new Exception("Something went wrong assigning a rarity");
             }
         }
+        public string ToStringS()
+        {
+            string output = "";
+
+            foreach (Tuple<ValidShorts, double> modifier in StatModifiers)
+            {
+                output += " - " + modifier.Item1.ToString() + " -> " + modifier.Item2 + "\n";
+            }
+
+            return output;
+        }
     }
 }
