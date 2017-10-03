@@ -45,8 +45,12 @@ namespace Library
         }
         public void LevelUp() // Levels up the skill and determines how much is needed for the next level
         {
+            if (Level == 0)
+            {
+                XpRequired = 1;
+            }
             Level++;
-            XpCurrent -= XpRequired;
+            XpCurrent -= XpRequired - 1;
             XpRequired = (int)Math.Floor(32 * Level * XpScale);
         }
     }

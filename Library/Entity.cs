@@ -246,6 +246,11 @@ namespace Library
                 InfernoMagic, BlizzMagic, SkyMagic, PureMagic
             };
         }
+        public List<Skill> GetSkills()
+        {
+            CollectSkills();
+            return Skills;
+        }
         #endregion
 
         #region Stats

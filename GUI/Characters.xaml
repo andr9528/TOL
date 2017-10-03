@@ -21,6 +21,7 @@
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="110"/>
@@ -34,7 +35,7 @@
 
         <Button Grid.Column="6" Grid.Row="0" Name="Exit" 
                 Click="Exit_Click" Content="Close" HorizontalAlignment="Center" VerticalAlignment="Center" />
-        <DataGrid Grid.Column="3" Grid.Row="5" Grid.RowSpan="8" Grid.ColumnSpan="4" Name="SkillGrid"/>
+        <DataGrid Grid.Column="3" Grid.Row="5" Grid.RowSpan="9" Grid.ColumnSpan="4" Name="SkillGrid"/>
         <ComboBox  HorizontalAlignment="Center"  VerticalAlignment="Center" Width="100" SelectionChanged="CharacterSelector_SelectionChanged" Name="CharacterSelector"/>
 
         <Button Grid.Column="3" Grid.Row="0" HorizontalAlignment="Center" 
@@ -102,6 +103,9 @@
         <TextBox Grid.Column="0" Grid.Row="12" HorizontalAlignment="Center" 
                 VerticalAlignment="Center" IsReadOnly="True" Width="100"
                  Height="20" Text="Attack Speed" TextAlignment="Center"/>
+        <TextBox Grid.Column="0" Grid.Row="13" HorizontalAlignment="Center" 
+                VerticalAlignment="Center" IsReadOnly="True" Width="100"
+                 Height="20" Text="Level" TextAlignment="Center"/>
 
         <TextBox Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" 
                 VerticalAlignment="Center" IsReadOnly="True" Width="100"
@@ -135,9 +139,12 @@
                  Height="20" Name="MinDamage" TextAlignment="Center"/>
         <TextBox Grid.Column="1" Grid.Row="11" HorizontalAlignment="Center" 
                 VerticalAlignment="Center" IsReadOnly="True" Width="100"
-                 Height="20" Name="MaXDamage" TextAlignment="Center"/>
+                 Height="20" Name="MaxDamage" TextAlignment="Center"/>
         <TextBox Grid.Column="1" Grid.Row="12" HorizontalAlignment="Center" 
                 VerticalAlignment="Center" IsReadOnly="True" Width="100"
                  Height="20" Name="AttackSpeed" TextAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="13" HorizontalAlignment="Center" 
+                VerticalAlignment="Center" IsReadOnly="True" Width="100"
+                 Height="20" Name="Level" TextAlignment="Center"/>
     </Grid>
 </Window>
