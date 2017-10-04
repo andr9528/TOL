@@ -53,5 +53,9 @@ namespace Library
             XpCurrent -= XpRequired - 1;
             XpRequired = (int)Math.Floor(32 * Level * XpScale);
         }
+        internal string ToStringBackup()
+        {
+            return Level + "," + XpCurrent;
+        }
     }
 }
