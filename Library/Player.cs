@@ -9,17 +9,20 @@ namespace Library
         List<int> closenessHits = new List<int>();
         List<int> weighting = new List<int>();
         
-        public string Gender { get; internal set; }
+        public enum ValidMythologies { Greek, Eqyptian, Norse, Atlantic}
+        
+        public Repo.ValidGenders Gender { get; internal set; }
         public Gods DivineParent { get; internal set; }
-        public int DesiredMythology { get; internal set; }
+        public ValidMythologies DesiredMythology { get; internal set; }
         public List<int> Weighting { get { return weighting; } internal set { weighting = value; } }
 
-        public Player(string name, string gender, int desiredMythology, List<int> _weighting)
+        public Player(string name, int gender, int desiredMythology, List<int> _weighting, Gods parent = null)
         {
             Name = name;
             Weighting = _weighting;
-            DesiredMythology = desiredMythology;
-            Gender = gender;
+            DesiredMythology = (ValidMythologies)desiredMythology;
+            Gender = (Repo.ValidGenders)gender;
+            DivineParent = parent;
 
             CollectEquipment();
             CollectSkills();
@@ -100,7 +103,7 @@ namespace Library
                 int count;
                 int index;
 
-                if (DesiredMythology == 1)
+                if (DesiredMythology == ValidMythologies.Greek)
                 {
                     foreach (Gods divine in Repo.GreekGods)
                     {
@@ -118,7 +121,7 @@ namespace Library
                 }
                     
                 }
-                else if (DesiredMythology == 2)
+                else if (DesiredMythology == ValidMythologies.Eqyptian)
                 {
                     foreach (Gods divine in Repo.EgyptianGods)
                     {
@@ -136,7 +139,7 @@ namespace Library
                     }
                     
                 }
-                else if (DesiredMythology == 3)
+                else if (DesiredMythology == ValidMythologies.Norse)
                 {
                     foreach (Gods divine in Repo.NordicGods)
                     {
@@ -154,7 +157,7 @@ namespace Library
                     }
                     
                 }
-                else if (DesiredMythology == 4)
+                else if (DesiredMythology == ValidMythologies.Atlantic)
                 {
                     foreach (Gods divine in Repo.AtlanticTitans)
                     {
@@ -224,7 +227,7 @@ namespace Library
             int index = 0;
             int highestCount = 0;
 
-            if (DesiredMythology == 1)
+            if (DesiredMythology == ValidMythologies.Greek)
             {
                 foreach (int hit in closenessHits)
                 {
@@ -241,7 +244,7 @@ namespace Library
                     index++;
                 }
             }
-            else if (DesiredMythology == 2)
+            else if (DesiredMythology == ValidMythologies.Eqyptian)
             {
                 foreach (int hit in closenessHits)
                 {
@@ -258,7 +261,7 @@ namespace Library
                     index++;
                 }
             }
-            else if (DesiredMythology == 3)
+            else if (DesiredMythology == ValidMythologies.Norse)
             {
                 foreach (int hit in closenessHits)
                 {
@@ -275,7 +278,7 @@ namespace Library
                     index++;
                 }
             }
-            else if (DesiredMythology == 4)
+            else if (DesiredMythology == ValidMythologies.Atlantic)
             {
                 foreach (int hit in closenessHits)
                 {

@@ -92,29 +92,29 @@ namespace Library
             {
                 switch (spell.Item1.Target)
                 {
-                    case "Enemy":
+                    case Spell.ValidTargets.Enemy:
                         switch (spell.Item1.Type)
                         {
-                            case "Damage":
+                            case Spell.ValidTypes.Damage:
                                 CurrentHealth -= spell.Item1.Effect;
                                 break;
-                            case "DoT":
+                            case Spell.ValidTypes.DoT:
                                 ApplyDoT(spell.Item1);
                                 break;
-                            case "Debuff":
+                            case Spell.ValidTypes.Debuff:
                                 DebuffEntity(spell.Item1);
                                 break;
                             default:
                                 break;
                         }
                         break;
-                    case "Self":
+                    case Spell.ValidTargets.Self:
                         switch (spell.Item1.Type)
                         {
-                            case "Heal":
+                            case Spell.ValidTypes.Heal:
                                 CurrentHealth += spell.Item1.Effect;
                                 break;
-                            case "Buff":
+                            case Spell.ValidTypes.Buff:
                                 BuffEntity(spell.Item1);
                                 break;
                             default:
@@ -131,16 +131,16 @@ namespace Library
         {
             switch (spell.SkillName)
             {
-                case "WildMagic":
+                case Spell.ValidSkillNames.WildMagic:
                     WildMagic.XpCurrent += (int)Math.Floor(spell.XpPerCast * WildMagic.XpMultiplier * 0.9);
                     break;
-                case "InfernoMagic":
+                case Spell.ValidSkillNames.InfernoMagic:
                     InfernoMagic.XpCurrent += (int)Math.Floor(spell.XpPerCast * InfernoMagic.XpMultiplier * 0.9);
                     break;
-                case "BlizzMagic":
+                case Spell.ValidSkillNames.BlizzMagic:
                     BlizzMagic.XpCurrent += (int)Math.Floor(spell.XpPerCast * BlizzMagic.XpMultiplier * 0.9);
                     break;
-                case "SkyMagic":
+                case Spell.ValidSkillNames.SkyMagic:
                     SkyMagic.XpCurrent += (int)Math.Floor(spell.XpPerCast * SkyMagic.XpMultiplier * 0.9);
                     break;
                 default:

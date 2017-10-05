@@ -12,15 +12,14 @@ namespace Library
         List<int> favoring = new List<int>();
         private string name;
         private int godID;
-        private string gender;
 
         public List<int> Favoring { get { return favoring; } internal set { favoring = value; } }
         public string Name { get { return name; } internal set { name = value; } }
         public int GodID { get { return godID; } internal set { godID = value; } }
         public List<int> XpModifier { get { return xpModifier; } }
-        public string Gender { get { return gender; } internal set { gender = value; } }
+        public Repo.ValidGenders Gender { get; internal set; }
 
-        public Gods(List<int> _favoring, string _divine, int _godID, string _gender)
+        public Gods(List<int> _favoring, string _divine, int _godID, Repo.ValidGenders _gender)
         {
             Favoring = _favoring;
             Name = _divine;

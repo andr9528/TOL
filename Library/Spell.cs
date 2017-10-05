@@ -11,7 +11,7 @@ namespace Library
         /*
          * Future changes:
          * Allow a spell to have multiple types,
-         * I.E it deals a chunk of dmaage and then applies a DoT
+         * I.E it deals a chunk of damage and then applies a DoT
          * Or other combos like that
          */
 
@@ -19,8 +19,8 @@ namespace Library
         public enum ValidTargets { Enemy, Self}
         public enum ValidSkillNames { WildMagic, InfernoMagic, BlizzMagic, SkyMagic}
 
-        public string Type { get; internal set; }
-        public string Target { get; internal set; }
+        public ValidTypes Type { get; internal set; }
+        public ValidTargets Target { get; internal set; }
         /// <summary>
         /// For DoT's this is the Damage it will deal per tick of damage.
         /// For Damage this is the Damage it will deal flat out.
@@ -33,7 +33,7 @@ namespace Library
         /// </summary>
         public int Duration { get; internal set; }
         public int ManaCost { get; internal set; }
-        public string SkillName { get; internal set; }
+        public ValidSkillNames SkillName { get; internal set; }
         public string Name { get; internal set; }
         public int XpPerCast { get; internal set; }
         /// <summary>
@@ -43,19 +43,19 @@ namespace Library
         {
             switch (Type)
             {
-                case "Damage":
+                case ValidTypes.Damage:
                     XpPerCast = Effect;
                     break;
-                case "Heal":
+                case ValidTypes.Heal:
                     XpPerCast = Effect;
                     break;
-                case "DoT":
+                case ValidTypes.DoT:
                     XpPerCast = Effect * Duration;
                     break;
-                case "Debuff":
+                case ValidTypes.Debuff:
                     XpPerCast = XpForBuffTypes();
                     break;
-                case "Buff":
+                case ValidTypes.Buff:
                     XpPerCast = XpForBuffTypes();
                     break;
                 default:
@@ -91,9 +91,9 @@ namespace Library
                 SetRarity();
             }
 
-            Target = target.ToString();
-            Type = type.ToString();
-            SkillName = skillName.ToString();
+            Target = target;
+            Type = type;
+            SkillName = skillName;
             ManaCost = manacost;
             Name = name;
             Effect = (int)Math.Floor(effect * RarityModifiers[(int)Rarity]);

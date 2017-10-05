@@ -19,111 +19,113 @@ namespace Library
                     -> Instantiate many different standard spells
                 Create Enchantment Class
                     -> Instantiate many different standard enchantments
+                Change player constructer to use a enum as gender
         */
+        public enum ValidGenders { Male, Female }
         public static Random Random = new Random();
 
         #region Gods
 
         // Greek Gods
         static Gods Zeus = new Gods(new List<int>() {1, 8, 3, 8, 1, 4, 7, 6, 8, 3, 8, 5, 1, 1, 10, 6},
-                             "Zeus", 0, "Male");
+                             "Zeus", 0, ValidGenders.Male);
         static Gods Hades = new Gods(new List<int>() {8, 4, 3, 2, 8, 10, 4, 5, 5, 7, 2, 4, 10, 1, 1, 6},
-                              "Hades", 1, "Male");
+                              "Hades", 1, ValidGenders.Male);
         static Gods Poseidon = new Gods(new List<int>() {1, 4, 8, 4, 9, 2, 4, 1, 8, 7, 7, 6, 1, 10, 1, 7},
-                                 "Poseidon", 2, "Male");
+                                 "Poseidon", 2, ValidGenders.Male);
         static Gods Aphrodite = new Gods(new List<int>() {8, 4, 2, 8, 2, 5, 7, 2, 6, 3, 2, 8, 1, 6, 8, 8},
-                                  "Aphrodite", 3, "Female");
+                                  "Aphrodite", 3, ValidGenders.Female);
         static Gods Hephaestus = new Gods(new List<int>() {2, 3, 9, 3, 9, 2, 2, 10, 3, 3, 8, 9, 9, 1, 1, 6},
-                                   "Hephaestus", 4, "Male");
+                                   "Hephaestus", 4, ValidGenders.Male);
         static Gods Hera = new Gods(new List<int>() {4, 9, 2, 10, 2, 5, 7, 1, 8, 5, 2, 8, 1, 1, 7, 8},
-                             "Hera", 5, "Female");
+                             "Hera", 5, ValidGenders.Female);
         static Gods Athena = new Gods(new List<int>() {8, 3, 1, 7, 1, 6, 6, 1, 9, 5, 1, 6, 5, 5, 6, 10},
-                               "Athena", 6, "Female");
+                               "Athena", 6, ValidGenders.Female);
         static Gods Ares = new Gods(new List<int>() {4, 9, 5, 4, 9, 5, 6, 6, 4, 4, 8, 3, 7, 1, 1, 4},
-                             "Ares", 7, "Male");
+                             "Ares", 7, ValidGenders.Male);
         static Gods Hermes = new Gods(new List<int>() {3, 8, 1, 10, 3, 8, 9, 3, 6, 7, 2, 3, 1, 3, 7, 6},
-                               "Hermes", 8, "Male");
+                               "Hermes", 8, ValidGenders.Male);
         static Gods Artemis = new Gods(new List<int>() {10, 7, 1, 7, 1, 8, 9, 3, 4, 5, 1, 10, 1, 5, 3, 5},
-                                "Artemis", 9, "Female");
+                                "Artemis", 9, ValidGenders.Female);
         static Gods Apollo = new Gods(new List<int>() {10, 3, 8, 3, 8, 4, 6, 5, 6, 4, 1, 1, 5, 1, 10, 5},
-                               "Apollo", 10, "Male");
+                               "Apollo", 10, ValidGenders.Male);
         static Gods Dionysus = new Gods(new List<int>() {1, 3, 9, 3, 9, 4, 4, 4, 6, 10, 6, 10, 1, 3, 3, 4},
-                                 "Dionysus", 11, "Male");
+                                 "Dionysus", 11, ValidGenders.Male);
         // Egyptian Gods - Favoring not changed from greek!
         static Gods Ra = new Gods(new List<int>() { 1, 8, 3, 8, 1, 4, 7, 6, 8, 3, 8, 5, 1, 1, 10, 6 },
-                             "Ra", 0, "Male");
+                             "Ra", 12, ValidGenders.Male);
         static Gods Isis = new Gods(new List<int>() { 8, 4, 3, 2, 8, 10, 4, 5, 5, 7, 2, 4, 10, 1, 1, 6 },
-                              "Isis", 1, "Female");
+                              "Isis", 13, ValidGenders.Female);
         static Gods Set = new Gods(new List<int>() { 1, 4, 8, 4, 9, 2, 4, 1, 8, 7, 7, 6, 1, 10, 1, 7 },
-                                 "Set", 2, "Male");
+                                 "Set", 14, ValidGenders.Male);
         static Gods Horus = new Gods(new List<int>() { 8, 4, 2, 8, 2, 5, 7, 2, 6, 3, 2, 8, 1, 6, 8, 8 },
-                                  "Horus", 3, "Male");
+                                  "Horus", 15, ValidGenders.Male);
         static Gods Osiris = new Gods(new List<int>() { 2, 3, 9, 3, 9, 2, 2, 10, 3, 3, 8, 9, 9, 1, 1, 6 },
-                                   "Osiris", 4, "Male");
+                                   "Osiris", 16, ValidGenders.Male);
         static Gods Anubis = new Gods(new List<int>() { 4, 9, 2, 10, 2, 5, 7, 1, 8, 5, 2, 8, 1, 1, 7, 8 },
-                             "Anubis", 5, "Male");
+                             "Anubis", 17, ValidGenders.Male);
         static Gods Bast = new Gods(new List<int>() { 8, 3, 1, 7, 1, 6, 6, 1, 9, 5, 1, 6, 5, 5, 6, 10 },
-                               "Bast", 6, "Female");
+                               "Bast", 18, ValidGenders.Female);
         static Gods Ptah = new Gods(new List<int>() { 4, 9, 5, 4, 9, 5, 6, 6, 4, 4, 8, 3, 7, 1, 1, 4 },
-                             "Ptah", 7, "Male");
+                             "Ptah", 19, ValidGenders.Male);
         static Gods Hathor = new Gods(new List<int>() { 3, 8, 1, 10, 3, 8, 9, 3, 6, 7, 2, 3, 1, 3, 7, 6 },
-                               "Hathor", 8, "Female");
+                               "Hathor", 20, ValidGenders.Female);
         static Gods Thoth = new Gods(new List<int>() { 10, 7, 1, 7, 1, 8, 9, 3, 4, 5, 1, 10, 1, 5, 3, 5 },
-                                "Thoth", 9, "Male");
+                                "Thoth", 21, ValidGenders.Male);
         static Gods Sekhmet = new Gods(new List<int>() { 10, 3, 8, 3, 8, 4, 6, 5, 6, 4, 1, 1, 5, 1, 10, 5 },
-                               "Sekhmet", 10, "Female");
+                               "Sekhmet", 22, ValidGenders.Female);
         static Gods Nephthys = new Gods(new List<int>() { 1, 3, 9, 3, 9, 4, 4, 4, 6, 10, 6, 10, 1, 3, 3, 4 },
-                                 "Nephthys", 11, "Female");
+                                 "Nephthys", 23, ValidGenders.Female);
         // Nordic Gods - Favoring not changed from greek!
         static Gods Thor = new Gods(new List<int>() { 1, 8, 3, 8, 1, 4, 7, 6, 8, 3, 8, 5, 1, 1, 10, 6 },
-                             "Thor", 0, "Male");
+                             "Thor", 24, ValidGenders.Male);
         static Gods Odin = new Gods(new List<int>() { 8, 4, 3, 2, 8, 10, 4, 5, 5, 7, 2, 4, 10, 1, 1, 6 },
-                              "Odin", 1, "Male");
+                              "Odin", 25, ValidGenders.Male);
         static Gods Loki = new Gods(new List<int>() { 1, 4, 8, 4, 9, 2, 4, 1, 8, 7, 7, 6, 1, 10, 1, 7 },
-                                 "Loki", 2, "Male");
+                                 "Loki", 26, ValidGenders.Male);
         static Gods Forseti = new Gods(new List<int>() { 8, 4, 2, 8, 2, 5, 7, 2, 6, 3, 2, 8, 1, 6, 8, 8 },
-                                  "Forseti", 3, "Male");
+                                  "Forseti", 27, ValidGenders.Male);
         static Gods Freyja = new Gods(new List<int>() { 2, 3, 9, 3, 9, 2, 2, 10, 3, 3, 8, 9, 9, 1, 1, 6 },
-                                   "Freyja", 4, "Female");
+                                   "Freyja", 28, ValidGenders.Female);
         static Gods Hel = new Gods(new List<int>() { 4, 9, 2, 10, 2, 5, 7, 1, 8, 5, 2, 8, 1, 1, 7, 8 },
-                             "Hel", 5, "Female");
+                             "Hel", 29, ValidGenders.Female);
         static Gods Baldr = new Gods(new List<int>() { 8, 3, 1, 7, 1, 6, 6, 1, 9, 5, 1, 6, 5, 5, 6, 10 },
-                               "Baldr", 6, "Male");
+                               "Baldr", 30, ValidGenders.Male);
         static Gods Tyr = new Gods(new List<int>() { 4, 9, 5, 4, 9, 5, 6, 6, 4, 4, 8, 3, 7, 1, 1, 4 },
-                             "Tyr", 7, "Male");
+                             "Tyr", 31, ValidGenders.Male);
         static Gods Heimdall = new Gods(new List<int>() { 3, 8, 1, 10, 3, 8, 9, 3, 6, 7, 2, 3, 1, 3, 7, 6 },
-                               "Heimdall", 8, "Male");
+                               "Heimdall", 32, ValidGenders.Male);
         static Gods Skadi = new Gods(new List<int>() { 10, 7, 1, 7, 1, 8, 9, 3, 4, 5, 1, 10, 1, 5, 3, 5 },
-                                "Skadi", 9, "Female");
+                                "Skadi", 33, ValidGenders.Female);
         static Gods Bragi = new Gods(new List<int>() { 10, 3, 8, 3, 8, 4, 6, 5, 6, 4, 1, 1, 5, 1, 10, 5 },
-                               "Bragi", 10, "Male");
+                               "Bragi", 34, ValidGenders.Male);
         static Gods Njord = new Gods(new List<int>() { 1, 3, 9, 3, 9, 4, 4, 4, 6, 10, 6, 10, 1, 3, 3, 4 },
-                                 "Njord", 11, "Male");
+                                 "Njord", 35, ValidGenders.Male);
         // Atlantic Titans - Favoring not changed from greek!
         static Gods Kronos = new Gods(new List<int>() { 1, 8, 3, 8, 1, 4, 7, 6, 8, 3, 8, 5, 1, 1, 10, 6 },
-                             "Kronos", 0, "Male");
+                             "Kronos", 36, ValidGenders.Male);
         static Gods Oranos = new Gods(new List<int>() { 8, 4, 3, 2, 8, 10, 4, 5, 5, 7, 2, 4, 10, 1, 1, 6 },
-                              "Oranos", 1, "Male");
+                              "Oranos", 37, ValidGenders.Male);
         static Gods Gaia = new Gods(new List<int>() { 1, 4, 8, 4, 9, 2, 4, 1, 8, 7, 7, 6, 1, 10, 1, 7 },
-                                 "Gaia", 2, "Female");
+                                 "Gaia", 38, ValidGenders.Female);
         static Gods Hekate = new Gods(new List<int>() { 8, 4, 2, 8, 2, 5, 7, 2, 6, 3, 2, 8, 1, 6, 8, 8 },
-                                  "Hekate", 3, "Female");
+                                  "Hekate", 39, ValidGenders.Female);
         static Gods Atlas = new Gods(new List<int>() { 2, 3, 9, 3, 9, 2, 2, 10, 3, 3, 8, 9, 9, 1, 1, 6 },
-                                   "Atlas", 4, "Male");
+                                   "Atlas", 40, ValidGenders.Male);
         static Gods Helios = new Gods(new List<int>() { 4, 9, 2, 10, 2, 5, 7, 1, 8, 5, 2, 8, 1, 1, 7, 8 },
-                             "Helios", 5, "Male");
+                             "Helios", 41, ValidGenders.Male);
         static Gods Theia = new Gods(new List<int>() { 8, 3, 1, 7, 1, 6, 6, 1, 9, 5, 1, 6, 5, 5, 6, 10 },
-                               "Theia", 6, "Female");
+                               "Theia", 42, ValidGenders.Female);
         static Gods Rheia = new Gods(new List<int>() { 4, 9, 5, 4, 9, 5, 6, 6, 4, 4, 8, 3, 7, 1, 1, 4 },
-                             "Rheia", 7, "Female");
+                             "Rheia", 43, ValidGenders.Female);
         static Gods Hyperion = new Gods(new List<int>() { 3, 8, 1, 10, 3, 8, 9, 3, 6, 7, 2, 3, 1, 3, 7, 6 },
-                               "Hyperion", 8, "Male");
+                               "Hyperion", 44, ValidGenders.Male);
         static Gods Oceanus = new Gods(new List<int>() { 10, 7, 1, 7, 1, 8, 9, 3, 4, 5, 1, 10, 1, 5, 3, 5 },
-                                "Oceanus", 9, "Male");
+                                "Oceanus", 45, ValidGenders.Male);
         static Gods Prometheus = new Gods(new List<int>() { 10, 3, 8, 3, 8, 4, 6, 5, 6, 4, 1, 1, 5, 1, 10, 5 },
-                               "Prometheus", 10, "Male");
+                               "Prometheus", 46, ValidGenders.Male);
         static Gods Leto = new Gods(new List<int>() { 1, 3, 9, 3, 9, 4, 4, 4, 6, 10, 6, 10, 1, 3, 3, 4 },
-                                 "Leto", 11, "Female");
+                                 "Leto", 47, ValidGenders.Female);
         static List<Gods> greekGods = new List<Gods>()
         {
                 Zeus, Hades, Poseidon, Aphrodite,
