@@ -61,7 +61,7 @@ namespace Library
                 string line3 = "";
                 string line4 = "";
 
-
+                line1 = player.Name + "," + (int)player.Gender + "," + (int)player.DesiredMythology + "," + player.DivineParent.GodID;
 
                 foreach (Skill skill in player.GetSkills())
                 {

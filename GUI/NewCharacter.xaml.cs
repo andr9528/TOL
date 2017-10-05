@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Library;
+using System.Windows.Automation.Peers;
+using System.Windows.Controls.Primitives;
 
 namespace GUI
 {
@@ -23,29 +25,32 @@ namespace GUI
 
         List<string> desiredMythologyOptions = new List<string>() { "", "Greek", "Egyptian", "Norse", "Atlantic" };
         List<string> genders = new List<string>() { "", "Male", "Female" };
-        List<CheckBox> checkboxes = new List<CheckBox>() ;
+        List<CheckBox> checkBoxes = new List<CheckBox>() ;
+        List<TextBox> valueBoxes = new List<TextBox>();
         Player player;
 
         public NewCharacter()
         {
             InitializeComponent();
 
-            ArcheryWeightingValue.Text = "1";
-            OneHandedWeightingValue.Text = "1";
-            TwoHandedWeightingValue.Text = "1";
-            LightArmorWeightingValue.Text = "1";
-            HeavyArmorWeightingValue.Text = "1";
-            StealthWeightingValue.Text = "1";
-            AgilityWeightingValue.Text = "1";
-            SmithingWeightingValue.Text = "1";
-            AlchemyWeightingValue.Text = "1";
-            EnchantingWeightingValue.Text = "1";
-            BlockingWeightingValue.Text = "1";
-            WildMagicWeightingValue.Text = "1";
-            InfernoMagicWeightingValue.Text = "1";
-            BlizzMagicWeightingValue.Text = "1";
-            SkyMagicWeightingValue.Text = "1";
-            PureMagicWeightingValue.Text = "1";
+            List<TextBox> dummyValueBoxes = new List<TextBox>()
+            {
+            ArcheryWeightingValue, OneHandedWeightingValue,
+            TwoHandedWeightingValue, LightArmorWeightingValue,
+            HeavyArmorWeightingValue, StealthWeightingValue,
+            AgilityWeightingValue, SmithingWeightingValue,
+            AlchemyWeightingValue, EnchantingWeightingValue,
+            BlockingWeightingValue, WildMagicWeightingValue,
+            InfernoMagicWeightingValue, BlizzMagicWeightingValue,
+            SkyMagicWeightingValue, PureMagicWeightingValue
+            };
+
+            valueBoxes = dummyValueBoxes;
+
+            foreach (var box in valueBoxes)
+            {
+                box.Text = "1";
+            }
 
             PointsLeftValue.Text = "80";
 
@@ -55,7 +60,7 @@ namespace GUI
             HeavyArmorList, StealthList, AgilityList, SmithingList, AlchemyList, EnchantingList, BlockingList, WildMagicList,
             InfernoMagicList, BlizzMagicList, SkyMagicList, PureMagicList };
 
-            checkboxes = dummycheckboxes;
+            checkBoxes = dummycheckboxes;
 
             Check(-1);
             CreateButton.IsEnabled = false;
@@ -385,9 +390,13 @@ namespace GUI
                  int.Parse(WildMagicWeightingValue.Text), int.Parse(InfernoMagicWeightingValue.Text), int.Parse(BlizzMagicWeightingValue.Text),
                  int.Parse(SkyMagicWeightingValue.Text), int.Parse(PureMagicWeightingValue.Text)};
 
+                if (NameInput.Text.Contains(","))
+                {
+                    NameInput.Text = NameInput.Text.Replace(",", "");
+                }
 
                 player = new Player(NameInput.Text, GenderOptions.SelectedIndex-1,
-                    DesiredMythologyOptions.SelectedIndex, inputWeighting);
+                    DesiredMythologyOptions.SelectedIndex-1, inputWeighting);
 
                 player.ParentDeterminator();
 
@@ -439,7 +448,7 @@ namespace GUI
             SkyMagicList.Checked -= SkyMagicList_Checked;
             PureMagicList.Checked -= PureMagicList_Checked;
 
-            foreach (CheckBox box in checkboxes)
+            foreach (CheckBox box in checkBoxes)
             {
                 if (clicked == -1 || clicked != index)
                 {
@@ -484,6 +493,28 @@ namespace GUI
             }
 
             
+        }
+
+        private void DummyWeight_Click(object sender, RoutedEventArgs e)
+        {
+            int.TryParse(PointsLeftValue.Text, out int points);
+            while (points > 0)
+            {
+                int random = new Random().Next(0, checkBoxes.Count);
+
+                if (int.Parse(valueBoxes[random].Text) != 10)
+                {
+                    checkBoxes[random].IsChecked = true;
+
+                    IncreaseChecked.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+
+                    points--;
+                }
+                else
+                {
+                    continue;
+                }
+            }
         }
     }
 }
